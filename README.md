@@ -1,7 +1,11 @@
-# DMS — ลิงก์สั้นของระบบหลังบ้าน
+# DMS — เว็บหลังบ้าน
 
-เปิด **https://incalogistic.github.io/dms/** แล้วระบบจะพาไปหน้า DMS (Google Apps Script) อัตโนมัติ
+เปิดใช้งาน: **https://incalogistic.github.io/dms/**
 
-ถ้า Deploy DMS ใหม่แล้วลิงก์ `/exec` เปลี่ยน ให้แก้ค่า `DMS_URL` (และลิงก์ใน `meta refresh`) ในไฟล์ `index.html`
+หน้านี้คือหน้าจอของระบบ DMS ที่วางบน GitHub Pages (ไม่มีแถบเตือนของ Google)
+ข้อมูลทั้งหมดยังอยู่ใน Google Sheets ของบริษัท — หน้าเว็บส่งคำสั่งไปที่ Web App ของ DMS (`/exec`)
+และทุกคำสั่งตรวจ User + PIN และสิทธิ์ตามปกติ
 
-แอปพนักงานขาย: https://incalogistic.github.io/sales-app/
+- สร้างไฟล์ `index.html` ใหม่ทุกครั้งที่อัปเดต DMS: `python3 build_static.py <ลิงก์ /exec> index.html`
+- ลิงก์เดิมของ Apps Script ยังใช้ได้เหมือนเดิม (สำรอง)
+- แอปพนักงานขาย: https://incalogistic.github.io/sales-app/
