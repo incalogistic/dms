@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DMS — ระบบหลังบ้าน</title>
+<meta name="robots" content="noindex">
+<!-- ลิงก์ Web App ของ DMS: ถ้า Deploy ใหม่แล้วลิงก์เปลี่ยน แก้บรรทัดนี้ที่เดียว -->
+<script>var DMS_URL = 'https://script.google.com/macros/s/AKfycbwAwmuzSxdFn0OoS0d3EnDb3pZQ5BAVE-lLuE6cbdbNKTDjnBaPsWxupTyX7vS68EmfUA/exec';</script>
+<meta http-equiv="refresh" content="1;url=https://script.google.com/macros/s/AKfycbwAwmuzSxdFn0OoS0d3EnDb3pZQ5BAVE-lLuE6cbdbNKTDjnBaPsWxupTyX7vS68EmfUA/exec">
+<style>
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#F7F2EB;color:#3B2F2A;font-family:'Noto Sans Thai',Tahoma,sans-serif}
+.box{text-align:center;padding:24px}
+.spin{width:36px;height:36px;border:4px solid #E8DFD3;border-top-color:#8B5E3C;border-radius:50%;margin:0 auto 14px;animation:s 1s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
+a{color:#8B5E3C;font-weight:600}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="spin"></div>
+  <div>กำลังเปิดระบบหลังบ้าน DMS…</div>
+  <p><a id="go" href="#">แตะที่นี่ถ้าหน้าไม่เปลี่ยนเอง</a></p>
+</div>
+<script>
+document.getElementById('go').href = DMS_URL;
+location.replace(DMS_URL);
+</script>
+</body>
+</html>
