@@ -464,7 +464,6 @@ tr.rpt-total td { font-weight: 700; background: var(--bg); border-top: 2px solid
         <div class="topbar-actions">
           <div id="userChip" class="user-chip"></div>
           <button id="btnRefresh" class="icon-btn" type="button" aria-label="refresh" title="รีเฟรช"></button>
-          <button id="btnNew" class="btn btn-primary btn-sm hidden" type="button"></button>
           <button id="btnLang" class="icon-btn lang-btn" type="button" aria-label="language"></button>
           <button id="btnBell" class="icon-btn bell" type="button" aria-label="notifications">
             <span id="bellCount" class="bell-count hidden">0</span>
@@ -1923,15 +1922,7 @@ window.I18N = {
     // รีเฟรช: โหลดข้อมูลใหม่จากระบบ (ตัวเลือก/สิทธิ์/สินค้า) แล้วเปิดหน้าเดิม
     $('#btnRefresh').onclick = function () { store.del('c.lookups'); store.del('c.boot'); location.reload(); };
     $('#btnBack').onclick = goBack;
-    var creatable = canCreateDocs();
-    var nb = $('#btnNew');
-    if (creatable.length && role() !== 'OWNER') {
-      nb.classList.remove('hidden');
-      nb.innerHTML = icon('plus') + '<span class="only-desktop">' + t('doc.new') + '</span>';
-      nb.onclick = pickNewDoc;
-    } else {
-      nb.classList.add('hidden');
-    }
+    // ปุ่ม "สร้างเอกสาร" มุมขวาบนเอาออก — สร้างเอกสารจากปุ่ม "เพิ่ม" ในหน้าของเอกสารแต่ละประเภท
     refreshBadges();
   }
   function bottomItems() {
