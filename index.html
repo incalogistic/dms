@@ -560,7 +560,7 @@ window.I18N = {
     'ch.PRE': 'พรีออเดอร์', 'ch.VAN': 'แวนเซลล์', 'pay.CASH': 'เงินสด', 'pay.TRANSFER': 'โอน / QR', 'pay.CREDIT': 'เครดิต',
     'vat.EX': 'ราคาไม่รวม VAT', 'vat.IN': 'ราคารวม VAT', 'vat.NONE': 'ไม่มี VAT',
     'cond.GOOD': 'สินค้าดี', 'cond.DAMAGED': 'สินค้าเสีย', 'sc.ALL': 'ทุกช่องทาง', 'sc.PRE': 'เฉพาะพรีออเดอร์', 'sc.VAN': 'เฉพาะแวน',
-    'wt.MAIN': 'คลังหลัก', 'wt.VAN': 'รถแวน', 'wt.DAMAGED': 'คลังสินค้าเสีย', 'rc.PRE': 'พรีออเดอร์', 'rc.VAN': 'แวนเซลล์', 'rc.SALES': 'พนักงานขาย',
+    'wt.MAIN': 'คลังหลัก', 'wt.VAN': 'รถแวน', 'wt.DAMAGED': 'คลังสินค้าเสีย', 'wt.OTHER': 'คลังอื่น', 'f.WhCode': 'รหัสคลัง', 'mst.whCodeHint': 'ตั้งให้ตรงกับ Express เช่น MAIN, 01, VAN1 (เว้นว่าง = ระบบตั้งให้)', 'mst.whRenameConfirm': 'เปลี่ยนรหัสคลัง {from} เป็น {to}? เอกสาร สต็อก และผู้ใช้ที่อ้างรหัสเดิมจะเปลี่ยนตามทั้งหมด', 'rc.PRE': 'พรีออเดอร์', 'rc.VAN': 'แวนเซลล์', 'rc.SALES': 'พนักงานขาย',
     'branch.HQ': 'สำนักงานใหญ่', 'branch.BRANCH': 'สาขา', 'branch.no': 'สาขาที่ {n}',
 
     // ---------- การกระทำ (ประวัติ) ----------
@@ -909,7 +909,7 @@ window.I18N = {
     'ch.PRE': 'Pre-order', 'ch.VAN': 'Van sales', 'pay.CASH': 'Cash', 'pay.TRANSFER': 'Transfer / QR', 'pay.CREDIT': 'Credit',
     'vat.EX': 'Excl. VAT', 'vat.IN': 'Incl. VAT', 'vat.NONE': 'No VAT',
     'cond.GOOD': 'Good', 'cond.DAMAGED': 'Damaged', 'sc.ALL': 'All channels', 'sc.PRE': 'Pre-order only', 'sc.VAN': 'Van only',
-    'wt.MAIN': 'Main', 'wt.VAN': 'Van', 'wt.DAMAGED': 'Damaged', 'rc.PRE': 'Pre-order', 'rc.VAN': 'Van sales', 'rc.SALES': 'Sales',
+    'wt.MAIN': 'Main', 'wt.VAN': 'Van', 'wt.DAMAGED': 'Damaged', 'wt.OTHER': 'Other warehouse', 'f.WhCode': 'Warehouse code', 'mst.whCodeHint': 'Match your Express codes, e.g. MAIN, 01, VAN1 (blank = automatic)', 'mst.whRenameConfirm': 'Change warehouse code {from} to {to}? Documents, stock and users using the old code will all be updated.', 'rc.PRE': 'Pre-order', 'rc.VAN': 'Van sales', 'rc.SALES': 'Sales',
     'branch.HQ': 'Head office', 'branch.BRANCH': 'Branch', 'branch.no': 'Branch {n}',
     'act.SUBMIT': 'Submitted', 'act.APPROVE': 'Approved', 'act.REJECT': 'Rejected', 'act.RETURN': 'Returned', 'act.CANCEL': 'Cancelled',
     'act.REVIEW': 'Reviewed', 'act.ISSUE': 'Issued', 'act.CREATE': 'Created', 'act.UPDATE': 'Edited', 'act.DELETE': 'Deleted', 'act.RESTORE': 'Restored',
@@ -3118,9 +3118,9 @@ window.I18N = {
                  HeaderDiscountType: 'PCT', HeaderDiscountValue: 0, WarehouseId: '', ToWarehouseId: '', Channel: '', Sellable: true };
         if (ed.type === 'GR' || ed.type === 'PO') ed.h.HeaderDiscountValue = num(S.boot.settings.GR_DEFAULT_DISCOUNT_PCT);
         if (!isVan) {
-          if (ed.type === 'VU') ed.h.ToWarehouseId = 'WH-MAIN';
-          if (['ADJ', 'SC', 'TF', 'RT', 'INV', 'SO', 'PO', 'GR'].indexOf(ed.type) >= 0) ed.h.WarehouseId = 'WH-MAIN';
-        } else if (ed.type === 'VU') ed.h.ToWarehouseId = 'WH-MAIN';
+          if (ed.type === 'VU') ed.h.ToWarehouseId = mainWh();
+          if (['ADJ', 'SC', 'TF', 'RT', 'INV', 'SO', 'PO', 'GR'].indexOf(ed.type) >= 0) ed.h.WarehouseId = mainWh();
+        } else if (ed.type === 'VU') ed.h.ToWarehouseId = mainWh();
       }
       if (ed.cl) return null;
       var info = dtInfo(ed.type);
@@ -3150,14 +3150,19 @@ window.I18N = {
   }
 
   // ---------- สต็อกคงเหลือ (ช่อง "สินค้าคงเหลือปัจจุบัน") ----------
+  // รหัสคลังหลัก (ตั้งให้ตรงกับ Express ได้ เช่น MAIN)
+  function mainWh() {
+    var w = (S.lookups.warehouses || []).filter(function (x) { return x.type === 'MAIN'; })[0];
+    return w ? w.id : 'WH-MAIN';
+  }
   function srcWh(ed) {
     var vanWh = S.boot.user.VanWarehouseId;
     if (U.role() === 'VAN') {
-      if (ed.type === 'VL') return 'WH-MAIN';
+      if (ed.type === 'VL') return mainWh();
       return vanWh || '';
     }
-    if (ed.type === 'VL') return 'WH-MAIN';
-    return ed.h.WarehouseId || 'WH-MAIN';
+    if (ed.type === 'VL') return mainWh();
+    return ed.h.WarehouseId || mainWh();
   }
   function loadStock(wh, force) {
     S.stockCache = S.stockCache || {};
@@ -3255,9 +3260,9 @@ window.I18N = {
     if (!isXfer) left += frow(t('ed.center'), ro(centerText()), true);
     // คลังสินค้า (ฝั่งซ้าย) สำหรับเอกสารขาย/ซื้อ/ปรับปรุง
     if (!isVan) {
-      if (type === 'SO' || type === 'PO' || type === 'GR') left += frow(t('f.WarehouseId'), U.selectH('WarehouseId', whOpts(['MAIN']), ed.h.WarehouseId || 'WH-MAIN'), true);
-      if (type === 'INV' && U.can('doc.INV.create') === 'ALL') left += frow(t('f.WarehouseId'), U.selectH('WarehouseId', whOpts(['MAIN', 'VAN']), ed.h.WarehouseId || 'WH-MAIN'), true);
-      if (type === 'RT') left += frow(t('f.WarehouseId'), U.selectH('WarehouseId', whOpts(['MAIN', 'VAN', 'DAMAGED']), ed.h.WarehouseId || 'WH-MAIN'), true);
+      if (type === 'SO' || type === 'PO' || type === 'GR') left += frow(t('f.WarehouseId'), U.selectH('WarehouseId', whOpts(['MAIN']), ed.h.WarehouseId || mainWh()), true);
+      if (type === 'INV' && U.can('doc.INV.create') === 'ALL') left += frow(t('f.WarehouseId'), U.selectH('WarehouseId', whOpts(['MAIN', 'VAN']), ed.h.WarehouseId || mainWh()), true);
+      if (type === 'RT') left += frow(t('f.WarehouseId'), U.selectH('WarehouseId', whOpts(['MAIN', 'VAN', 'DAMAGED', 'OTHER']), ed.h.WarehouseId || mainWh()), true);
     }
     if (isSale && !isVan && role !== 'PRE' && role !== 'SALES') {
       left += frow(t('f.TierTable'), U.selectH('Channel', [{ v: 'PRE', l: t('ch.PRE') }, { v: 'VAN', l: t('ch.VAN') }], ed.h.Channel || 'PRE'));
@@ -3312,18 +3317,18 @@ window.I18N = {
         var rep = (vw && vw.salesRepId) || ed.h.SalesRepId || '';
         right += frow(t('f.SalesRepId'), U.selectH('SalesRepId', repOpts, rep, type === 'TF' ? '' : 'disabled'), type !== 'TF');
         if (isVan) {
-          right += frow(t('f.Source'), ro(U.whName(type === 'VL' ? 'WH-MAIN' : S.boot.user.VanWarehouseId)), true) +
-            (type === 'VU' ? frow(t('f.Destination'), U.selectH('ToWarehouseId', whOpts(['MAIN', 'DAMAGED']), ed.h.ToWarehouseId || 'WH-MAIN'), true)
-                           : frow(t('f.Destination'), ro(U.whName(type === 'VL' ? S.boot.user.VanWarehouseId : 'WH-MAIN')), true));
+          right += frow(t('f.Source'), ro(U.whName(type === 'VL' ? mainWh() : S.boot.user.VanWarehouseId)), true) +
+            (type === 'VU' ? frow(t('f.Destination'), U.selectH('ToWarehouseId', whOpts(['MAIN']), ed.h.ToWarehouseId || mainWh()), true)
+                           : frow(t('f.Destination'), ro(U.whName(type === 'VL' ? S.boot.user.VanWarehouseId : mainWh())), true));
         } else if (type === 'VL') {
-          right += frow(t('f.Source'), U.selectH('WarehouseId', whOpts(['MAIN']), 'WH-MAIN', 'disabled'), true) +
+          right += frow(t('f.Source'), U.selectH('WarehouseId', whOpts(['MAIN']), mainWh(), 'disabled'), true) +
             frow(t('f.Destination'), U.selectH('ToWarehouseId', [{ v: '', l: t('pleaseSelect') }].concat(whOpts(['VAN'])), ed.h.ToWarehouseId), true);
         } else if (type === 'VU') {
           right += frow(t('f.Source'), U.selectH('WarehouseId', [{ v: '', l: t('pleaseSelect') }].concat(whOpts(['VAN'])), ed.h.WarehouseId), true) +
-            frow(t('f.Destination'), U.selectH('ToWarehouseId', whOpts(['MAIN', 'DAMAGED']), ed.h.ToWarehouseId || 'WH-MAIN'), true);
+            frow(t('f.Destination'), U.selectH('ToWarehouseId', whOpts(['MAIN']), ed.h.ToWarehouseId || mainWh()), true);
         } else {
-          right += frow(t('f.Source'), U.selectH('WarehouseId', [{ v: '', l: t('pleaseSelect') }].concat(whOpts(['MAIN', 'VAN', 'DAMAGED'])), ed.h.WarehouseId), true) +
-            frow(t('f.Destination'), U.selectH('ToWarehouseId', [{ v: '', l: t('pleaseSelect') }].concat(whOpts(['MAIN', 'VAN', 'DAMAGED'])), ed.h.ToWarehouseId), true);
+          right += frow(t('f.Source'), U.selectH('WarehouseId', [{ v: '', l: t('pleaseSelect') }].concat(whOpts(['MAIN', 'VAN', 'DAMAGED', 'OTHER'])), ed.h.WarehouseId), true) +
+            frow(t('f.Destination'), U.selectH('ToWarehouseId', [{ v: '', l: t('pleaseSelect') }].concat(whOpts(['MAIN', 'VAN', 'DAMAGED', 'OTHER'])), ed.h.ToWarehouseId), true);
         }
         var rs = lkList('TRANSFER_REASON');
         var curR = ed.h.Reason || '';
@@ -3333,7 +3338,7 @@ window.I18N = {
           return '<option value="' + esc(v) + '"' + (v === curR ? ' selected' : '') + '>' + esc(L(o.nameTh, o.nameEn)) + '</option>';
         }).join('') + (curR && !known ? '<option selected>' + esc(curR) + '</option>' : '') + '</select>');
       } else {
-        right += frow(t('f.WarehouseId'), U.selectH('WarehouseId', whOpts(['MAIN', 'VAN', 'DAMAGED']), ed.h.WarehouseId || 'WH-MAIN'), true) +
+        right += frow(t('f.WarehouseId'), U.selectH('WarehouseId', whOpts(['MAIN', 'VAN', 'DAMAGED', 'OTHER']), ed.h.WarehouseId || mainWh()), true) +
           frow(t('f.Reason'), '<input class="input" name="Reason" value="' + esc(ed.h.Reason || '') + '">', true);
       }
       right += frow(t('f.RefNo'), '<input class="input" name="RefNo" value="' + esc(ed.h.RefNo || '') + '">') +
@@ -5798,8 +5803,9 @@ window.I18N = {
         var isNew = !w;
         w = w || { Type: 'VAN', Active: 'TRUE' };
         var m = modal({ title: w.WarehouseId || t('mst.newVan'),
-          body: '<div id="wf">' + U.field(t('f.Name'), U.inputH('Name', w.Name), true) +
-            (isNew ? U.field(t('f.Type'), U.selectH('Type', ['VAN', 'MAIN', 'DAMAGED'].map(function (v) { return { v: v, l: t('wt.' + v) }; }), w.Type)) : '') +
+          body: '<div id="wf">' + U.field(t('f.WhCode') + ' — ' + t('mst.whCodeHint'), U.inputH('Code', w.WarehouseId, 'maxlength="12" style="text-transform:uppercase;letter-spacing:1px" placeholder="MAIN, 01, VAN1"')) +
+            U.field(t('f.Name'), U.inputH('Name', w.Name), true) +
+            (isNew ? U.field(t('f.Type'), U.selectH('Type', ['VAN', 'MAIN', 'DAMAGED', 'OTHER'].map(function (v) { return { v: v, l: t('wt.' + v) }; }), w.Type)) : '') +
             U.field(t('f.VanPlate'), U.inputH('VanPlate', w.VanPlate)) +
             (w.Type === 'VAN' || isNew ? U.field(t('f.DocCode') + ' — ' + t('mst.docCodeHint'), U.inputH('DocCode', w.DocCode, 'maxlength="6" style="text-transform:uppercase" placeholder="01"')) : '') +
             '<label class="check"><input type="checkbox" name="Active"' + (yesNo(w.Active) ? ' checked' : '') + '>' + t('st.ACTIVE') + '</label></div>',
@@ -5808,7 +5814,10 @@ window.I18N = {
           var d = U.formData(m.el);
           d.WarehouseId = w.WarehouseId || '';
           if (!isNew) d.Type = w.Type;
-          call('apiWarehouseSave', d).then(function () { m.close(); return reloadLookups(); }).then(function () { toast(t('saved'), 'ok'); U.refresh(); }).catch(noop);
+          d.Code = String(d.Code || '').toUpperCase().replace(/[^A-Z0-9-]/g, '');
+          var go = function () { call('apiWarehouseSave', d).then(function () { m.close(); return reloadLookups(); }).then(function () { toast(t('saved'), 'ok'); U.refresh(); }).catch(noop); };
+          if (!isNew && d.Code && d.Code !== w.WarehouseId) U.confirmBox(t('mst.whRenameConfirm', { from: w.WarehouseId, to: d.Code })).then(function (ok) { if (ok) go(); });
+          else go();
         };
       }
       if (tab === 'rep') {
