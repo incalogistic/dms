@@ -359,6 +359,7 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: .92rem; }
 .frow-sm > label { color: var(--muted); }
 .promo-card { background: var(--info-soft); border-left: 4px solid var(--info); border-radius: var(--radius-sm); padding: 12px 16px; margin-bottom: 16px; }
 .entry { margin-bottom: 14px; }
+.cn-box { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
 .entry .ef-prod { max-width: 560px; margin-bottom: 8px; }
 .entry-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: flex-end; }
 .ef { display: flex; flex-direction: column; gap: 3px; font-size: .82rem; color: var(--muted); }
@@ -538,7 +539,7 @@ window.I18N = {
     'list.pickMenuPrint': 'พิมพ์', 'list.pickExcel': 'ส่งออก Excel', 'list.pickSelect': 'เลือกใบสั่งขายที่ต้องการก่อน (ติ๊กช่องหน้ารายการ)', 'list.pickResetDone': 'ยกเลิกสถานะจัดเรียงแล้ว {n} ใบ', 'ERR_PICK_EMPTY': 'ใบสั่งขายที่เลือกส่งสินค้าครบแล้ว ไม่มีสินค้าที่ต้องจัดเรียง', 'pk.code': 'รหัสสินค้า', 'pk.name': 'ชื่อสินค้า', 'pk.cases': 'ค้างส่ง (หีบ)', 'pk.caseUnit': 'หน่วยใหญ่', 'pk.pcs': 'ค้างส่ง (เศษหน่วยย่อย)', 'pk.qtyBase': 'ค้างส่งรวมหน่วยย่อย', 'pk.baseUnit': 'หน่วยย่อย', 'pk.docs': 'ใบสั่งขาย', 'pk.printedAt': 'วันที่พิมพ์', 'pk.orders': 'ใบสั่งขาย',
     'ntf.PENDING_APPROVAL': 'รออนุมัติ', 'ntf.APPROVED': 'อนุมัติแล้ว', 'ntf.CANCELLED': 'ถูกยกเลิก', 'ntf.REVIEW_ISSUE': 'บัญชีพบปัญหา', 'ntf.VAN_REVIEW': 'บิลรถแวนรอตรวจ', 'ntf.DOC_EDITED_BY_APPROVER': 'ถูกแก้ไขโดยผู้อนุมัติ', 'ntf.RETURNED': 'ส่งกลับแก้ไข', 'ntf.REJECTED': 'ไม่อนุมัติ', 'ntf.CUSTOMER_PENDING': 'ลูกค้าใหม่รออนุมัติ', 'ntf.CUSTOMER_APPROVED': 'อนุมัติลูกค้าใหม่', 'ntf.CUSTOMER_REJECTED': 'ไม่อนุมัติลูกค้าใหม่', 'ntf.step': 'ขั้น {n}', 'ntf.by': 'อนุมัติโดย',
     'rt.sales': 'รายงานยอดขาย', 'rt.best': 'สินค้าขายดี', 'rt.promo': 'ส่วนลดโปรโมชั่นสำหรับเคลม', 'rc.UserCode': 'รหัสพนักงานขาย', 'rc.Username': 'ชื่อพนักงานขาย', 'rc.Number': 'เลขที่เอกสาร', 'rc.DocStatus': 'สถานะเอกสาร', 'rc.Date': 'วันที่', 'rc.DocType': 'ประเภทเอกสาร', 'rc.DistCode': 'รหัสศูนย์จัดจำหน่าย', 'rc.DistName': 'ชื่อศูนย์จัดจำหน่าย', 'rc.CustomerCode': 'รหัสลูกค้า', 'rc.CustomerName': 'ชื่อลูกค้า', 'rc.Ch1': 'ช่องทาง 1', 'rc.Ch2': 'ช่องทาง 2', 'rc.Ch3': 'ช่องทาง 3', 'rc.ProductCode': 'รหัสสินค้า', 'rc.ProductName': 'ชื่อสินค้า', 'rc.Cat1': 'หมวดสินค้า', 'rc.Cat2': 'แบรนด์', 'rc.Cat3': 'กลุ่มโปรโมชั่น', 'rc.UOM': 'หน่วย', 'rc.Qty': 'จำนวน', 'rc.FreeQty': 'จำนวนของแถม', 'rc.UnitPrice': 'ราคาต่อหน่วย', 'rc.Gross': 'ยอดก่อนส่วนลด', 'rc.Discount': 'ส่วนลด', 'rc.PromoDiscount': 'ส่วนลดโปรโมชั่น', 'rc.NetAmount': 'ยอดสุทธิ (ก่อนภาษี)', 'rc.Vat': 'ภาษีมูลค่าเพิ่ม', 'rc.Total': 'ยอดรวมทั้งสิ้น', 'rv2.Approved': 'อนุมัติแล้ว', 'rv2.Pending': 'รออนุมัติ', 'rv2.Draft': 'ร่าง', 'rv2.Returned': 'ส่งกลับแก้ไข', 'rv2.Rejected': 'ไม่อนุมัติ', 'rv2.Cancelled': 'ยกเลิก', 'rd2.Invoice': 'ใบกำกับภาษี', 'rd2.Credit Note': 'ใบลดหนี้', 'rd2.Sales Order': 'ใบสั่งขาย', 'rd2.Goods Return': 'ใบรับคืนสินค้า',
-    'setd.APP_NAME': 'ชื่อระบบที่แสดงบนหน้าจอ', 'setd.APP_TAGLINE': 'ข้อความแนะนำระบบ (หน้าเปิดและหน้าเข้าระบบ ทั้งเว็บและแอป) ใส่ | เพื่อขึ้นบรรทัดใหม่', 'setd.SALES_APP_NAME': 'ชื่อแอปเซลล์ที่แสดงบนมือถือ', 'setd.BRAND_COLOR': 'สีหลักของแบรนด์ (#RRGGBB) ใช้ทั้งเว็บและแอปเซลล์', 'setd.COMPANY_NAME': 'ชื่อบริษัท (แสดงบนเอกสาร)', 'setd.COMPANY_NAME_EN': 'ชื่อบริษัทภาษาอังกฤษ', 'setd.COMPANY_ADDRESS': 'ที่อยู่บริษัท (แสดงบนเอกสาร)', 'setd.COMPANY_TAX_ID': 'เลขประจำตัวผู้เสียภาษี 13 หลัก', 'setd.COMPANY_BRANCH': 'สำนักงานใหญ่ หรือ สาขาที่ 00001', 'setd.COMPANY_PHONE': 'เบอร์โทรบริษัท', 'setd.CENTER_CODE': 'รหัสศูนย์จัดจำหน่าย (แสดงในหน้าเอกสาร)', 'setd.DOCNO_YEAR': 'ปีในเลขเอกสาร', 'setd.DOCNO_RESET': 'เริ่มนับเลขเอกสารใหม่เมื่อไร', 'setd.DOCNO_DIGITS': 'จำนวนหลักของลำดับท้ายเลขเอกสาร (3–6) เช่น 5 → SO6900001', 'setd.DOCNO_VAN_SEPARATE': 'รถแวนแต่ละคันรันเลขเอกสารแยก (ใส่รหัสรถในเลข) — ไม่ = ใช้ลำดับเดียวกับหลังบ้านแบบ Express', 'setd.DOCNO_VAN_DIGITS': 'จำนวนหลักของลำดับเลขเอกสารรถแวน (3–6) ใช้เมื่อรถรันเลขแยก', 'setd.DOCNO_VAN_INV_PREFIX': 'คำนำหน้าบิลขายของรถแวน (Express: HS = บิลเงินสด) เว้นว่าง = ใช้ของใบกำกับภาษี', 'setd.STOCK_ENFORCE': 'ห้ามขาย/โอนเกินสต็อก (เปิดหลังบันทึกสต็อกตั้งต้นครบ) — ไม่ = แจ้งเตือนอย่างเดียว', 'setd.COLLECT_GUARD_FROM': 'แวนต้องรับชำระบิลก่อนขายร้านถัดไป (นับบิลตั้งแต่วันที่นี้)', 'setd.VAT_RATE': 'อัตราภาษีมูลค่าเพิ่ม (%)', 'setd.DEFAULT_VAT_TYPE': 'ประเภทราคาเริ่มต้น', 'setd.DEFAULT_CREDIT_DAYS': 'เครดิตเทอมเริ่มต้น (วัน)', 'setd.CREDIT_LIMIT_MODE': 'เมื่อเกินวงเงินเครดิต', 'setd.GR_DEFAULT_DISCOUNT_PCT': 'ส่วนลดท้ายบิลจากซัพพลายเออร์ (%) ค่าเริ่มต้นของใบรับสินค้า', 'setd.SALES_PROMO_CHANNEL': 'พนักงานขายเครดิตใช้ตารางส่วนลดขั้นบันไดของช่องทางไหน', 'setd.MAX_FILE_MB': 'ขนาดไฟล์แนบสูงสุด (MB)', 'setd.ALLOWED_FILE_EXT': 'นามสกุลไฟล์ที่อนุญาต', 'setd.ALLOW_NEGATIVE_STOCK': 'คลังหลักยอมให้สต็อกติดลบ', 'setd.VAN_SALE_REVIEW': 'บิลขายรถแวนต้องให้บัญชีตรวจ', 'setd.BLOCK_SALE_IF_NOT_CLOSED': 'ห้ามแวนเซลล์ขายถ้ายังไม่ส่งปิดรถของวันก่อน', 'setd.RECEIPT_WIDTH_MM': 'ความกว้างกระดาษเครื่องพิมพ์พกพา', 'setd.REPRINT_MAX': 'ใบเสร็จเครื่องพกพา: พิมพ์ซ้ำ (สำเนา) ได้กี่ครั้งหลังพิมพ์ต้นฉบับ', 'setd.DEAD_STOCK_DAYS': 'สินค้าไม่เคลื่อนไหวเกินกี่วัน (สำหรับรายงาน)', 'setd.LEDGER_ARCHIVE_ROWS': 'ย้ายประวัติความเคลื่อนไหวสต็อกเก่าไปเก็บถาวรเมื่อเกินกี่แถว', 'setd.DEFAULT_LANG': 'ภาษาเริ่มต้น', 'setd.SESSION_HOURS': 'อายุการเข้าระบบ (ชั่วโมง)', 'setd.MAX_LOGIN_FAIL': 'ใส่ PIN ผิดได้กี่ครั้งก่อนล็อกบัญชี', 'setd.LOCK_MINUTES': 'ล็อกบัญชีกี่นาที', 'setd.BACKUP_KEEP': 'เก็บไฟล์สำรองล่าสุดกี่ชุด', 'setd.EMAIL_NOTIFY': 'ส่งอีเมลแจ้งเตือน', 'setd.EMAIL_DIGEST_HOUR': 'เวลาส่งอีเมลสรุปรายวัน (ชั่วโมง 0–23)', 'setd.LINE_ENABLED': 'เปิดแจ้งเตือนผ่าน LINE', 'setd.LINE_CHANNEL_TOKEN': 'รหัสเชื่อมต่อช่อง LINE OA (Channel access token)', 'setd.LINE_TARGET_ID': 'รหัสผู้รับหรือกลุ่มใน LINE ที่จะส่งข้อความ', 'rm.sec.Maintenance': 'ข้อมูลหลัก', 'rm.sec.Inventory': 'สินค้าคงคลัง', 'rm.sec.Sales': 'การขาย', 'rm.ProductsList': 'รายการสินค้า', 'rm.CustomersList': 'รายชื่อลูกค้า', 'rm.PromotionsSetup': 'ตั้งค่าโปรโมชั่น', 'rm.UserCustomer': 'ผู้ใช้กับลูกค้าที่ดูแล', 'rm.UsersList': 'รายชื่อผู้ใช้', 'rm.StockIn': 'รับสินค้าเข้า', 'rm.StockOut': 'จ่ายสินค้าออก', 'rm.StockAdjustment': 'ปรับปรุงสต็อก', 'rm.StockSummary': 'สรุปสต็อก', 'rm.StockTransfer': 'โอนสินค้า', 'rm.InventoryMovement': 'ความเคลื่อนไหวสินค้า', 'rm.InventorySummary': 'สรุปสินค้าคงคลัง', 'rm.SalesOrderDetails': 'รายละเอียดใบสั่งขาย', 'rm.SalesOrderSummary': 'สรุปใบสั่งขาย', 'rm.SalesDocumentsSummary': 'สรุปเอกสารขาย', 'rm.SalesDocumentsDetails': 'รายละเอียดเอกสารขาย', 'rm.CollectionSummaryBySalesman': 'สรุปรับชำระตามพนักงานขาย', 'rm.CollectionSummaryByCustomer': 'สรุปรับชำระตามลูกค้า', 'rm.CollectionDetails': 'รายละเอียดรับชำระ', 'list.invNos': 'เลขที่ใบกำกับภาษี', 'list.pickStatus': 'จัดเรียงสินค้าแล้ว', 'ed.uom': 'หน่วย', 'cl.qr': 'ชำระผ่าน QR', 'sys.system': 'ระบบ', 'ver.created': 'สร้างเอกสาร', 'ver.edited': 'แก้ไข', 'so.close.short': 'สินค้าไม่เพียงพอ', 'so.close.market': 'สินค้าขาดตลาด', 'ph.baseUnit': 'ชิ้น / ขวด / ถุง', 'lk.DELIVERY_TYPE': 'วิธีจัดส่ง', 'lk.TRANSFER_REASON': 'เหตุผลการโอนสินค้า', 'lk.BANK': 'ธนาคาร', 'rpt.arAsOf': 'ลูกหนี้ค้างชำระ ณ {d}',
+    'setd.APP_NAME': 'ชื่อระบบที่แสดงบนหน้าจอ', 'setd.APP_TAGLINE': 'ข้อความแนะนำระบบ (หน้าเปิดและหน้าเข้าระบบ ทั้งเว็บและแอป) ใส่ | เพื่อขึ้นบรรทัดใหม่', 'setd.SALES_APP_NAME': 'ชื่อแอปเซลล์ที่แสดงบนมือถือ', 'setd.BRAND_COLOR': 'สีหลักของแบรนด์ (#RRGGBB) ใช้ทั้งเว็บและแอปเซลล์', 'setd.COMPANY_NAME': 'ชื่อบริษัท (แสดงบนเอกสาร)', 'setd.COMPANY_NAME_EN': 'ชื่อบริษัทภาษาอังกฤษ', 'setd.COMPANY_ADDRESS': 'ที่อยู่บริษัท (แสดงบนเอกสาร)', 'setd.COMPANY_TAX_ID': 'เลขประจำตัวผู้เสียภาษี 13 หลัก', 'setd.COMPANY_BRANCH': 'สำนักงานใหญ่ หรือ สาขาที่ 00001', 'setd.COMPANY_PHONE': 'เบอร์โทรบริษัท', 'setd.CENTER_CODE': 'รหัสศูนย์จัดจำหน่าย (แสดงในหน้าเอกสาร)', 'setd.DOCNO_YEAR': 'ปีในเลขเอกสาร', 'setd.DOCNO_RESET': 'เริ่มนับเลขเอกสารใหม่เมื่อไร', 'setd.DOCNO_DIGITS': 'จำนวนหลักของลำดับท้ายเลขเอกสาร (3–6) เช่น 5 → SO6900001', 'setd.DOCNO_VAN_SEPARATE': 'รถแวนแต่ละคันรันเลขเอกสารแยก (ใส่รหัสรถในเลข) — ไม่ = ใช้ลำดับเดียวกับหลังบ้านแบบ Express', 'setd.DOCNO_VAN_DIGITS': 'จำนวนหลักของลำดับเลขเอกสารรถแวน (3–6) ใช้เมื่อรถรันเลขแยก', 'setd.DOCNO_VAN_INV_PREFIX': 'คำนำหน้าบิลขายของรถแวน (Express: HS = บิลเงินสด) เว้นว่าง = ใช้ของใบกำกับภาษี', 'setd.STOCK_ENFORCE': 'ห้ามขาย/โอนเกินสต็อก (เปิดหลังบันทึกสต็อกตั้งต้นครบ) — ไม่ = แจ้งเตือนอย่างเดียว', 'setd.COLLECT_GUARD_FROM': 'แวนต้องรับชำระบิลก่อนขายร้านถัดไป (นับบิลตั้งแต่วันที่นี้)', 'setd.VAT_RATE': 'อัตราภาษีมูลค่าเพิ่ม (%)', 'setd.DEFAULT_VAT_TYPE': 'ประเภทราคาเริ่มต้น', 'setd.DEFAULT_CREDIT_DAYS': 'เครดิตเทอมเริ่มต้น (วัน)', 'setd.CREDIT_LIMIT_MODE': 'เมื่อเกินวงเงินเครดิต', 'setd.GR_DEFAULT_DISCOUNT_PCT': 'ส่วนลดท้ายบิลจากซัพพลายเออร์ (%) ค่าเริ่มต้นของใบรับสินค้า', 'setd.SALES_PROMO_CHANNEL': 'พนักงานขายเครดิตใช้ตารางส่วนลดขั้นบันไดของช่องทางไหน', 'setd.MAX_FILE_MB': 'ขนาดไฟล์แนบสูงสุด (MB)', 'setd.ALLOWED_FILE_EXT': 'นามสกุลไฟล์ที่อนุญาต', 'setd.ALLOW_NEGATIVE_STOCK': 'คลังหลักยอมให้สต็อกติดลบ', 'setd.VAN_SALE_REVIEW': 'บิลขายรถแวนต้องให้บัญชีตรวจ', 'setd.BLOCK_SALE_IF_NOT_CLOSED': 'ห้ามแวนเซลล์ขายถ้ายังไม่ส่งปิดรถของวันก่อน', 'setd.RECEIPT_WIDTH_MM': 'ความกว้างกระดาษเครื่องพิมพ์พกพา', 'setd.REPRINT_MAX': 'ใบเสร็จเครื่องพกพา: พิมพ์ซ้ำ (สำเนา) ได้กี่ครั้งหลังพิมพ์ต้นฉบับ', 'setd.DEAD_STOCK_DAYS': 'สินค้าไม่เคลื่อนไหวเกินกี่วัน (สำหรับรายงาน)', 'setd.LEDGER_ARCHIVE_ROWS': 'ย้ายประวัติความเคลื่อนไหวสต็อกเก่าไปเก็บถาวรเมื่อเกินกี่แถว', 'setd.DEFAULT_LANG': 'ภาษาเริ่มต้น', 'setd.SESSION_HOURS': 'อายุการเข้าระบบ (ชั่วโมง)', 'setd.MAX_LOGIN_FAIL': 'ใส่ PIN ผิดได้กี่ครั้งก่อนล็อกบัญชี', 'setd.LOCK_MINUTES': 'ล็อกบัญชีกี่นาที', 'setd.BACKUP_KEEP': 'เก็บไฟล์สำรองล่าสุดกี่ชุด', 'setd.EMAIL_NOTIFY': 'ส่งอีเมลแจ้งเตือน', 'setd.EMAIL_DIGEST_HOUR': 'เวลาส่งอีเมลสรุปรายวัน (ชั่วโมง 0–23)', 'setd.LINE_ENABLED': 'เปิดแจ้งเตือนผ่าน LINE', 'setd.LINE_CHANNEL_TOKEN': 'รหัสเชื่อมต่อช่อง LINE OA (Channel access token)', 'setd.LINE_TARGET_ID': 'รหัสผู้รับหรือกลุ่มใน LINE ที่จะส่งข้อความ', 'rm.sec.Maintenance': 'ข้อมูลหลัก', 'rm.sec.Inventory': 'สินค้าคงคลัง', 'rm.sec.Sales': 'การขาย', 'rm.ProductsList': 'รายการสินค้า', 'rm.CustomersList': 'รายชื่อลูกค้า', 'rm.PromotionsSetup': 'ตั้งค่าโปรโมชั่น', 'rm.UserCustomer': 'ผู้ใช้กับลูกค้าที่ดูแล', 'rm.UsersList': 'รายชื่อผู้ใช้', 'rm.StockIn': 'รับสินค้าเข้า', 'rm.StockOut': 'จ่ายสินค้าออก', 'rm.StockAdjustment': 'ปรับปรุงสต็อก', 'rm.StockSummary': 'สรุปสต็อก', 'rm.StockTransfer': 'โอนสินค้า', 'rm.InventoryMovement': 'ความเคลื่อนไหวสินค้า', 'rm.InventorySummary': 'สรุปสินค้าคงคลัง', 'rm.SalesOrderDetails': 'รายละเอียดใบสั่งขาย', 'rm.SalesOrderSummary': 'สรุปใบสั่งขาย', 'rm.SalesDocumentsSummary': 'สรุปเอกสารขาย', 'rm.SalesDocumentsDetails': 'รายละเอียดเอกสารขาย', 'rm.CollectionSummaryBySalesman': 'สรุปรับชำระตามพนักงานขาย', 'rm.CollectionSummaryByCustomer': 'สรุปรับชำระตามลูกค้า', 'rm.CollectionDetails': 'รายละเอียดรับชำระ', 'list.invNos': 'เลขที่ใบกำกับภาษี', 'list.pickStatus': 'จัดเรียงสินค้าแล้ว', 'ed.uom': 'หน่วย', 'cl.qr': 'ชำระผ่าน QR', 'sys.system': 'ระบบ', 'ver.created': 'สร้างเอกสาร', 'ver.edited': 'แก้ไข', 'so.close.short': 'สินค้าไม่เพียงพอ', 'so.close.market': 'สินค้าขาดตลาด', 'ph.baseUnit': 'ชิ้น / ขวด / ถุง', 'lk.DELIVERY_TYPE': 'วิธีจัดส่ง', 'lk.TRANSFER_REASON': 'เหตุผลการโอนสินค้า', 'lk.BANK': 'ธนาคาร', 'lk.CN_REASON': 'เหตุผลใบลดหนี้ (สินค้า)', 'lk.CN_PROMO_REASON': 'เหตุผลใบลดหนี้ (ส่งเสริมการขาย)', 'setd.CN_PROMO_CODE': 'รหัสรายการส่วนลดส่งเสริมการขาย (ใช้ในใบลดหนี้ส่งเสริมการขาย ตั้งให้ตรงกับ Express ได้)', 'setd.CN_PROMO_NAME': 'ชื่อรายการส่วนลดส่งเสริมการขาย', 'cn.type': 'ประเภทใบลดหนี้', 'cn.GOODSshort': 'ลดหนี้สินค้า', 'cn.GOODS': 'ลดหนี้สินค้า (อ้างอิงใบกำกับภาษี)', 'cn.PROMO': 'ส่วนลดส่งเสริมการขาย', 'cn.promoItem': 'ส่วนลดส่งเสริมการขาย', 'cn.needInv': 'กรุณาเพิ่มใบกำกับภาษีอ้างอิงก่อน', 'cn.invNo': 'ใบกำกับภาษี', 'cn.invQty': 'จำนวนในใบกำกับ', 'cn.remain': 'ลดหนี้ได้อีก', 'cn.creditQty': 'จำนวนลดหนี้', 'cn.added': 'เพิ่มในใบนี้แล้ว', 'cn.pickTitle': 'เลือกสินค้าที่จะลดหนี้', 'cn.pickHint': 'ติ๊กสินค้าที่ต้องการลดหนี้ และแก้จำนวนได้ (ไม่เกินจำนวนที่ลดหนี้ได้อีก) ราคาต่อหน่วยเป็นราคาสุทธิหลังหักส่วนลดในใบกำกับ', 'cn.selectAll': 'เลือกทั้งหมด', 'cn.pickNone': 'ยังไม่ได้เลือกสินค้า', 'cn.pickBtn': 'เลือกสินค้าจากใบกำกับภาษี', 'cn.goodsHint': 'เพิ่มใบกำกับภาษีอ้างอิงด้านบน แล้วระบบจะให้เลือกสินค้าจากใบนั้น', 'cn.promoDesc': 'รายละเอียด', 'cn.promoDescPh': 'เช่น ส่วนลดตามเป้า เดือน ต.ค.', 'cn.amount': 'จำนวนเงิน', 'cn.promoHint': 'ใบลดหนี้ส่งเสริมการขายกรอกเป็นยอดเงิน ไม่ต้องเลือกสินค้า อ้างอิงใบกำกับภาษีหรือไม่ก็ได้', 'cn.typeChange': 'เปลี่ยนประเภทใบลดหนี้ รายการที่เพิ่มไว้จะถูกล้างออก ต้องการเปลี่ยนหรือไม่', 'cn.amountReq': 'กรุณากรอกจำนวนเงิน', 'cn.fromInv': 'จาก {no} · ลดหนี้ได้อีก {n}', 'ERR_CN_OVER_QTY': 'สินค้า {code} ลดหนี้ได้ไม่เกิน {max} {unit}', 'ERR_CN_NEED_INV': 'ใบลดหนี้สินค้าต้องอ้างอิงใบกำกับภาษีอย่างน้อย 1 ใบ', 'ERR_CN_LINE_REF': 'บรรทัดที่ {line} ({code}) ต้องเลือกจากใบกำกับภาษีที่อ้างอิง', 'ERR_CN_REF_PARTY': 'ใบกำกับ {no} ไม่ใช่ของลูกค้ารายนี้', 'rpt.arAsOf': 'ลูกหนี้ค้างชำระ ณ {d}',
     // ---------- ทั่วไป ----------
     'ok': 'ตกลง', 'cancel': 'ยกเลิก', 'save': 'บันทึก', 'saved': 'บันทึกแล้ว', 'edit': 'แก้ไข', 'delete': 'ลบ', 'add': 'เพิ่ม',
     'confirm': 'ยืนยัน', 'search': 'ค้นหา', 'all': 'ทั้งหมด', 'auto': 'อัตโนมัติ', 'yes': 'ใช่', 'no': 'ไม่', 'open': 'เปิด',
@@ -900,7 +901,7 @@ window.I18N = {
     'list.pickMenuPrint': 'Print', 'list.pickExcel': 'Export to Excel', 'list.pickSelect': 'Select the sales orders first (tick the boxes)', 'list.pickResetDone': 'Picked status reset for {n} orders', 'ERR_PICK_EMPTY': 'The selected orders are fully delivered — nothing left to pick', 'pk.code': 'Product code', 'pk.name': 'Product name', 'pk.cases': 'Outstanding cases', 'pk.caseUnit': 'Case unit', 'pk.pcs': 'Outstanding loose units', 'pk.qtyBase': 'Outstanding base units', 'pk.baseUnit': 'Base unit', 'pk.docs': 'Sales orders', 'pk.printedAt': 'Printed at', 'pk.orders': 'Sales orders',
     'ntf.PENDING_APPROVAL': 'Awaiting approval', 'ntf.APPROVED': 'Approved', 'ntf.CANCELLED': 'Cancelled', 'ntf.REVIEW_ISSUE': 'Accounting found an issue', 'ntf.VAN_REVIEW': 'Van bill awaiting review', 'ntf.DOC_EDITED_BY_APPROVER': 'Edited by the approver', 'ntf.RETURNED': 'Returned for changes', 'ntf.REJECTED': 'Rejected', 'ntf.CUSTOMER_PENDING': 'New customer awaiting approval', 'ntf.CUSTOMER_APPROVED': 'New customer approved', 'ntf.CUSTOMER_REJECTED': 'New customer rejected', 'ntf.step': 'step {n}', 'ntf.by': 'approved by',
     'rt.sales': 'Sales report', 'rt.best': 'Best sellers', 'rt.promo': 'Promotion discounts for claims', 'rc.UserCode': 'User Code', 'rc.Username': 'Username', 'rc.Number': 'Number', 'rc.DocStatus': 'Document Status', 'rc.Date': 'Date', 'rc.DocType': 'Document Type', 'rc.DistCode': 'Distributor Code', 'rc.DistName': 'Distributor Name', 'rc.CustomerCode': 'Customer Code', 'rc.CustomerName': 'Customer Name', 'rc.Ch1': 'Channel1 Description', 'rc.Ch2': 'Channel2 Description', 'rc.Ch3': 'Channel3 Description', 'rc.ProductCode': 'Product Code', 'rc.ProductName': 'Product Name', 'rc.Cat1': 'Product Category1 Description', 'rc.Cat2': 'Product Category2 Description', 'rc.Cat3': 'Product Category3 Description', 'rc.UOM': 'UOM', 'rc.Qty': 'Qty', 'rc.FreeQty': 'FOC Qty', 'rc.UnitPrice': 'Unit Price', 'rc.Gross': 'Gross Amount', 'rc.Discount': 'Discount', 'rc.PromoDiscount': 'Promotion Discount', 'rc.NetAmount': 'Net Amount', 'rc.Vat': 'VAT', 'rc.Total': 'Total Amount', 'rv2.Approved': 'Approved', 'rv2.Pending': 'Pending', 'rv2.Draft': 'Draft', 'rv2.Returned': 'Returned', 'rv2.Rejected': 'Rejected', 'rv2.Cancelled': 'Cancelled', 'rd2.Invoice': 'Invoice', 'rd2.Credit Note': 'Credit Note', 'rd2.Sales Order': 'Sales Order', 'rd2.Goods Return': 'Goods Return',
-    'setd.APP_NAME': 'System name shown on screen', 'setd.APP_TAGLINE': 'System tagline (splash and sign-in screens, web and app). Use | for a line break', 'setd.SALES_APP_NAME': 'Sales app name shown on phones', 'setd.BRAND_COLOR': 'Brand colour (#RRGGBB) for the web and the sales app', 'setd.COMPANY_NAME': 'Company name (printed on documents)', 'setd.COMPANY_NAME_EN': 'Company name in English', 'setd.COMPANY_ADDRESS': 'Company address (printed on documents)', 'setd.COMPANY_TAX_ID': '13-digit tax ID', 'setd.COMPANY_BRANCH': 'Head office or branch no. 00001', 'setd.COMPANY_PHONE': 'Company phone', 'setd.CENTER_CODE': 'Distribution centre code (shown on documents)', 'setd.DOCNO_YEAR': 'Year in document numbers', 'setd.DOCNO_RESET': 'When document numbers restart', 'setd.DOCNO_DIGITS': 'Running-number digits (3–6), e.g. 5 → SO6900001', 'setd.DOCNO_VAN_SEPARATE': 'Each van has its own numbering (van code in the number) — No = shared with the office, as in Express', 'setd.DOCNO_VAN_DIGITS': 'Van running-number digits (3–6), used when vans number separately', 'setd.DOCNO_VAN_INV_PREFIX': 'Prefix for van sales bills (Express: HS = cash bill); blank = same as tax invoice', 'setd.STOCK_ENFORCE': 'Block selling/transferring beyond stock (turn on after opening stock is entered) — No = warn only', 'setd.COLLECT_GUARD_FROM': 'Vans must collect payment before selling to the next shop (bills from this date)', 'setd.VAT_RATE': 'VAT rate (%)', 'setd.DEFAULT_VAT_TYPE': 'Default price type', 'setd.DEFAULT_CREDIT_DAYS': 'Default credit term (days)', 'setd.CREDIT_LIMIT_MODE': 'When the credit limit is exceeded', 'setd.GR_DEFAULT_DISCOUNT_PCT': 'Default supplier bill discount (%) on goods receipts', 'setd.SALES_PROMO_CHANNEL': 'Which tier-discount table credit sales reps use', 'setd.MAX_FILE_MB': 'Maximum attachment size (MB)', 'setd.ALLOWED_FILE_EXT': 'Allowed file types', 'setd.ALLOW_NEGATIVE_STOCK': 'Allow negative stock in the main warehouse', 'setd.VAN_SALE_REVIEW': 'Van sales bills need an accounting review', 'setd.BLOCK_SALE_IF_NOT_CLOSED': 'Block van sales until the previous day is closed', 'setd.RECEIPT_WIDTH_MM': 'Mobile printer paper width', 'setd.REPRINT_MAX': 'Mobile receipts: copies allowed after the original', 'setd.DEAD_STOCK_DAYS': 'Days without movement to count as dead stock (reports)', 'setd.LEDGER_ARCHIVE_ROWS': 'Archive old stock movements after this many rows', 'setd.DEFAULT_LANG': 'Default language', 'setd.SESSION_HOURS': 'Sign-in session length (hours)', 'setd.MAX_LOGIN_FAIL': 'Wrong PIN attempts before locking', 'setd.LOCK_MINUTES': 'Lock duration (minutes)', 'setd.BACKUP_KEEP': 'Number of backups to keep', 'setd.EMAIL_NOTIFY': 'Send email notifications', 'setd.EMAIL_DIGEST_HOUR': 'Daily summary email hour (0–23)', 'setd.LINE_ENABLED': 'Enable LINE notifications', 'setd.LINE_CHANNEL_TOKEN': 'LINE OA channel access token', 'setd.LINE_TARGET_ID': 'LINE user or group ID to notify', 'rm.sec.Maintenance': 'Maintenance', 'rm.sec.Inventory': 'Inventory', 'rm.sec.Sales': 'Sales', 'rm.ProductsList': 'Products List', 'rm.CustomersList': 'Customers List', 'rm.PromotionsSetup': 'Promotions Setup', 'rm.UserCustomer': 'User/Customer Mapping', 'rm.UsersList': 'Users List', 'rm.StockIn': 'Stock In', 'rm.StockOut': 'Stock Out', 'rm.StockAdjustment': 'Stock Adjustment', 'rm.StockSummary': 'Stock Summary', 'rm.StockTransfer': 'Stock Transfer', 'rm.InventoryMovement': 'Inventory Movement', 'rm.InventorySummary': 'Inventory Summary', 'rm.SalesOrderDetails': 'Sales Order Details', 'rm.SalesOrderSummary': 'Sales Order Summary', 'rm.SalesDocumentsSummary': 'Sales Documents Summary', 'rm.SalesDocumentsDetails': 'Sales Documents Details', 'rm.CollectionSummaryBySalesman': 'Collection Summary by Salesman', 'rm.CollectionSummaryByCustomer': 'Collection Summary by Customer', 'rm.CollectionDetails': 'Collection Details', 'list.invNos': 'Invoice Number', 'list.pickStatus': 'Picked List Status', 'ed.uom': 'UOM', 'cl.qr': 'QR payment', 'sys.system': 'System', 'ver.created': 'Document created', 'ver.edited': 'Edited', 'so.close.short': 'Insufficient stock', 'so.close.market': 'Out of stock in the market', 'ph.baseUnit': 'piece / bottle / bag', 'lk.DELIVERY_TYPE': 'Delivery type', 'lk.TRANSFER_REASON': 'Transfer reason', 'lk.BANK': 'Bank', 'rpt.arAsOf': 'Outstanding receivables as of {d}',
+    'setd.APP_NAME': 'System name shown on screen', 'setd.APP_TAGLINE': 'System tagline (splash and sign-in screens, web and app). Use | for a line break', 'setd.SALES_APP_NAME': 'Sales app name shown on phones', 'setd.BRAND_COLOR': 'Brand colour (#RRGGBB) for the web and the sales app', 'setd.COMPANY_NAME': 'Company name (printed on documents)', 'setd.COMPANY_NAME_EN': 'Company name in English', 'setd.COMPANY_ADDRESS': 'Company address (printed on documents)', 'setd.COMPANY_TAX_ID': '13-digit tax ID', 'setd.COMPANY_BRANCH': 'Head office or branch no. 00001', 'setd.COMPANY_PHONE': 'Company phone', 'setd.CENTER_CODE': 'Distribution centre code (shown on documents)', 'setd.DOCNO_YEAR': 'Year in document numbers', 'setd.DOCNO_RESET': 'When document numbers restart', 'setd.DOCNO_DIGITS': 'Running-number digits (3–6), e.g. 5 → SO6900001', 'setd.DOCNO_VAN_SEPARATE': 'Each van has its own numbering (van code in the number) — No = shared with the office, as in Express', 'setd.DOCNO_VAN_DIGITS': 'Van running-number digits (3–6), used when vans number separately', 'setd.DOCNO_VAN_INV_PREFIX': 'Prefix for van sales bills (Express: HS = cash bill); blank = same as tax invoice', 'setd.STOCK_ENFORCE': 'Block selling/transferring beyond stock (turn on after opening stock is entered) — No = warn only', 'setd.COLLECT_GUARD_FROM': 'Vans must collect payment before selling to the next shop (bills from this date)', 'setd.VAT_RATE': 'VAT rate (%)', 'setd.DEFAULT_VAT_TYPE': 'Default price type', 'setd.DEFAULT_CREDIT_DAYS': 'Default credit term (days)', 'setd.CREDIT_LIMIT_MODE': 'When the credit limit is exceeded', 'setd.GR_DEFAULT_DISCOUNT_PCT': 'Default supplier bill discount (%) on goods receipts', 'setd.SALES_PROMO_CHANNEL': 'Which tier-discount table credit sales reps use', 'setd.MAX_FILE_MB': 'Maximum attachment size (MB)', 'setd.ALLOWED_FILE_EXT': 'Allowed file types', 'setd.ALLOW_NEGATIVE_STOCK': 'Allow negative stock in the main warehouse', 'setd.VAN_SALE_REVIEW': 'Van sales bills need an accounting review', 'setd.BLOCK_SALE_IF_NOT_CLOSED': 'Block van sales until the previous day is closed', 'setd.RECEIPT_WIDTH_MM': 'Mobile printer paper width', 'setd.REPRINT_MAX': 'Mobile receipts: copies allowed after the original', 'setd.DEAD_STOCK_DAYS': 'Days without movement to count as dead stock (reports)', 'setd.LEDGER_ARCHIVE_ROWS': 'Archive old stock movements after this many rows', 'setd.DEFAULT_LANG': 'Default language', 'setd.SESSION_HOURS': 'Sign-in session length (hours)', 'setd.MAX_LOGIN_FAIL': 'Wrong PIN attempts before locking', 'setd.LOCK_MINUTES': 'Lock duration (minutes)', 'setd.BACKUP_KEEP': 'Number of backups to keep', 'setd.EMAIL_NOTIFY': 'Send email notifications', 'setd.EMAIL_DIGEST_HOUR': 'Daily summary email hour (0–23)', 'setd.LINE_ENABLED': 'Enable LINE notifications', 'setd.LINE_CHANNEL_TOKEN': 'LINE OA channel access token', 'setd.LINE_TARGET_ID': 'LINE user or group ID to notify', 'rm.sec.Maintenance': 'Maintenance', 'rm.sec.Inventory': 'Inventory', 'rm.sec.Sales': 'Sales', 'rm.ProductsList': 'Products List', 'rm.CustomersList': 'Customers List', 'rm.PromotionsSetup': 'Promotions Setup', 'rm.UserCustomer': 'User/Customer Mapping', 'rm.UsersList': 'Users List', 'rm.StockIn': 'Stock In', 'rm.StockOut': 'Stock Out', 'rm.StockAdjustment': 'Stock Adjustment', 'rm.StockSummary': 'Stock Summary', 'rm.StockTransfer': 'Stock Transfer', 'rm.InventoryMovement': 'Inventory Movement', 'rm.InventorySummary': 'Inventory Summary', 'rm.SalesOrderDetails': 'Sales Order Details', 'rm.SalesOrderSummary': 'Sales Order Summary', 'rm.SalesDocumentsSummary': 'Sales Documents Summary', 'rm.SalesDocumentsDetails': 'Sales Documents Details', 'rm.CollectionSummaryBySalesman': 'Collection Summary by Salesman', 'rm.CollectionSummaryByCustomer': 'Collection Summary by Customer', 'rm.CollectionDetails': 'Collection Details', 'list.invNos': 'Invoice Number', 'list.pickStatus': 'Picked List Status', 'ed.uom': 'UOM', 'cl.qr': 'QR payment', 'sys.system': 'System', 'ver.created': 'Document created', 'ver.edited': 'Edited', 'so.close.short': 'Insufficient stock', 'so.close.market': 'Out of stock in the market', 'ph.baseUnit': 'piece / bottle / bag', 'lk.DELIVERY_TYPE': 'Delivery type', 'lk.TRANSFER_REASON': 'Transfer reason', 'lk.BANK': 'Bank', 'lk.CN_REASON': 'Credit note reason (goods)', 'lk.CN_PROMO_REASON': 'Credit note reason (sales promotion)', 'setd.CN_PROMO_CODE': 'Item code for sales promotion discounts (used on promotion credit notes; can match Express)', 'setd.CN_PROMO_NAME': 'Item name for sales promotion discounts', 'cn.type': 'Credit note type', 'cn.GOODSshort': 'Goods credit', 'cn.GOODS': 'Goods credit (refers to a tax invoice)', 'cn.PROMO': 'Sales promotion discount', 'cn.promoItem': 'Sales promotion discount', 'cn.needInv': 'Add a reference tax invoice first', 'cn.invNo': 'Tax invoice', 'cn.invQty': 'Invoiced qty', 'cn.remain': 'Creditable', 'cn.creditQty': 'Credit qty', 'cn.added': 'Already on this note', 'cn.pickTitle': 'Choose items to credit', 'cn.pickHint': 'Tick the items to credit and adjust the quantity (up to the creditable amount). Unit price is the net price after invoice discounts.', 'cn.selectAll': 'Select all', 'cn.pickNone': 'No items selected', 'cn.pickBtn': 'Choose items from tax invoice', 'cn.goodsHint': 'Add a reference tax invoice above, then choose items from it', 'cn.promoDesc': 'Description', 'cn.promoDescPh': 'e.g. October target rebate', 'cn.amount': 'Amount', 'cn.promoHint': 'Promotion credit notes are entered as an amount with no products. A reference invoice is optional.', 'cn.typeChange': 'Changing the credit note type clears the items you added. Continue?', 'cn.amountReq': 'Enter an amount', 'cn.fromInv': 'From {no} · creditable {n}', 'ERR_CN_OVER_QTY': 'Item {code} can be credited up to {max} {unit}', 'ERR_CN_NEED_INV': 'A goods credit note needs at least one reference tax invoice', 'ERR_CN_LINE_REF': 'Line {line} ({code}) must come from a referenced tax invoice', 'ERR_CN_REF_PARTY': 'Invoice {no} belongs to another customer', 'rpt.arAsOf': 'Outstanding receivables as of {d}',
     'ok': 'OK', 'cancel': 'Cancel', 'save': 'Save', 'saved': 'Saved', 'edit': 'Edit', 'delete': 'Delete', 'add': 'Add',
     'confirm': 'Confirm', 'search': 'Search', 'all': 'All', 'auto': 'Auto', 'yes': 'Yes', 'no': 'No', 'open': 'Open',
     'loading': 'Loading...', 'noData': 'No data', 'total': 'Total', 'print': 'Print', 'baht': 'THB', 'case': 'case',
@@ -2882,7 +2883,8 @@ window.I18N = {
       { label: t('list.invNos'), fmt: function (r) { return esc(r.InvoiceNos || ''); } },
       { label: t('list.pickStatus'), fmt: function (r) { return yn(r.PickStatus === 'TRUE'); } }, printed];
     if (type === 'INV') return [cc, date, no, pid, pname, rep, amt, st, { label: t('f.PaymentStatus'), fmt: payBadge }, printed];
-    if (type === 'CL' || type === 'CN' || type === 'RT') return [cc, date, no, pid, pname, rep, amt, st];
+    if (type === 'CN') return [cc, date, no, { label: t('cn.type'), fmt: function (r) { return esc(t(r.CnType === 'PROMO' ? 'cn.PROMO' : 'cn.GOODSshort')); } }, pid, pname, rep, amt, st];
+    if (type === 'CL' || type === 'RT') return [cc, date, no, pid, pname, rep, amt, st];
     if (type === 'PO' || type === 'GR') return [cc, date, no, pid, pname, amt, st, ref];
     if (type === 'TF' || type === 'VL' || type === 'VU') return [cc, date, no, from, to, rep, { label: t('list.value'), num: true, sort: 'amount', fmt: function (r) { return money(r.NetTotal); } }, st, ref];
     if (type === 'ADJ' || type === 'SC') return [cc, date, no, wh, st, ref];
@@ -2941,6 +2943,7 @@ window.I18N = {
           kv(t('cl.paidAmount'), d.DocType === 'INV' && num(d.PaidAmount) ? money(d.PaidAmount) + ' / ' + money(d.NetTotal) : '') +
           kv(t('list.picked'), d.DocType === 'SO' && d.PickStatus === 'TRUE' ? t('yes') + ' · ' + esc(U.dateFmt(d.PickedAt)) : '') +
           kv(t('f.PromoId'), esc(d.PromoId)) + kv(t('f.Tags'), esc(d.Tags)) + kv(t('f.Note'), esc(d.Note)) +
+          (d.DocType === 'CN' ? kv(t('cn.type'), esc(t(d.CnType === 'PROMO' ? 'cn.PROMO' : 'cn.GOODS'))) : '') +
           kv(t('f.Reason'), ['REJECTED', 'RETURNED', 'CANCELLED'].indexOf(d.Status) < 0 ? esc(d.Reason) : '') +
           kv(t('f.CreatedBy'), esc(U.dateFmt(d.CreatedAt))) + '</div></div>';
 
@@ -3199,7 +3202,8 @@ window.I18N = {
         ed.h = { DocDate: d.DocDate, PartyId: d.PartyId, SalesRepId: d.SalesRepId, Channel: d.Channel, WarehouseId: d.WarehouseId,
                  ToWarehouseId: d.ToWarehouseId, RefDocIds: d.RefDocIds, VatType: d.VatType, PaymentType: d.PaymentType,
                  HeaderDiscountType: d.HeaderDiscountType || 'PCT', HeaderDiscountValue: num(d.HeaderDiscountValue), Tags: d.Tags, Note: d.Note, Reason: d.Reason,
-                 RefNo: d.RefNo || '', RefDate: d.RefDate || '', DeliveryType: d.DeliveryType || '', DeliveryDate: d.DeliveryDate || '', Sellable: d.Sellable !== 'FALSE' };
+                 RefNo: d.RefNo || '', RefDate: d.RefDate || '', DeliveryType: d.DeliveryType || '', DeliveryDate: d.DeliveryDate || '', Sellable: d.Sellable !== 'FALSE',
+                 CnType: d.DocType === 'CN' ? (d.CnType === 'PROMO' ? 'PROMO' : 'GOODS') : '' };
         ed.party = d.PartyId ? { id: d.PartyId, name: d.PartyName, taxId: d.PartyTaxId, branch: d.PartyBranch } : null;
         ed.refs = r.refs.map(function (x) { return { id: x.DocId, no: x.DocNo, type: x.DocType }; });
         ed.lines = r.items.map(function (i) {
@@ -3213,6 +3217,7 @@ window.I18N = {
         ed.h = { DocDate: U.today(), VatType: S.boot.settings.DEFAULT_VAT_TYPE || 'EX', PaymentType: isVan ? 'CASH' : (ed.type === 'INV' || ed.type === 'SO' || ed.type === 'PO' ? 'CREDIT' : ''),
                  HeaderDiscountType: 'PCT', HeaderDiscountValue: 0, WarehouseId: '', ToWarehouseId: '', Channel: '', Sellable: true };
         if (ed.type === 'GR' || ed.type === 'PO') ed.h.HeaderDiscountValue = num(S.boot.settings.GR_DEFAULT_DISCOUNT_PCT);
+        if (ed.type === 'CN') ed.h.CnType = 'GOODS';
         if (!isVan) {
           if (ed.type === 'VU') ed.h.ToWarehouseId = mainWh();
           if (['ADJ', 'SC', 'TF', 'RT', 'INV', 'SO', 'PO', 'GR'].indexOf(ed.type) >= 0) ed.h.WarehouseId = mainWh();
@@ -3222,7 +3227,7 @@ window.I18N = {
       var info = dtInfo(ed.type);
       if (!r && !info.canCreate) throw { code: 'ERR_NO_PERMISSION', params: {} };
       return Promise.all([U.loadCatalog(ed.h.DocDate), info.partyType === 'C' || info.partyType === 'S' ? U.loadParties(info.partyType) : Promise.resolve([]),
-                          loadStock(srcWh(ed), true)]);
+                          loadStock(srcWh(ed), true), cnLoadInvLines(ed)]);
     }).then(function (res) {
       if (ed.cl) return drawCollection(el, ed.cl, {});
       var full = ed.party ? (res[1] || []).filter(function (x) { return x.id === ed.party.id; })[0] : null;
@@ -3243,6 +3248,71 @@ window.I18N = {
     if (r === 'PRE') return 'PRE';
     if (r === 'SALES') return S.catalog.channel || 'PRE';
     return ed.h.Channel === 'VAN' ? 'VAN' : 'PRE';
+  }
+
+  // ---------- ใบลดหนี้ (CN) ----------
+  // GOODS = ลดหนี้สินค้า (เลือกจากใบกำกับภาษีที่อ้างอิง) / PROMO = ส่วนลดส่งเสริมการขาย (กรอกเป็นยอดเงิน)
+  function cnPromoCode() { return S.boot.settings.CN_PROMO_CODE || 'PROMO'; }
+  function cnPromoProduct() {
+    return { ProductCode: cnPromoCode(), NameTh: S.boot.settings.CN_PROMO_NAME || t('cn.promoItem'), NameEn: t('cn.promoItem'),
+             units: [{ Unit: 'รายการ', Factor: 1 }], CaseQty: 1, PricePerCase: 0, CostPerCase: 0, Status: 'ACTIVE', virtual: true };
+  }
+  function isCnGoods(ed) { return ed.type === 'CN' && ed.h.CnType !== 'PROMO'; }
+  function isCnPromo(ed) { return ed.type === 'CN' && ed.h.CnType === 'PROMO'; }
+  /** โหลดรายการสินค้าของใบกำกับที่อ้างอิงอยู่ (ใช้ดูจำนวนที่ลดหนี้ได้) */
+  function cnLoadInvLines(ed) {
+    ed.invLines = ed.invLines || {};
+    var ids = ed.type === 'CN' ? ed.refs.filter(function (r) { return r.type === 'INV'; }).map(function (r) { return r.id; }) : [];
+    if (!ids.length) return Promise.resolve(null);
+    return call('apiCnInvLines', ids, ed.docId || '').then(function (rows) {
+      rows.forEach(function (x) { ed.invLines[x.LineId] = x; });
+      return rows;
+    }).catch(function () { return null; });
+  }
+  /** เลือกสินค้าจากใบกำกับภาษีที่อ้างอิง (invIds = ใบที่จะแสดง) */
+  function cnPickLines(ed, invIds, done) {
+    if (!invIds.length) { toast(t('cn.needInv'), 'warn'); return; }
+    call('apiCnInvLines', invIds, ed.docId || '').then(function (rows) {
+      rows.forEach(function (x) { ed.invLines[x.LineId] = x; });
+      var used = {};
+      ed.lines.forEach(function (l) { if (l.RefLineId) used[l.RefLineId] = true; });
+      var body = rows.length ? '<div class="table-wrap"><table class="tbl"><thead><tr><th></th><th>' + t('cn.invNo') + '</th><th>' + t('ed.code') + '</th><th>' + t('ed.name') +
+        '</th><th class="r">' + t('cn.invQty') + '</th><th class="r">' + t('cn.remain') + '</th><th>' + t('ed.uom') + '</th><th class="r">' + t('f.UnitPrice') + '</th><th class="r">' + t('cn.creditQty') + '</th></tr></thead><tbody>' +
+        rows.map(function (x) {
+          var off = x.Remain <= 0 || used[x.LineId];
+          return '<tr' + (off ? ' style="opacity:.5"' : '') + '><td><input type="checkbox" data-ln="' + esc(x.LineId) + '"' + (off ? ' disabled' : '') + '></td><td class="nowrap">' + esc(x.DocNo) + '</td><td class="nowrap">' + esc(x.ProductCode) +
+            '</td><td>' + esc(x.ProductName) + (x.IsFree ? ' <span class="muted small">(' + t('ed.freeGoods') + ')</span>' : '') + (used[x.LineId] ? '<div class="muted small">' + t('cn.added') + '</div>' : '') +
+            '</td><td class="num">' + U.qtyFmt(x.Qty) + '</td><td class="num">' + U.qtyFmt(x.Remain) + '</td><td>' + esc(x.Unit) + '</td><td class="num">' + money(x.UnitPrice) +
+            '</td><td><input class="input num sm" type="number" min="0" step="any" style="width:90px" data-q="' + esc(x.LineId) + '" value="' + (off ? 0 : x.Remain) + '"' + (off ? ' disabled' : '') + '></td></tr>';
+        }).join('') + '</tbody></table></div>' : '<div class="empty">' + t('noData') + '</div>';
+      var m = modal({
+        title: t('cn.pickTitle'), wide: true, body: '<div class="muted small" style="margin-bottom:8px">' + t('cn.pickHint') + '</div>' + body,
+        foot: '<button class="btn" data-all type="button">' + t('cn.selectAll') + '</button><button class="btn" data-x type="button">' + t('cancel') + '</button><button class="btn btn-primary" data-ok type="button">' + icon('check') + t('add') + '</button>'
+      });
+      $('[data-x]', m.el).onclick = function () { m.close(); };
+      $('[data-all]', m.el).onclick = function () { $$('[data-ln]:not([disabled])', m.el).forEach(function (c) { c.checked = true; }); };
+      $$('[data-q]', m.el).forEach(function (q) { q.oninput = function () { var c = $('[data-ln="' + q.getAttribute('data-q') + '"]', m.el); if (c && num(q.value) > 0) c.checked = true; }; });
+      $('[data-ok]', m.el).onclick = function () {
+        var picked = [], err = '';
+        $$('[data-ln]', m.el).forEach(function (c) {
+          if (!c.checked) return;
+          var x = ed.invLines[c.getAttribute('data-ln')];
+          var q = num($('[data-q="' + x.LineId + '"]', m.el).value);
+          if (q <= 0) return;
+          if (q > x.Remain + 1e-9) { err = t('ERR_CN_OVER_QTY', { line: '', code: x.ProductCode, max: U.qtyFmt(x.Remain), unit: x.Unit }); return; }
+          picked.push({ _k: U.uid(), ProductCode: x.ProductCode, Unit: x.Unit, Qty: q, IsFree: false, DiscountType: 'PCT', DiscountValue: 0, DiscountEditedBy: '',
+                        UnitPrice: x.UnitPrice, ItemCondition: 'GOOD', RefLineId: x.LineId, Note: '' });
+        });
+        if (err) { toast(err, 'err'); return; }
+        if (!picked.length) { toast(t('cn.pickNone'), 'warn'); return; }
+        ed.lines = ed.lines.concat(picked);
+        var vt = ed.invLines[picked[0].RefLineId].VatType;
+        if (vt) ed.h.VatType = vt;                       // ประเภทภาษีตามใบกำกับเดิม
+        m.close();
+        if (ed._redraw) { ed._redraw({ VatType: ed.h.VatType }); return; }
+        done();
+      };
+    }).catch(function () {});
   }
 
   // ---------- สต็อกคงเหลือ (ช่อง "สินค้าคงเหลือปัจจุบัน") ----------
@@ -3343,7 +3413,7 @@ window.I18N = {
     var left = frow(t('f.DocNo'), ro(docNoText(ed.docNo)), true) + frow(t('ed.dateTime'), ro(nowTxt), true);
     if (money2) {
       left += frow(t('f.VatType'), U.selectH('VatType', ['EX', 'IN', 'NONE'].map(function (v) { return { v: v, l: t('vat.' + v) }; }), ed.h.VatType,
-        noVat || (cust && isSale && !cust.isTaxable) ? 'disabled' : ''), true);
+        noVat || (cust && isSale && !cust.isTaxable) || (isCnGoods(ed) && ed.refs.length) ? 'disabled' : ''), true);
     }
     if (type === 'SO' || type === 'INV') {
       left += frow(t('f.DeliveryType'), listSel('DeliveryType', 'DELIVERY_TYPE', ed.h.DeliveryType)) +
@@ -3364,7 +3434,16 @@ window.I18N = {
       left += frow(t('f.TierTable'), U.selectH('Channel', [{ v: 'PRE', l: t('ch.PRE') }, { v: 'VAN', l: t('ch.VAN') }], ed.h.Channel || 'PRE'));
     }
     left += frow(t('f.Status'), ro(ed.status ? t('st.' + ed.status) : t('st.OPEN')));
-    if (['RT', 'CN'].indexOf(type) >= 0) left += frow(t('f.Reason'), '<input class="input" name="Reason" value="' + esc(ed.h.Reason || '') + '">', true);
+    if (type === 'RT') left += frow(t('f.Reason'), '<input class="input" name="Reason" value="' + esc(ed.h.Reason || '') + '">', true);
+    if (type === 'CN') {
+      left += frow(t('cn.type'), U.selectH('CnType', [{ v: 'GOODS', l: t('cn.GOODS') }, { v: 'PROMO', l: t('cn.PROMO') }], ed.h.CnType || 'GOODS', 'id="cnType"'), true);
+      var crs = lkList(isCnPromo(ed) ? 'CN_PROMO_REASON' : 'CN_REASON');
+      var cr = ed.h.Reason || '';
+      var crKnown = crs.some(function (o) { return o.nameTh === cr; });
+      left += frow(t('f.Reason'), '<select class="input" name="Reason"><option value="">' + t('pleaseSelect') + '</option>' + crs.map(function (o) {
+        return '<option value="' + esc(o.nameTh) + '"' + (o.nameTh === cr ? ' selected' : '') + '>' + esc(L(o.nameTh, o.nameEn)) + '</option>';
+      }).join('') + (cr && !crKnown ? '<option selected>' + esc(cr) + '</option>' : '') + '</select>', true);
+    }
     left += frow(t('f.Note'), '<textarea class="input" name="Note" rows="2">' + esc(ed.h.Note || '') + '</textarea>');
     if (isXfer) left += frow('', '<label class="check"><input type="checkbox" name="Sellable"' + (ed.h.Sellable === false || ed.h.Sellable === 'FALSE' ? '' : ' checked') + '>' + t('f.Sellable') + '</label>');
     left += frow(t('f.Tags'), '<input class="input" name="Tags" placeholder="' + esc(t('doc.tagsHint')) + '" value="' + esc(ed.h.Tags || '') + '">', false, 'frow-sm');
@@ -3396,7 +3475,7 @@ window.I18N = {
           fixedRep ? 'disabled' : ''), true);
       }
       if (['CN', 'RT', 'GR'].indexOf(type) >= 0) {
-        right += frow(t('f.RefDocIds'), '<div id="refChips"></div><button class="btn btn-sm" id="btnRef" type="button">' + icon('plus') + t('doc.addRef') + '</button>', type === 'CN');
+        right += frow(t('f.RefDocIds'), '<div id="refChips"></div><button class="btn btn-sm" id="btnRef" type="button">' + icon('plus') + t('doc.addRef') + '</button>', isCnGoods(ed));
       }
       if (type === 'PO' || type === 'GR') {
         right += frow(t('f.RefNo'), '<input class="input" name="RefNo" value="' + esc(ed.h.RefNo || '') + '">') +
@@ -3452,9 +3531,20 @@ window.I18N = {
 
     // ---------- สินค้า ----------
     var stockVisible = availOf(ed, '__x__') !== null;
+    var cnBox = '';
+    if (isCnGoods(ed)) {
+      cnBox = '<div class="cn-box"><button class="btn" id="btnCnPick" type="button">' + icon('plus') + t('cn.pickBtn') + '</button><span class="muted small">' + t('cn.goodsHint') + '</span></div>';
+    } else if (isCnPromo(ed)) {
+      cnBox = '<div class="entry"><div class="entry-row">' +
+        '<label class="ef"><span>' + t('ed.code') + ':</span><input class="input" readonly value="' + esc(cnPromoCode()) + '"></label>' +
+        '<label class="ef" style="flex:2"><span>' + t('cn.promoDesc') + ':</span><input class="input" id="cnPromoNote" placeholder="' + esc(t('cn.promoDescPh')) + '"></label>' +
+        '<label class="ef"><span>' + t('cn.amount') + ':</span><input class="input num" id="cnPromoAmt" type="number" step="any" min="0" placeholder="0.00"></label>' +
+        '<div class="ef ef-btn"><span>&nbsp;</span><button class="btn" id="btnCnPromoAdd" type="button">' + t('add') + '</button></div></div>' +
+        '<div class="muted small">' + t('cn.promoHint') + '</div></div>';
+    }
     h += '<div class="card"><div class="card-title"><h3>' + t('ed.products') + ' <span id="lineCount" class="muted small"></span></h3>' +
-      '<button class="btn btn-sm" id="btnMulti" type="button">' + t('ed.multiAdd') + '</button></div>' +
-      '<div class="entry"><div class="ef ef-prod"><span>' + t('ed.product') + ':</span><div class="input-group search-box"><input class="input" id="prodSearch" placeholder="' +
+      '<button class="btn btn-sm" id="btnMulti" type="button"' + (type === 'CN' ? ' style="display:none"' : '') + '>' + t('ed.multiAdd') + '</button></div>' + cnBox +
+      '<div class="entry"' + (type === 'CN' ? ' style="display:none"' : '') + '><div class="ef ef-prod"><span>' + t('ed.product') + ':</span><div class="input-group search-box"><input class="input" id="prodSearch" placeholder="' +
       esc(t('ed.productHint')) + '" autocomplete="off"><button class="btn" id="btnProdList" type="button" title="search">' + icon('search') + '</button>' +
       '<button class="btn" id="btnScan" type="button" title="scan">' + icon('scan') + '</button><div id="suggest" class="suggest hidden"></div></div></div>' +
       '<div class="entry-row">' +
@@ -3481,6 +3571,7 @@ window.I18N = {
       h += '<div class="card"><div class="ed-totals"><div class="ed-tleft" id="edFoot">' + tl + '</div><div class="ed-sum" id="totalsBox"></div></div></div>';
     }
     el.innerHTML = h;
+    ed._redraw = function (keep) { readHead(); Object.assign(ed.h, keep || {}); drawEditor(el, ed); };
 
     // ---------- เหตุการณ์หัวเอกสาร ----------
     var head = $('#edHead');
@@ -3510,8 +3601,30 @@ window.I18N = {
       });
     });
     if ($('#btnParty')) $('#btnParty').onclick = function () { readHead(); pickParty(info.partyType, ed, el); };
-    if ($('#btnRef')) $('#btnRef').onclick = function () { pickRefDoc(ed); };
-    drawRefs(ed);
+    if ($('#btnRef')) $('#btnRef').onclick = function () {
+      pickRefDoc(ed, function (d) {
+        if (isCnGoods(ed)) cnPickLines(ed, [d.DocId], function () { drawLines(); });
+      });
+    };
+    drawRefs(ed, function () { drawLines(); });
+    if ($('#cnType')) $('#cnType').onchange = function () {
+      var nv = $('#cnType').value;
+      var go2 = function () { readHead(); ed.h.CnType = nv; ed.h.Reason = ''; ed.lines = []; drawEditor(el, ed); };
+      if (ed.lines.length) U.confirmBox(t('cn.typeChange')).then(function (ok) { if (ok) go2(); else $('#cnType').value = ed.h.CnType || 'GOODS'; });
+      else go2();
+    };
+    if ($('#btnCnPick')) $('#btnCnPick').onclick = function () {
+      readHead();
+      cnPickLines(ed, ed.refs.filter(function (r) { return r.type === 'INV'; }).map(function (r) { return r.id; }), function () { drawLines(); });
+    };
+    if ($('#btnCnPromoAdd')) $('#btnCnPromoAdd').onclick = function () {
+      var amt = r2(num($('#cnPromoAmt').value));
+      if (amt <= 0) { toast(t('cn.amountReq'), 'warn'); $('#cnPromoAmt').focus(); return; }
+      ed.lines.push({ _k: U.uid(), ProductCode: cnPromoCode(), Unit: 'รายการ', Qty: 1, IsFree: false, DiscountType: 'PCT', DiscountValue: 0, DiscountEditedBy: '',
+                      UnitPrice: amt, ItemCondition: 'GOOD', RefLineId: '', Note: $('#cnPromoNote').value.trim() });
+      $('#cnPromoAmt').value = ''; $('#cnPromoNote').value = '';
+      drawLines();
+    };
     if ($('#btnPromo')) $('#btnPromo').onclick = function () { recalc(); $('#tierBox').scrollIntoView({ behavior: 'smooth', block: 'center' }); };
 
     // ---------- แถวเพิ่มสินค้า ----------
@@ -3676,16 +3789,21 @@ window.I18N = {
         return;
       }
       var rows = ed.lines.map(function (l, idx) {
-        var p = S.catalog.map[l.ProductCode] || { NameTh: l.ProductCode, units: [{ Unit: l.Unit, Factor: 1 }], CaseQty: 1 };
+        var cnP = type === 'CN' && l.ProductCode === cnPromoCode() && !l.RefLineId;
+        var p = (cnP ? cnPromoProduct() : S.catalog.map[l.ProductCode]) || { NameTh: l.ProductCode, units: [{ Unit: l.Unit, Factor: 1 }], CaseQty: 1 };
+        var invL = l.RefLineId && ed.invLines ? ed.invLines[l.RefLineId] : null;
+        var lockUnit = type === 'CN' && (cnP || !!l.RefLineId);
         var units = p.units.map(function (u) { return { v: u.Unit, l: u.Unit + (u.Factor > 1 ? ' (' + u.Factor + ')' : '') }; });
         var fromSo = String(l.DiscountEditedBy).indexOf('SO:') === 0;
         var cell = function (label, inner, cls) { return '<td class="' + (cls || '') + '" data-label="' + esc(label) + '">' + inner + '</td>'; };
-        var tr = cell('#', String(idx + 1), 'c') + cell(t('ed.code'), esc(l.ProductCode), 'nowrap') + cell(t('ed.name'), esc(p.NameTh) + (fromSo ? '<div class="muted small">' + t('doc.fromSo') + '</div>' : ''), 'ed-name') +
+        var tr = cell('#', String(idx + 1), 'c') + cell(t('ed.code'), esc(l.ProductCode), 'nowrap') + cell(t('ed.name'), esc(L(p.NameTh, p.NameEn || p.NameTh)) + (fromSo ? '<div class="muted small">' + t('doc.fromSo') + '</div>' : '') +
+            (invL ? '<div class="muted small">' + t('cn.fromInv', { no: invL.DocNo, n: U.qtyFmt(invL.Remain) }) + '</div>' : '') +
+            (cnP ? '<input class="input sm" data-f="Note" placeholder="' + esc(t('cn.promoDesc')) + '" value="' + esc(l.Note || '') + '" style="margin-top:4px">' : ''), 'ed-name') +
           cell(t('ed.onHand'), '<span data-stk></span>', 'num') +
-          cell(t('f.Qty'), '<div class="qty sm"><button type="button" data-step="-1">−</button><input type="number" step="any" data-f="Qty" value="' + esc(l.Qty) + '"' +
-            (type === 'ADJ' ? '' : ' min="0"') + '><button type="button" data-step="1">+</button></div>');
+          cell(t('f.Qty'), cnP ? '1' : '<div class="qty sm"><button type="button" data-step="-1">−</button><input type="number" step="any" data-f="Qty" value="' + esc(l.Qty) + '"' +
+            (type === 'ADJ' ? '' : ' min="0"') + (invL ? ' max="' + invL.Remain + '"' : '') + '><button type="button" data-step="1">+</button></div>', cnP ? 'num' : '');
         if (showSoRemain) tr += cell(t('ed.soRemain'), U.qtyFmt(Math.max(rn(num(l.Qty) - num(l.Delivered), 4), 0)), 'num');
-        tr += cell(t('ed.uom'), U.selectH('u', units, l.Unit, 'data-f="Unit" class="input sm"' + (fromSo ? ' disabled' : '')));
+        tr += cell(t('ed.uom'), U.selectH('u', units, l.Unit, 'data-f="Unit" class="input sm"' + (fromSo || lockUnit ? ' disabled' : '')));
         if (money2) {
           tr += cell(t('f.UnitPrice'), editPrice ? '<input class="input num sm" type="number" min="0" step="any" data-f="UnitPrice" placeholder="' + t('auto') + '" value="' + esc(l.UnitPrice) + '">' : '<span data-price></span>', 'num') +
             cell(t('ed.gross'), '<span data-gross></span>', 'num');
@@ -3762,7 +3880,7 @@ window.I18N = {
         if (!x) return;
         var auto = isSale && !x.DiscountEditedBy;
         if (auto) promoSum += x.DiscountAmount; else manualSum += x.DiscountAmount;
-        var av = availOf(ed, x.ProductCode);
+        var av = type === 'CN' ? null : availOf(ed, x.ProductCode);
         var stk = $('[data-stk]', row);
         if (stk) {
           if (av === null) stk.textContent = '-';
@@ -3930,7 +4048,7 @@ window.I18N = {
     var out = [];
     var byKey = {};
     ed.lines.forEach(function (l) {
-      var p = cat.map[l.ProductCode];
+      var p = cat.map[l.ProductCode] || (type === 'CN' && l.ProductCode === cnPromoCode() ? cnPromoProduct() : null);
       if (!p) return;
       var unit = p.units.filter(function (u) { return u.Unit === l.Unit; })[0] || p.units[0];
       var factor = num(unit.Factor), caseQty = num(p.CaseQty) || 1, qty = num(l.Qty);
@@ -4061,6 +4179,7 @@ window.I18N = {
               ed.h.VatType = x.isTaxable ? (S.boot.settings.DEFAULT_VAT_TYPE || 'EX') : 'NONE';
             }
             ed.refs = [];
+            if (ed.type === 'CN') ed.lines = ed.lines.filter(function (l) { return !l.RefLineId; });   // สินค้าจากใบกำกับของลูกค้าเดิม
             m.close();
             drawEditor(el, ed);
           };
@@ -4076,21 +4195,32 @@ window.I18N = {
     }).catch(function () {});
   }
 
-  function drawRefs(ed) {
+  function drawRefs(ed, onChange) {
     var box = $('#refChips');
     if (!box) return;
+    if (onChange) ed._refChanged = onChange;
     box.innerHTML = ed.refs.map(function (r) {
       return '<span class="chip">' + esc(r.type) + ' ' + esc(r.no) + '<button type="button" data-rm="' + esc(r.id) + '">×</button></span>';
     }).join('');
     $$('[data-rm]', box).forEach(function (b) {
-      b.onclick = function () { ed.refs = ed.refs.filter(function (x) { return x.id !== b.getAttribute('data-rm'); }); drawRefs(ed); };
+      b.onclick = function () {
+        var rid = b.getAttribute('data-rm');
+        ed.refs = ed.refs.filter(function (x) { return x.id !== rid; });
+        // ใบลดหนี้สินค้า: เอาสินค้าที่มาจากใบกำกับใบนี้ออกด้วย
+        if (ed.type === 'CN') {
+          var n0 = ed.lines.length;
+          ed.lines = ed.lines.filter(function (l) { var x = l.RefLineId && ed.invLines && ed.invLines[l.RefLineId]; return !x || x.DocId !== rid; });
+          if (ed.lines.length !== n0 && ed._refChanged) ed._refChanged();
+        }
+        drawRefs(ed);
+      };
     });
   }
 
   /** เลือกเอกสารอ้างอิง (CN → INV/RT, RT → INV, GR → PO) */
-  function pickRefDoc(ed) {
+  function pickRefDoc(ed, onPick) {
     if (!ed.h.PartyId) { toast(t('doc.pickPartyFirst'), 'warn'); return; }
-    var types = { CN: ['INV', 'RT'], RT: ['INV'], GR: ['PO'] }[ed.type] || [];
+    var types = { CN: ['INV'], RT: ['INV'], GR: ['PO'] }[ed.type] || [];
     Promise.all(types.map(function (tp) { return call('apiDocList', { docType: tp, partyId: ed.h.PartyId, status: 'APPROVED', pageSize: 100 }); })).then(function (res) {
       var docs = [];
       res.forEach(function (r) { docs = docs.concat(r.items); });
@@ -4104,9 +4234,11 @@ window.I18N = {
       $$('[data-id]', m.el).forEach(function (it) {
         it.onclick = function () {
           var d = docs.filter(function (x) { return x.DocId === it.getAttribute('data-id'); })[0];
-          if (!ed.refs.some(function (x) { return x.id === d.DocId; })) ed.refs.push({ id: d.DocId, no: d.DocNo, type: d.DocType });
+          var isNew = !ed.refs.some(function (x) { return x.id === d.DocId; });
+          if (isNew) ed.refs.push({ id: d.DocId, no: d.DocNo, type: d.DocType });
           m.close();
-          drawRefs(ed);
+          drawRefs(ed, ed._refChanged);
+          if (onPick) onPick(d, isNew);
         };
       });
     }).catch(function () {});
@@ -5856,7 +5988,7 @@ window.I18N = {
         };
         var groups = [
           ['set.company', ['APP_NAME', 'APP_TAGLINE', 'SALES_APP_NAME', 'BRAND_COLOR', 'COMPANY_NAME', 'COMPANY_NAME_EN', 'COMPANY_ADDRESS', 'COMPANY_TAX_ID', 'COMPANY_BRANCH', 'COMPANY_PHONE']],
-          ['set.docno', ['CENTER_CODE', 'DOCNO_YEAR', 'DOCNO_RESET', 'DOCNO_DIGITS', 'DOCNO_VAN_SEPARATE', 'DOCNO_VAN_DIGITS', 'DOCNO_VAN_INV_PREFIX', 'STOCK_ENFORCE', 'COLLECT_GUARD_FROM']],
+          ['set.docno', ['CENTER_CODE', 'DOCNO_YEAR', 'DOCNO_RESET', 'DOCNO_DIGITS', 'DOCNO_VAN_SEPARATE', 'DOCNO_VAN_DIGITS', 'DOCNO_VAN_INV_PREFIX', 'CN_PROMO_CODE', 'CN_PROMO_NAME', 'STOCK_ENFORCE', 'COLLECT_GUARD_FROM']],
           ['set.doc', ['VAT_RATE', 'DEFAULT_VAT_TYPE', 'DEFAULT_CREDIT_DAYS', 'CREDIT_LIMIT_MODE', 'GR_DEFAULT_DISCOUNT_PCT', 'SALES_PROMO_CHANNEL', 'MAX_FILE_MB', 'ALLOWED_FILE_EXT']],
           ['set.van', ['ALLOW_NEGATIVE_STOCK', 'VAN_SALE_REVIEW', 'BLOCK_SALE_IF_NOT_CLOSED', 'RECEIPT_WIDTH_MM', 'REPRINT_MAX', 'DEAD_STOCK_DAYS', 'LEDGER_ARCHIVE_ROWS']],
           ['set.security', ['DEFAULT_LANG', 'SESSION_HOURS', 'MAX_LOGIN_FAIL', 'LOCK_MINUTES', 'BACKUP_KEEP']],
