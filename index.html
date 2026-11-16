@@ -4,7 +4,12 @@
   <base target="_top">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex">
-  <title>DMS</title>
+  <title>INCA Go</title>
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0B2A6B">
+  <meta name="apple-mobile-web-app-title" content="INCA Go">
   <meta charset="utf-8">
   <!-- ============================================================
        Index.html — โครงหน้าเว็บ (ไฟล์ชนิด HTML)
@@ -14,20 +19,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://incalogistic.github.io/dms/icons/favicon-32.png">
   <style>
 /* ============================================================
-   Styles.html — ธีมขาว–น้ำตาล มินิมอล (ไฟล์ชนิด HTML)
+   Styles.html — ธีม INCA Go โทนสะอาดทันสมัย (สีหลักเปลี่ยนได้ที่ตั้งค่า BRAND_COLOR) (ไฟล์ชนิด HTML)
    มือถือ: เมนูด้านล่าง + เมนูเลื่อนจากซ้าย / คอมพิวเตอร์: แถบเมนูด้านข้าง
    ============================================================ */
 :root {
-  --bg: #FAF7F2;
+  --bg: #F5F7FB;
   --surface: #FFFFFF;
-  --primary: #8B5E3C;
-  --primary-dark: #5C3D2E;
-  --primary-soft: #F3EAE0;
-  --border: #E8DFD3;
-  --text: #3B2F2A;
-  --muted: #8A7B70;
+  --primary: #1D4ED8;
+  --primary-dark: color-mix(in srgb, var(--primary) 72%, #000);
+  --primary-soft: color-mix(in srgb, var(--primary) 10%, #fff);
+  --border: #E2E8F0;
+  --text: #1E293B;
+  --muted: #64748B;
   --ok: #3F7D4E;
   --ok-soft: #E6F2E8;
   --warn: #B7791F;
@@ -38,7 +44,7 @@
   --info-soft: #E3EDF5;
   --radius: 12px;
   --radius-sm: 8px;
-  --shadow: 0 1px 2px rgba(59, 47, 42, .06), 0 2px 8px rgba(59, 47, 42, .05);
+  --shadow: 0 1px 2px rgba(15, 23, 42, .05), 0 4px 14px rgba(15, 23, 42, .06);
   --sidebar-w: 248px;
   --topbar-h: 56px;
   --bottomnav-h: 62px;
@@ -71,21 +77,28 @@ svg.ic { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-wid
 .loadbar.on { width: 70%; opacity: 1; transition: width 8s cubic-bezier(.1,.6,.2,1); }
 
 /* ---------- หน้าเริ่ม / ล็อกอิน ---------- */
-.splash { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
-.splash-logo { font-size: 2rem; font-weight: 700; color: var(--primary); letter-spacing: 2px; }
-.auth { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
-.auth-card { width: 100%; max-width: 380px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); padding: 28px 24px; }
+.splash { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: radial-gradient(120% 70% at 50% 0%, var(--primary-soft), var(--bg) 60%); }
+.splash .mark { width: 96px; height: 96px; filter: drop-shadow(0 12px 24px rgba(15, 23, 42, .22)); margin-bottom: 6px; animation: markIn .5s ease-out; }
+@keyframes markIn { from { transform: scale(.85); opacity: 0; } to { transform: none; opacity: 1; } }
+.splash-logo { font-size: 2rem; font-weight: 700; color: var(--text); letter-spacing: .5px; }
+.auth { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px; background: radial-gradient(120% 60% at 50% 0%, var(--primary-soft), var(--bg) 55%); }
+.auth-card .logo .mark { width: 72px; height: 72px; display: block; margin: 0 auto 10px; filter: drop-shadow(0 8px 18px rgba(15, 23, 42, .2)); }
+.auth-card { width: 100%; max-width: 400px; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; box-shadow: 0 10px 40px rgba(15, 23, 42, .10); padding: 30px 26px; }
 .auth-card .logo { text-align: center; margin-bottom: 16px; }
 .auth-card .logo img { max-height: 64px; max-width: 200px; }
-.auth-card .logo .name { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+.auth-card .logo .name { font-size: 1.6rem; font-weight: 700; color: var(--text); letter-spacing: .3px; }
 .auth-card .logo .company { color: var(--muted); font-size: .9rem; }
+.auth-card .logo .tagline { color: var(--text); font-size: .88rem; line-height: 1.55; margin: 10px auto 0; max-width: 340px; opacity: .85; }
+.splash-tag { color: var(--muted); font-size: .92rem; text-align: center; max-width: 360px; line-height: 1.55; padding: 0 20px; }
+.splash-tag:empty { display: none; }
 .auth-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
 
 /* ---------- โครงหลัก ---------- */
 .shell { display: flex; min-height: 100vh; }
 .sidebar { width: var(--sidebar-w); background: var(--surface); border-right: 1px solid var(--border); position: fixed; top: 0; bottom: 0; left: 0; overflow-y: auto; z-index: 40; display: flex; flex-direction: column; }
 .sidebar .brand { padding: 16px 18px; border-bottom: 1px solid var(--border); }
-.sidebar .brand .name { font-weight: 700; color: var(--primary); font-size: 1.15rem; }
+.sidebar .brand .name { font-weight: 700; color: var(--text); font-size: 1.15rem; display: flex; align-items: center; gap: 10px; }
+.sidebar .brand .name .mark { width: 30px; height: 30px; flex-shrink: 0; }
 .sidebar .brand .user { font-size: .85rem; color: var(--muted); margin-top: 2px; }
 .nav-group { padding: 8px 0; }
 .nav-group-title { padding: 8px 18px 4px; font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
@@ -113,7 +126,7 @@ svg.ic { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-wid
 .bell-count { position: absolute; top: 3px; right: 3px; background: var(--danger); color: #fff; border-radius: 9px; font-size: .68rem; min-width: 18px; height: 18px; line-height: 18px; text-align: center; padding: 0 4px; }
 .content { padding: 20px; max-width: 1280px; width: 100%; margin: 0 auto; }
 .bottomnav { display: none; }
-.drawer-mask { position: fixed; inset: 0; background: rgba(59, 47, 42, .35); z-index: 35; }
+.drawer-mask { position: fixed; inset: 0; background: rgba(15, 23, 42, .35); z-index: 35; }
 .only-mobile { display: none !important; }
 
 /* ---------- การ์ด / กริด ---------- */
@@ -238,7 +251,7 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: .92rem; }
 .timeline li::before { content: ''; position: absolute; left: -6px; top: 12px; width: 10px; height: 10px; border-radius: 50%; background: var(--primary); }
 
 /* ---------- หน้าต่าง (modal) ---------- */
-.modal-backdrop { position: fixed; inset: 0; background: rgba(59, 47, 42, .45); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 16px; animation: fade .15s; }
+.modal-backdrop { position: fixed; inset: 0; background: rgba(15, 23, 42, .45); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 16px; animation: fade .15s; }
 .modal { background: var(--surface); border-radius: 16px; width: 100%; max-width: 560px; max-height: calc(100vh - 32px); display: flex; flex-direction: column; box-shadow: 0 10px 40px rgba(0,0,0,.2); }
 .modal.wide { max-width: 900px; }
 .modal-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--border); }
@@ -405,7 +418,9 @@ tr.rpt-total td { font-weight: 700; background: var(--bg); border-top: 2px solid
 
   <!-- หน้าเริ่มต้น (ระหว่างตรวจการล็อกอิน) -->
   <div id="splash" class="splash">
-    <div class="splash-logo">DMS</div>
+    <svg class="mark" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><linearGradient id="gm1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B2A6B"/><stop offset="1" stop-color="#1D4ED8"/></linearGradient><radialGradient id="gm1h" cx=".25" cy=".15" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="512" height="512" rx="116" fill="url(#gm1)"/><rect width="512" height="512" rx="116" fill="url(#gm1h)"/><path d="M352 160A136 136 0 1 0 392 262" fill="none" stroke="#FFFFFF" stroke-width="58" stroke-linecap="round"/><path d="M250 262H404" stroke="#FFB020" stroke-width="58" stroke-linecap="round"/><path d="M372 206L436 262 372 318" fill="none" stroke="#FFB020" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="splash-logo" id="spName">INCA Go</div>
+    <div class="splash-tag" id="spTag"></div>
     <div class="muted">กำลังโหลด... / Loading...</div>
   </div>
 
@@ -442,19 +457,31 @@ tr.rpt-total td { font-weight: 700; background: var(--bg); border-top: 2px solid
     window.DMS_API = "https://script.google.com/macros/s/AKfycbwAwmuzSxdFn0OoS0d3EnDb3pZQ5BAVE-lLuE6cbdbNKTDjnBaPsWxupTyX7vS68EmfUA/exec";
     (function () {
       var m = {}; try { m = JSON.parse(localStorage.getItem('dms.c.meta') || '{}'); } catch (e) { }
-      window.APP_META = { appName: m.appName || 'DMS', company: m.company || '', version: m.version || '' };
+      window.APP_META = { appName: m.appName || 'INCA Go', company: m.company || '', version: m.version || '', tagline: m.tagline || '' };
       var apply = function (x) {
         if (/^#[0-9A-Fa-f]{6}$/.test(x.color || '')) document.documentElement.style.setProperty('--primary', x.color);
-        document.title = x.appName || 'DMS';
+        document.title = x.appName || 'INCA Go';
+        var n = document.getElementById('spName'), g = document.getElementById('spTag');
+        if (n && x.appName) n.textContent = x.appName;
+        if (g) g.textContent = x.tagline || '';
+        // หน้าเข้าระบบที่แสดงไปแล้ว: อัปเดตชื่อ/บริษัท/ข้อความแนะนำ
+        var lg = document.querySelector('#auth .logo');
+        if (lg && !lg.querySelector('img')) {
+          var q = function (c) { var e = lg.querySelector('.' + c); if (!e) { e = document.createElement('div'); e.className = c; lg.appendChild(e); } return e; };
+          if (x.appName) q('name').textContent = x.appName;
+          q('company').textContent = x.company || '';
+          var tg = q('tagline'); tg.textContent = x.tagline || ''; tg.style.display = x.tagline ? '' : 'none';
+        }
       };
+      document.addEventListener('DOMContentLoaded', function () { apply(m); });
       apply(m);
       fetch(window.DMS_API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({ fn: 'apiLogo', args: [], client: 'web' }) })
         .then(function (r) { return r.json(); }).then(function (j) {
           if (!j || !j.ok) return;
-          var x = { appName: j.data.appName, company: j.data.company, color: j.data.color, version: j.data.version };
+          var x = { appName: j.data.appName, company: j.data.company, color: j.data.color, version: j.data.version, tagline: j.data.tagline || '' };
           try { localStorage.setItem('dms.c.meta', JSON.stringify(x)); } catch (e) { }
-          apply(x); window.APP_META.appName = x.appName; window.APP_META.company = x.company; window.APP_META.version = x.version;
+          apply(x); window.APP_META.appName = x.appName; window.APP_META.company = x.company; window.APP_META.version = x.version; window.APP_META.tagline = x.tagline;
         }).catch(function () { });
     })();
   </script>
@@ -1454,14 +1481,18 @@ window.I18N = {
     $('#btnBell').insertAdjacentHTML('afterbegin', $('#btnBell svg') ? '' : icon('bell'));
   }
 
+  // ไอคอนระบบ INCA Go (แสดงบนหน้าเข้าระบบ ถ้าไม่ได้อัปโหลดโลโก้บริษัท)
+  var BRAND_MARK = '<svg class="mark" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><linearGradient id="gm2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B2A6B"/><stop offset="1" stop-color="#1D4ED8"/></linearGradient><radialGradient id="gm1h" cx=".25" cy=".15" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="512" height="512" rx="116" fill="url(#gm2)"/><rect width="512" height="512" rx="116" fill="url(#gm2h)"/><path d="M352 160A136 136 0 1 0 392 262" fill="none" stroke="#FFFFFF" stroke-width="58" stroke-linecap="round"/><path d="M250 262H404" stroke="#FFB020" stroke-width="58" stroke-linecap="round"/><path d="M372 206L436 262 372 318" fill="none" stroke="#FFB020" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
   function showLogin(msg) {
     $('#splash').classList.add('hidden');
     $('#shell').classList.add('hidden');
     var box = $('#auth');
     box.classList.remove('hidden');
     var meta = window.APP_META || {};
-    box.innerHTML = '<form class="auth-card" id="loginForm" autocomplete="on"><div class="logo"><div id="loginLogo"></div>' +
-      '<div class="name">' + esc(meta.appName || 'DMS') + '</div><div class="company">' + esc(meta.company || '') + '</div></div>' +
+    box.innerHTML = '<form class="auth-card" id="loginForm" autocomplete="on"><div class="logo"><div id="loginLogo">' + BRAND_MARK + '</div>' +
+      '<div class="name">' + esc(meta.appName || 'DMS') + '</div><div class="company">' + esc(meta.company || '') + '</div>' +
+      (meta.tagline ? '<div class="tagline">' + esc(meta.tagline) + '</div>' : '') + '</div>' +
       '<h3>' + t('login.title') + '</h3>' + (msg ? '<div class="alert warn">' + esc(msg) + '</div>' : '') +
       '<label class="field"><span>' + t('f.Username') + '</span><input class="input" type="text" name="username" autocomplete="username" autocapitalize="characters" spellcheck="false" style="text-transform:uppercase;letter-spacing:1px" required></label>' +
       '<label class="field"><span>' + t('f.Pin') + '</span><input class="input pin-input" type="password" name="pin" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="current-password" required></label>' +
@@ -1715,7 +1746,7 @@ window.I18N = {
   function buildShell() {
     var u = S.boot.user;
     var meta = window.APP_META || {};
-    var html = '<div class="brand"><div class="name">' + esc(meta.appName || 'DMS') + '</div><div class="user">' + esc(u.FullName) +
+    var html = '<div class="brand"><div class="name">' + BRAND_MARK.replace(/gm2/g, 'gm3') + '<span>' + esc(meta.appName || 'DMS') + '</span></div><div class="user">' + esc(u.FullName) +
       ' · ' + esc(L(u.RoleNameTh, u.RoleNameEn)) + (u.VanName ? ' · ' + esc(u.VanName) : '') + '</div></div>';
     visibleMenu().forEach(function (g) {
       html += '<div class="nav-group"><div class="nav-group-title">' + t('menu.g.' + g.group) + '</div>';
@@ -2210,7 +2241,7 @@ window.I18N = {
   }
 
   // ---------- กราฟ ----------
-  var PALETTE = ['#8B5E3C', '#C9A27E', '#5C3D2E', '#3D6A8C', '#3F7D4E', '#B7791F', '#9C6B98', '#6B8E7F', '#B5413B', '#7A7A7A'];
+  var PALETTE = ['#1D4ED8', '#F59E0B', '#0EA5A4', '#8B5CF6', '#EF4444', '#10B981', '#EC4899', '#64748B', '#0B2A6B', '#F97316'];
   function chart(canvasId, cfg) {
     var el = document.getElementById(canvasId);
     if (!el) return null;
@@ -5588,7 +5619,7 @@ window.I18N = {
           return U.inputH(s.Key, s.Value, ['int', 'num', 'hour'].indexOf(s.Type) >= 0 ? 'type="number" step="any"' : '');
         };
         var groups = [
-          ['set.company', ['APP_NAME', 'SALES_APP_NAME', 'BRAND_COLOR', 'COMPANY_NAME', 'COMPANY_NAME_EN', 'COMPANY_ADDRESS', 'COMPANY_TAX_ID', 'COMPANY_BRANCH', 'COMPANY_PHONE']],
+          ['set.company', ['APP_NAME', 'APP_TAGLINE', 'SALES_APP_NAME', 'BRAND_COLOR', 'COMPANY_NAME', 'COMPANY_NAME_EN', 'COMPANY_ADDRESS', 'COMPANY_TAX_ID', 'COMPANY_BRANCH', 'COMPANY_PHONE']],
           ['set.docno', ['CENTER_CODE', 'DOCNO_RESET', 'DOCNO_DIGITS', 'DOCNO_VAN_DIGITS', 'STOCK_ENFORCE', 'COLLECT_GUARD_FROM']],
           ['set.doc', ['VAT_RATE', 'DEFAULT_VAT_TYPE', 'DEFAULT_CREDIT_DAYS', 'CREDIT_LIMIT_MODE', 'GR_DEFAULT_DISCOUNT_PCT', 'SALES_PROMO_CHANNEL', 'MAX_FILE_MB', 'ALLOWED_FILE_EXT', 'TRASH_DAYS']],
           ['set.van', ['ALLOW_NEGATIVE_STOCK', 'VAN_SALE_REVIEW', 'BLOCK_SALE_IF_NOT_CLOSED', 'RECEIPT_WIDTH_MM', 'REPRINT_MAX', 'DEAD_STOCK_DAYS', 'LEDGER_ARCHIVE_ROWS']],
