@@ -348,17 +348,94 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: .92rem; }
 .ed-title { font-weight: 700; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 6px; text-transform: uppercase; }
 .ed-btns { display: flex; flex-wrap: wrap; gap: 6px; }
 .ed-btns .btn { min-height: 38px; }
-.ed-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.ed-panel { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; }
-.ed-panel h4 { font-weight: 500; font-size: 1.05rem; padding-bottom: 10px; margin-bottom: 12px; border-bottom: 1px solid var(--border); }
-.frow { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 10px; align-items: center; margin-bottom: 9px; }
-.frow > label { text-align: right; font-size: .88rem; color: var(--text); }
+.ed-head { padding-top: 0; overflow: hidden; }
+.ed-meta { display: flex; flex-wrap: wrap; gap: 0; margin: 0 -18px 18px; padding: 12px 18px; background: linear-gradient(90deg, var(--primary-soft), transparent); border-bottom: 1px solid var(--border); }
+.em-i { display: flex; flex-direction: column; gap: 2px; padding: 0 22px 0 0; margin-right: 22px; border-right: 1px solid var(--border); min-width: 0; }
+.em-i:last-child { border-right: 0; }
+.em-i span { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.em-i b { font-weight: 600; font-size: .95rem; white-space: nowrap; }
+.ed-panels { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; }
+.ed-panel { min-width: 0; }
+.ed-panel h4 { font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.ed-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; }
+.frow { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; min-width: 0; }
+.frow > label { font-size: .8rem; font-weight: 500; color: var(--muted); }
+.frow > label:empty { display: none; }
 .frow > label .req { color: var(--danger); }
+.frow.span2 { grid-column: 1 / -1; }
 .frow .fval { padding: 4px 0; min-height: 24px; }
 .frow textarea.input { min-height: 56px; }
+.ed-tleft { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; align-content: start; }
+.ed-tleft .frow:nth-child(2) { grid-column: 1 / -1; order: 3; }
+.sc-acts { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 12px; }
+.sc-ins { display: flex; flex-wrap: wrap; gap: 6px; }
+.sc-u { display: inline-flex; align-items: center; gap: 4px; font-size: .8rem; color: var(--muted); }
+.sc-u .input { width: 74px; }
+.sc-tbl tr.sc-pending td { background: #FFFBEB; }
+.sc-over { color: var(--info); font-weight: 600; }
+.sc-sum { display: flex; flex-wrap: wrap; gap: 18px; padding: 10px 4px 2px; font-size: .88rem; }
+.trk-bar { display: flex; flex-direction: column; gap: 8px; }
+.trk-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.trk-kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 12px 16px; border-left: 4px solid var(--c, var(--primary)); }
+.trk-kpi .k { font-size: .78rem; color: var(--muted); }
+.trk-kpi .v { font-size: 1.5rem; font-weight: 700; color: var(--c, var(--text)); }
+.trk-kpi .s { font-size: .75rem; color: var(--muted); }
+.trk-main { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 1fr); gap: 16px; align-items: start; margin-bottom: 16px; }
+.trk-mapcard { padding: 0; overflow: hidden; margin: 0; }
+.trk-map { height: 460px; background: #F8FAFC; position: relative; }
+.trk-svg { width: 100%; height: 100%; display: block; }
+.trk-plotnote { position: absolute; left: 10px; bottom: 8px; }
+.trk-list { display: flex; flex-direction: column; gap: 8px; max-height: 460px; overflow: auto; }
+.trk-rep { display: flex; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+.trk-rep:hover { border-color: var(--primary); }
+.trk-rep.on { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); }
+.trk-av { flex: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; color: #fff; background: var(--c); }
+.trk-rm { flex: 1; min-width: 0; }
+.trk-rn { font-weight: 600; }
+.trk-rs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 3px 0 6px; }
+.trk-pill { display: inline-flex; align-items: center; gap: 5px; font-size: .76rem; font-weight: 600; color: var(--c); background: color-mix(in srgb, var(--c) 12%, transparent); padding: 2px 9px; border-radius: 99px; }
+.trk-pill i { width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
+.trk-batt { font-size: .74rem; border: 1px solid var(--border); border-radius: 6px; padding: 0 5px; }
+.trk-batt.low { color: var(--danger); border-color: var(--danger); }
+.trk-chips { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: .8rem; color: var(--muted); }
+.trk-chips span { display: inline-flex; align-items: center; gap: 4px; }
+.trk-chips .ic { width: 14px; height: 14px; }
+.trk-sum { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.trk-sum div { background: var(--bg); border-radius: 10px; padding: 8px 12px; display: flex; flex-direction: column; }
+.trk-sum span { font-size: .74rem; color: var(--muted); }
+.trk-sum b { font-size: 1.05rem; }
+.trk-h { display: flex; align-items: center; gap: 6px; font-size: .9rem; margin: 0 0 8px; }
+.trk-idle { margin: 0; padding-left: 18px; font-size: .88rem; line-height: 1.8; }
+@media (max-width: 900px) { .trk-main { grid-template-columns: 1fr; } .trk-sum { grid-template-columns: repeat(2, 1fr); } .trk-list { max-height: none; } }
+.pcard { border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; background: var(--surface); box-shadow: 0 1px 2px rgba(15, 23, 42, .04); margin-bottom: 14px; }
+.pcard-empty { display: flex; align-items: center; justify-content: space-between; gap: 10px; border-style: dashed; background: var(--bg); }
+.pcard-top { display: flex; align-items: center; gap: 12px; }
+.pcard-av { flex: none; width: 42px; height: 42px; border-radius: 12px; background: var(--primary); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 1.1rem; }
+.pcard-main { flex: 1; min-width: 0; }
+.pcard-name { font-weight: 600; font-size: 1.02rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pcard-sub { font-size: .8rem; color: var(--muted); }
+.pcard-addr { margin-top: 10px; font-size: .88rem; line-height: 1.5; color: var(--text); }
+.pcard-chips { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px; }
+.pcard-chips .chip { margin: 0; background: var(--bg); }
+.pcard-chips .chip .ic { width: 13px; height: 13px; }
+.pcard-credit { margin-top: 10px; }
+.pc-bar { height: 6px; border-radius: 6px; background: var(--bg); overflow: hidden; margin-bottom: 4px; }
+.pc-bar i { display: block; height: 100%; background: var(--ok); border-radius: 6px; }
+.pc-bar i.hot { background: var(--danger); }
 .frow-sm > label { color: var(--muted); }
 .promo-card { background: var(--info-soft); border-left: 4px solid var(--info); border-radius: var(--radius-sm); padding: 12px 16px; margin-bottom: 16px; }
 .entry { margin-bottom: 14px; }
+.cust-other { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 20px; }
+@media (max-width: 760px) { .cust-other { grid-template-columns: 1fr; } }
+.map-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.map-box { border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin: 0; min-width: 0; }
+.map-box legend { padding: 3px 12px; border-radius: 8px; background: var(--primary); color: #fff; font-size: .82rem; font-weight: 600; }
+.map-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.map-pair iframe { width: 100%; height: 240px; border: 0; border-radius: 8px; background: var(--bg); }
+.map-empty { grid-column: 1 / -1; height: 200px; display: grid; place-content: center; justify-items: center; gap: 6px; color: var(--muted); background: var(--bg); border-radius: 8px; }
+.photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.photo-img { height: 180px; background: var(--bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; overflow: hidden; }
+@media (max-width: 900px) { .map-grid, .map-pair { grid-template-columns: 1fr; } }
 .cn-box { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
 .entry .ef-prod { max-width: 560px; margin-bottom: 8px; }
 .entry-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: flex-end; }
@@ -430,7 +507,8 @@ tr.rpt-total td { font-weight: 700; background: var(--bg); border-top: 2px solid
   .ed-bar { top: var(--topbar-h); }
   .ed-panels, .ed-totals { grid-template-columns: 1fr; }
   .ed-panels .ed-panel-r { order: -1; }
-  .frow { grid-template-columns: 120px minmax(0, 1fr); }
+  .ed-fields { grid-template-columns: 1fr; }
+  .ed-meta { margin: 0 -12px 14px; padding: 10px 12px; row-gap: 8px; }
   .entry-row .ef { width: calc(50% - 3px); }
   .entry-row .ef-btn { width: 100%; } .entry-row .ef-btn .btn { width: 100%; }
   table.ed-lines.cards td { align-items: center; }
@@ -539,7 +617,7 @@ window.I18N = {
     'list.pickMenuPrint': 'พิมพ์', 'list.pickExcel': 'ส่งออก Excel', 'list.pickSelect': 'เลือกใบสั่งขายที่ต้องการก่อน (ติ๊กช่องหน้ารายการ)', 'list.pickResetDone': 'ยกเลิกสถานะจัดเรียงแล้ว {n} ใบ', 'ERR_PICK_EMPTY': 'ใบสั่งขายที่เลือกส่งสินค้าครบแล้ว ไม่มีสินค้าที่ต้องจัดเรียง', 'pk.code': 'รหัสสินค้า', 'pk.name': 'ชื่อสินค้า', 'pk.cases': 'ค้างส่ง (หีบ)', 'pk.caseUnit': 'หน่วยใหญ่', 'pk.pcs': 'ค้างส่ง (เศษหน่วยย่อย)', 'pk.qtyBase': 'ค้างส่งรวมหน่วยย่อย', 'pk.baseUnit': 'หน่วยย่อย', 'pk.docs': 'ใบสั่งขาย', 'pk.printedAt': 'วันที่พิมพ์', 'pk.orders': 'ใบสั่งขาย',
     'ntf.PENDING_APPROVAL': 'รออนุมัติ', 'ntf.APPROVED': 'อนุมัติแล้ว', 'ntf.CANCELLED': 'ถูกยกเลิก', 'ntf.REVIEW_ISSUE': 'บัญชีพบปัญหา', 'ntf.VAN_REVIEW': 'บิลรถแวนรอตรวจ', 'ntf.DOC_EDITED_BY_APPROVER': 'ถูกแก้ไขโดยผู้อนุมัติ', 'ntf.RETURNED': 'ส่งกลับแก้ไข', 'ntf.REJECTED': 'ไม่อนุมัติ', 'ntf.CUSTOMER_PENDING': 'ลูกค้าใหม่รออนุมัติ', 'ntf.CUSTOMER_APPROVED': 'อนุมัติลูกค้าใหม่', 'ntf.CUSTOMER_REJECTED': 'ไม่อนุมัติลูกค้าใหม่', 'ntf.step': 'ขั้น {n}', 'ntf.by': 'อนุมัติโดย',
     'rt.sales': 'รายงานยอดขาย', 'rt.best': 'สินค้าขายดี', 'rt.promo': 'ส่วนลดโปรโมชั่นสำหรับเคลม', 'rc.UserCode': 'รหัสพนักงานขาย', 'rc.Username': 'ชื่อพนักงานขาย', 'rc.Number': 'เลขที่เอกสาร', 'rc.DocStatus': 'สถานะเอกสาร', 'rc.Date': 'วันที่', 'rc.DocType': 'ประเภทเอกสาร', 'rc.DistCode': 'รหัสศูนย์จัดจำหน่าย', 'rc.DistName': 'ชื่อศูนย์จัดจำหน่าย', 'rc.CustomerCode': 'รหัสลูกค้า', 'rc.CustomerName': 'ชื่อลูกค้า', 'rc.Ch1': 'ช่องทาง 1', 'rc.Ch2': 'ช่องทาง 2', 'rc.Ch3': 'ช่องทาง 3', 'rc.ProductCode': 'รหัสสินค้า', 'rc.ProductName': 'ชื่อสินค้า', 'rc.Cat1': 'หมวดสินค้า', 'rc.Cat2': 'แบรนด์', 'rc.Cat3': 'กลุ่มโปรโมชั่น', 'rc.UOM': 'หน่วย', 'rc.Qty': 'จำนวน', 'rc.FreeQty': 'จำนวนของแถม', 'rc.UnitPrice': 'ราคาต่อหน่วย', 'rc.Gross': 'ยอดก่อนส่วนลด', 'rc.Discount': 'ส่วนลด', 'rc.PromoDiscount': 'ส่วนลดโปรโมชั่น', 'rc.NetAmount': 'ยอดสุทธิ (ก่อนภาษี)', 'rc.Vat': 'ภาษีมูลค่าเพิ่ม', 'rc.Total': 'ยอดรวมทั้งสิ้น', 'rv2.Approved': 'อนุมัติแล้ว', 'rv2.Pending': 'รออนุมัติ', 'rv2.Draft': 'ร่าง', 'rv2.Returned': 'ส่งกลับแก้ไข', 'rv2.Rejected': 'ไม่อนุมัติ', 'rv2.Cancelled': 'ยกเลิก', 'rd2.Invoice': 'ใบกำกับภาษี', 'rd2.Credit Note': 'ใบลดหนี้', 'rd2.Sales Order': 'ใบสั่งขาย', 'rd2.Goods Return': 'ใบรับคืนสินค้า',
-    'setd.APP_NAME': 'ชื่อระบบที่แสดงบนหน้าจอ', 'setd.APP_TAGLINE': 'ข้อความแนะนำระบบ (หน้าเปิดและหน้าเข้าระบบ ทั้งเว็บและแอป) ใส่ | เพื่อขึ้นบรรทัดใหม่', 'setd.SALES_APP_NAME': 'ชื่อแอปเซลล์ที่แสดงบนมือถือ', 'setd.BRAND_COLOR': 'สีหลักของแบรนด์ (#RRGGBB) ใช้ทั้งเว็บและแอปเซลล์', 'setd.COMPANY_NAME': 'ชื่อบริษัท (แสดงบนเอกสาร)', 'setd.COMPANY_NAME_EN': 'ชื่อบริษัทภาษาอังกฤษ', 'setd.COMPANY_ADDRESS': 'ที่อยู่บริษัท (แสดงบนเอกสาร)', 'setd.COMPANY_TAX_ID': 'เลขประจำตัวผู้เสียภาษี 13 หลัก', 'setd.COMPANY_BRANCH': 'สำนักงานใหญ่ หรือ สาขาที่ 00001', 'setd.COMPANY_PHONE': 'เบอร์โทรบริษัท', 'setd.CENTER_CODE': 'รหัสศูนย์จัดจำหน่าย (แสดงในหน้าเอกสาร)', 'setd.DOCNO_YEAR': 'ปีในเลขเอกสาร', 'setd.DOCNO_RESET': 'เริ่มนับเลขเอกสารใหม่เมื่อไร', 'setd.DOCNO_DIGITS': 'จำนวนหลักของลำดับท้ายเลขเอกสาร (3–6) เช่น 5 → SO6900001', 'setd.DOCNO_VAN_SEPARATE': 'รถแวนแต่ละคันรันเลขเอกสารแยก (ใส่รหัสรถในเลข) — ไม่ = ใช้ลำดับเดียวกับหลังบ้านแบบ Express', 'setd.DOCNO_VAN_DIGITS': 'จำนวนหลักของลำดับเลขเอกสารรถแวน (3–6) ใช้เมื่อรถรันเลขแยก', 'setd.DOCNO_VAN_INV_PREFIX': 'คำนำหน้าบิลขายของรถแวน (Express: HS = บิลเงินสด) เว้นว่าง = ใช้ของใบกำกับภาษี', 'setd.STOCK_ENFORCE': 'ห้ามขาย/โอนเกินสต็อก (เปิดหลังบันทึกสต็อกตั้งต้นครบ) — ไม่ = แจ้งเตือนอย่างเดียว', 'setd.COLLECT_GUARD_FROM': 'แวนต้องรับชำระบิลก่อนขายร้านถัดไป (นับบิลตั้งแต่วันที่นี้)', 'setd.VAT_RATE': 'อัตราภาษีมูลค่าเพิ่ม (%)', 'setd.DEFAULT_VAT_TYPE': 'ประเภทราคาเริ่มต้น', 'setd.DEFAULT_CREDIT_DAYS': 'เครดิตเทอมเริ่มต้น (วัน)', 'setd.CREDIT_LIMIT_MODE': 'เมื่อเกินวงเงินเครดิต', 'setd.GR_DEFAULT_DISCOUNT_PCT': 'ส่วนลดท้ายบิลจากซัพพลายเออร์ (%) ค่าเริ่มต้นของใบรับสินค้า', 'setd.SALES_PROMO_CHANNEL': 'พนักงานขายเครดิตใช้ตารางส่วนลดขั้นบันไดของช่องทางไหน', 'setd.MAX_FILE_MB': 'ขนาดไฟล์แนบสูงสุด (MB)', 'setd.ALLOWED_FILE_EXT': 'นามสกุลไฟล์ที่อนุญาต', 'setd.ALLOW_NEGATIVE_STOCK': 'คลังหลักยอมให้สต็อกติดลบ', 'setd.VAN_SALE_REVIEW': 'บิลขายรถแวนต้องให้บัญชีตรวจ', 'setd.BLOCK_SALE_IF_NOT_CLOSED': 'ห้ามแวนเซลล์ขายถ้ายังไม่ส่งปิดรถของวันก่อน', 'setd.RECEIPT_WIDTH_MM': 'ความกว้างกระดาษเครื่องพิมพ์พกพา', 'setd.REPRINT_MAX': 'ใบเสร็จเครื่องพกพา: พิมพ์ซ้ำ (สำเนา) ได้กี่ครั้งหลังพิมพ์ต้นฉบับ', 'setd.DEAD_STOCK_DAYS': 'สินค้าไม่เคลื่อนไหวเกินกี่วัน (สำหรับรายงาน)', 'setd.LEDGER_ARCHIVE_ROWS': 'ย้ายประวัติความเคลื่อนไหวสต็อกเก่าไปเก็บถาวรเมื่อเกินกี่แถว', 'setd.DEFAULT_LANG': 'ภาษาเริ่มต้น', 'setd.SESSION_HOURS': 'อายุการเข้าระบบ (ชั่วโมง)', 'setd.MAX_LOGIN_FAIL': 'ใส่ PIN ผิดได้กี่ครั้งก่อนล็อกบัญชี', 'setd.LOCK_MINUTES': 'ล็อกบัญชีกี่นาที', 'setd.BACKUP_KEEP': 'เก็บไฟล์สำรองล่าสุดกี่ชุด', 'setd.EMAIL_NOTIFY': 'ส่งอีเมลแจ้งเตือน', 'setd.EMAIL_DIGEST_HOUR': 'เวลาส่งอีเมลสรุปรายวัน (ชั่วโมง 0–23)', 'setd.LINE_ENABLED': 'เปิดแจ้งเตือนผ่าน LINE', 'setd.LINE_CHANNEL_TOKEN': 'รหัสเชื่อมต่อช่อง LINE OA (Channel access token)', 'setd.LINE_TARGET_ID': 'รหัสผู้รับหรือกลุ่มใน LINE ที่จะส่งข้อความ', 'rm.sec.Maintenance': 'ข้อมูลหลัก', 'rm.sec.Inventory': 'สินค้าคงคลัง', 'rm.sec.Sales': 'การขาย', 'rm.ProductsList': 'รายการสินค้า', 'rm.CustomersList': 'รายชื่อลูกค้า', 'rm.PromotionsSetup': 'ตั้งค่าโปรโมชั่น', 'rm.UserCustomer': 'ผู้ใช้กับลูกค้าที่ดูแล', 'rm.UsersList': 'รายชื่อผู้ใช้', 'rm.StockIn': 'รับสินค้าเข้า', 'rm.StockOut': 'จ่ายสินค้าออก', 'rm.StockAdjustment': 'ปรับปรุงสต็อก', 'rm.StockSummary': 'สรุปสต็อก', 'rm.StockTransfer': 'โอนสินค้า', 'rm.InventoryMovement': 'ความเคลื่อนไหวสินค้า', 'rm.InventorySummary': 'สรุปสินค้าคงคลัง', 'rm.SalesOrderDetails': 'รายละเอียดใบสั่งขาย', 'rm.SalesOrderSummary': 'สรุปใบสั่งขาย', 'rm.SalesDocumentsSummary': 'สรุปเอกสารขาย', 'rm.SalesDocumentsDetails': 'รายละเอียดเอกสารขาย', 'rm.CollectionSummaryBySalesman': 'สรุปรับชำระตามพนักงานขาย', 'rm.CollectionSummaryByCustomer': 'สรุปรับชำระตามลูกค้า', 'rm.CollectionDetails': 'รายละเอียดรับชำระ', 'list.invNos': 'เลขที่ใบกำกับภาษี', 'list.pickStatus': 'จัดเรียงสินค้าแล้ว', 'ed.uom': 'หน่วย', 'cl.qr': 'ชำระผ่าน QR', 'sys.system': 'ระบบ', 'ver.created': 'สร้างเอกสาร', 'ver.edited': 'แก้ไข', 'so.close.short': 'สินค้าไม่เพียงพอ', 'so.close.market': 'สินค้าขาดตลาด', 'ph.baseUnit': 'ชิ้น / ขวด / ถุง', 'lk.DELIVERY_TYPE': 'วิธีจัดส่ง', 'lk.TRANSFER_REASON': 'เหตุผลการโอนสินค้า', 'lk.BANK': 'ธนาคาร', 'lk.CN_REASON': 'เหตุผลใบลดหนี้ (สินค้า)', 'lk.CN_PROMO_REASON': 'เหตุผลใบลดหนี้ (ส่งเสริมการขาย)', 'setd.CN_PROMO_CODE': 'รหัสรายการส่วนลดส่งเสริมการขาย (ใช้ในใบลดหนี้ส่งเสริมการขาย ตั้งให้ตรงกับ Express ได้)', 'setd.CN_PROMO_NAME': 'ชื่อรายการส่วนลดส่งเสริมการขาย', 'cn.type': 'ประเภทใบลดหนี้', 'cn.GOODSshort': 'ลดหนี้สินค้า', 'cn.GOODS': 'ลดหนี้สินค้า (อ้างอิงใบกำกับภาษี)', 'cn.PROMO': 'ส่วนลดส่งเสริมการขาย', 'cn.promoItem': 'ส่วนลดส่งเสริมการขาย', 'cn.needInv': 'กรุณาเพิ่มใบกำกับภาษีอ้างอิงก่อน', 'cn.invNo': 'ใบกำกับภาษี', 'cn.invQty': 'จำนวนในใบกำกับ', 'cn.remain': 'ลดหนี้ได้อีก', 'cn.creditQty': 'จำนวนลดหนี้', 'cn.added': 'เพิ่มในใบนี้แล้ว', 'cn.pickTitle': 'เลือกสินค้าที่จะลดหนี้', 'cn.pickHint': 'ติ๊กสินค้าที่ต้องการลดหนี้ และแก้จำนวนได้ (ไม่เกินจำนวนที่ลดหนี้ได้อีก) ราคาต่อหน่วยเป็นราคาสุทธิหลังหักส่วนลดในใบกำกับ', 'cn.selectAll': 'เลือกทั้งหมด', 'cn.pickNone': 'ยังไม่ได้เลือกสินค้า', 'cn.pickBtn': 'เลือกสินค้าจากใบกำกับภาษี', 'cn.goodsHint': 'เพิ่มใบกำกับภาษีอ้างอิงด้านบน แล้วระบบจะให้เลือกสินค้าจากใบนั้น', 'cn.promoDesc': 'รายละเอียด', 'cn.promoDescPh': 'เช่น ส่วนลดตามเป้า เดือน ต.ค.', 'cn.amount': 'จำนวนเงิน', 'cn.promoHint': 'ใบลดหนี้ส่งเสริมการขายกรอกเป็นยอดเงิน ไม่ต้องเลือกสินค้า อ้างอิงใบกำกับภาษีหรือไม่ก็ได้', 'cn.typeChange': 'เปลี่ยนประเภทใบลดหนี้ รายการที่เพิ่มไว้จะถูกล้างออก ต้องการเปลี่ยนหรือไม่', 'cn.amountReq': 'กรุณากรอกจำนวนเงิน', 'cn.fromInv': 'จาก {no} · ลดหนี้ได้อีก {n}', 'ERR_CN_OVER_QTY': 'สินค้า {code} ลดหนี้ได้ไม่เกิน {max} {unit}', 'ERR_CN_NEED_INV': 'ใบลดหนี้สินค้าต้องอ้างอิงใบกำกับภาษีอย่างน้อย 1 ใบ', 'ERR_CN_LINE_REF': 'บรรทัดที่ {line} ({code}) ต้องเลือกจากใบกำกับภาษีที่อ้างอิง', 'ERR_CN_REF_PARTY': 'ใบกำกับ {no} ไม่ใช่ของลูกค้ารายนี้', 'rpt.arAsOf': 'ลูกหนี้ค้างชำระ ณ {d}',
+    'setd.APP_NAME': 'ชื่อระบบที่แสดงบนหน้าจอ', 'setd.APP_TAGLINE': 'ข้อความแนะนำระบบ (หน้าเปิดและหน้าเข้าระบบ ทั้งเว็บและแอป) ใส่ | เพื่อขึ้นบรรทัดใหม่', 'setd.SALES_APP_NAME': 'ชื่อแอปเซลล์ที่แสดงบนมือถือ', 'setd.BRAND_COLOR': 'สีหลักของแบรนด์ (#RRGGBB) ใช้ทั้งเว็บและแอปเซลล์', 'setd.COMPANY_NAME': 'ชื่อบริษัท (แสดงบนเอกสาร)', 'setd.COMPANY_NAME_EN': 'ชื่อบริษัทภาษาอังกฤษ', 'setd.COMPANY_ADDRESS': 'ที่อยู่บริษัท (แสดงบนเอกสาร)', 'setd.COMPANY_TAX_ID': 'เลขประจำตัวผู้เสียภาษี 13 หลัก', 'setd.COMPANY_BRANCH': 'สำนักงานใหญ่ หรือ สาขาที่ 00001', 'setd.COMPANY_PHONE': 'เบอร์โทรบริษัท', 'setd.CENTER_CODE': 'รหัสศูนย์จัดจำหน่าย (แสดงในหน้าเอกสาร)', 'setd.DOCNO_YEAR': 'ปีในเลขเอกสาร', 'setd.DOCNO_RESET': 'เริ่มนับเลขเอกสารใหม่เมื่อไร', 'setd.DOCNO_DIGITS': 'จำนวนหลักของลำดับท้ายเลขเอกสาร (3–6) เช่น 5 → SO6900001', 'setd.DOCNO_VAN_SEPARATE': 'รถแวนแต่ละคันรันเลขเอกสารแยก (ใส่รหัสรถในเลข) — ไม่ = ใช้ลำดับเดียวกับหลังบ้านแบบ Express', 'setd.DOCNO_VAN_DIGITS': 'จำนวนหลักของลำดับเลขเอกสารรถแวน (3–6) ใช้เมื่อรถรันเลขแยก', 'setd.DOCNO_VAN_INV_PREFIX': 'คำนำหน้าบิลขายของรถแวน (Express: HS = บิลเงินสด) เว้นว่าง = ใช้ของใบกำกับภาษี', 'setd.STOCK_ENFORCE': 'ห้ามขาย/โอนเกินสต็อก (เปิดหลังบันทึกสต็อกตั้งต้นครบ) — ไม่ = แจ้งเตือนอย่างเดียว', 'setd.COLLECT_GUARD_FROM': 'แวนต้องรับชำระบิลก่อนขายร้านถัดไป (นับบิลตั้งแต่วันที่นี้)', 'setd.VAT_RATE': 'อัตราภาษีมูลค่าเพิ่ม (%)', 'setd.DEFAULT_VAT_TYPE': 'ประเภทราคาเริ่มต้น', 'setd.DEFAULT_CREDIT_DAYS': 'เครดิตเทอมเริ่มต้น (วัน)', 'setd.CREDIT_LIMIT_MODE': 'เมื่อเกินวงเงินเครดิต', 'setd.GR_DEFAULT_DISCOUNT_PCT': 'ส่วนลดท้ายบิลจากซัพพลายเออร์ (%) ค่าเริ่มต้นของใบรับสินค้า', 'setd.SALES_PROMO_CHANNEL': 'พนักงานขายเครดิตใช้ตารางส่วนลดขั้นบันไดของช่องทางไหน', 'setd.MAX_FILE_MB': 'ขนาดไฟล์แนบสูงสุด (MB)', 'setd.ALLOWED_FILE_EXT': 'นามสกุลไฟล์ที่อนุญาต', 'setd.ALLOW_NEGATIVE_STOCK': 'คลังหลักยอมให้สต็อกติดลบ', 'setd.VAN_SALE_REVIEW': 'บิลขายรถแวนต้องให้บัญชีตรวจ', 'setd.BLOCK_SALE_IF_NOT_CLOSED': 'ห้ามแวนเซลล์ขายถ้ายังไม่ส่งปิดรถของวันก่อน', 'setd.RECEIPT_WIDTH_MM': 'ความกว้างกระดาษเครื่องพิมพ์พกพา', 'setd.REPRINT_MAX': 'ใบเสร็จเครื่องพกพา: พิมพ์ซ้ำ (สำเนา) ได้กี่ครั้งหลังพิมพ์ต้นฉบับ', 'setd.DEAD_STOCK_DAYS': 'สินค้าไม่เคลื่อนไหวเกินกี่วัน (สำหรับรายงาน)', 'setd.LEDGER_ARCHIVE_ROWS': 'ย้ายประวัติความเคลื่อนไหวสต็อกเก่าไปเก็บถาวรเมื่อเกินกี่แถว', 'setd.DEFAULT_LANG': 'ภาษาเริ่มต้น', 'setd.SESSION_HOURS': 'อายุการเข้าระบบ (ชั่วโมง)', 'setd.MAX_LOGIN_FAIL': 'ใส่ PIN ผิดได้กี่ครั้งก่อนล็อกบัญชี', 'setd.LOCK_MINUTES': 'ล็อกบัญชีกี่นาที', 'setd.BACKUP_KEEP': 'เก็บไฟล์สำรองล่าสุดกี่ชุด', 'setd.EMAIL_NOTIFY': 'ส่งอีเมลแจ้งเตือน', 'setd.EMAIL_DIGEST_HOUR': 'เวลาส่งอีเมลสรุปรายวัน (ชั่วโมง 0–23)', 'setd.LINE_ENABLED': 'เปิดแจ้งเตือนผ่าน LINE', 'setd.LINE_CHANNEL_TOKEN': 'รหัสเชื่อมต่อช่อง LINE OA (Channel access token)', 'setd.LINE_TARGET_ID': 'รหัสผู้รับหรือกลุ่มใน LINE ที่จะส่งข้อความ', 'rm.sec.Maintenance': 'ข้อมูลหลัก', 'rm.sec.Inventory': 'สินค้าคงคลัง', 'rm.sec.Sales': 'การขาย', 'rm.ProductsList': 'รายการสินค้า', 'rm.CustomersList': 'รายชื่อลูกค้า', 'rm.PromotionsSetup': 'ตั้งค่าโปรโมชั่น', 'rm.UserCustomer': 'ผู้ใช้กับลูกค้าที่ดูแล', 'rm.UsersList': 'รายชื่อผู้ใช้', 'rm.StockIn': 'รับสินค้าเข้า', 'rm.StockOut': 'จ่ายสินค้าออก', 'rm.StockAdjustment': 'ปรับปรุงสต็อก', 'rm.StockSummary': 'สรุปสต็อก', 'rm.StockTransfer': 'โอนสินค้า', 'rm.InventoryMovement': 'ความเคลื่อนไหวสินค้า', 'rm.InventorySummary': 'สรุปสินค้าคงคลัง', 'rm.SalesOrderDetails': 'รายละเอียดใบสั่งขาย', 'rm.SalesOrderSummary': 'สรุปใบสั่งขาย', 'rm.SalesDocumentsSummary': 'สรุปเอกสารขาย', 'rm.SalesDocumentsDetails': 'รายละเอียดเอกสารขาย', 'rm.CollectionSummaryBySalesman': 'สรุปรับชำระตามพนักงานขาย', 'rm.CollectionSummaryByCustomer': 'สรุปรับชำระตามลูกค้า', 'rm.CollectionDetails': 'รายละเอียดรับชำระ', 'list.invNos': 'เลขที่ใบกำกับภาษี', 'list.pickStatus': 'จัดเรียงสินค้าแล้ว', 'ed.uom': 'หน่วย', 'cl.qr': 'ชำระผ่าน QR', 'sys.system': 'ระบบ', 'ver.created': 'สร้างเอกสาร', 'ver.edited': 'แก้ไข', 'so.close.short': 'สินค้าไม่เพียงพอ', 'so.close.market': 'สินค้าขาดตลาด', 'ph.baseUnit': 'ชิ้น / ขวด / ถุง', 'lk.DELIVERY_TYPE': 'วิธีจัดส่ง', 'lk.TRANSFER_REASON': 'เหตุผลการโอนสินค้า', 'lk.BANK': 'ธนาคาร', 'cust.secMap': 'แผนที่และรูปภาพ', 'cust.lat': 'ละติจูด', 'cust.lng': 'ลองจิจูด', 'cust.latPh': 'เช่น 9.148627', 'cust.lngPh': 'เช่น 99.394275', 'cust.gpsTypeHint': 'พิมพ์ตัวเลขแล้วกดออกจากช่อง ระบบบันทึกให้ทันที · วางลิงก์ Google Maps ลงช่องใดก็ได้ ระบบแยกพิกัดให้', 'cust.map': 'แผนที่', 'cust.photo': 'รูปร้านค้า', 'cust.gpsSaved': 'บันทึกพิกัดแล้ว', 'cust.keyBtn': 'สร้างรหัสร้านค้า', 'cust.keyConfirm': 'สร้างรหัสร้านค้าจริงให้ร้านนี้ (เรียงต่อจากรหัสล่าสุด) หรือไม่ — สร้างแล้วแก้ไขไม่ได้', 'cust.keyDone': 'สร้างรหัสร้านค้า {code} แล้ว', 'cust.draftHint': 'รหัสร่าง — กดปุ่มกุญแจเพื่อสร้างรหัสร้านค้าจริง (หรืออนุมัติแล้วระบบสร้างให้)', 'cust.draftWait': 'รหัสร่าง — จะได้รหัสร้านค้าจริงเมื่อแอดมินอนุมัติ', 'cust.draftNewHint': 'ระบบให้รหัสร่างก่อน และให้รหัสร้านค้าจริงเมื่อแอดมินอนุมัติ', 'ERR_CUST_CODE_FINAL': 'ร้านนี้มีรหัสร้านค้าจริงแล้ว', 'menu.tracking': 'ติดตามเซลล์', 'set.track': 'ติดตามเซลล์', 'refresh': 'รีเฟรช', 'role.VAN': 'แวนเซลล์', 'role.PRE': 'พรีเซลล์', 'role.SALES': 'เซลล์เครดิต', 'setd.TRACK_ENABLED': 'แอปเซลล์ส่งตำแหน่ง GPS และสถานะการใช้งาน', 'setd.TRACK_INTERVAL_MIN': 'แอปเซลล์ส่งตำแหน่งทุกกี่นาที (ระหว่างเปิดแอป)', 'setd.TRACK_IDLE_MIN': 'ไม่มีความเคลื่อนไหวเกินกี่นาที นับเป็นช่วงหยุดใช้งาน', 'setd.TRACK_OFFLINE_MIN': 'ไม่มีสัญญาณเกินกี่นาที แสดงเป็นออฟไลน์', 'trk.note': 'ตำแหน่งส่งจากแอปเซลล์บนมือถือทุก 2 นาทีระหว่างเปิดแอป · ถ้าพับแอปหรือปิดจอ จะเห็นเป็น "พับแอป" และเป็น "ออฟไลน์" เมื่อขาดสัญญาณเกิน 20 นาที', 'trk.st.ONLINE': 'ออนไลน์', 'trk.st.IDLE': 'ไม่เคลื่อนไหว', 'trk.st.BACKGROUND': 'พับแอป', 'trk.st.OFFLINE': 'ออฟไลน์', 'trk.st.DONE': 'ทำงานวันนั้น', 'trk.st.NOT_STARTED': 'ยังไม่เริ่มงาน', 'trk.justNow': 'เมื่อสักครู่', 'trk.minAgo': '{n} นาทีที่แล้ว', 'trk.hrAgo': '{h} ชม. {m} นาทีที่แล้ว', 'trk.lastAt': 'ล่าสุด {t} น.', 'trk.notStartedN': 'ยังไม่เริ่มงาน {n} คน', 'trk.reps': 'เซลล์ที่ทำงาน', 'trk.visits': 'เยี่ยมร้าน', 'trk.orders': 'ออเดอร์', 'trk.avgKey': 'คีย์เฉลี่ย {n} นาที/บิล', 'trk.sales': 'ยอดขายวันนี้', 'trk.visitsN': '{n} ร้าน', 'trk.ordersN': '{n} บิล', 'trk.minEach': '{n} นาที/บิล', 'trk.km': 'กม.', 'trk.m': 'ม.', 'trk.noReps': 'ยังไม่มีผู้ใช้ตำแหน่งเซลล์', 'trk.noGps': 'ยังไม่มีตำแหน่ง GPS ของวันนี้', 'trk.plotNote': 'แสดงเป็นแผนผังตำแหน่ง (โหลดแผนที่ไม่ได้)', 'trk.shop': 'ร้านค้า', 'trk.in': 'เข้า', 'trk.out': 'ออก', 'trk.minutes': 'นาที', 'trk.fromShop': 'ห่างจากพิกัดร้าน', 'trk.atShop': 'อยู่ที่ร้าน', 'trk.auto': 'อัตโนมัติ', 'trk.start': 'เริ่มคีย์', 'trk.end': 'บันทึก', 'trk.keyMin': 'ใช้เวลา (นาที)', 'trk.cancelled': 'ยกเลิก', 'trk.minN': '{n} นาที', 'trk.idle.HIDDEN': 'พับแอป/ปิดจอ', 'trk.idle.NO_SIGNAL': 'ไม่มีความเคลื่อนไหว', 'trk.noIdle': 'ไม่มีช่วงหยุดใช้งาน', 'trk.today': 'วันนี้', 'trk.first': 'เริ่มงาน', 'trk.last': 'ล่าสุด', 'trk.active': 'เวลาใช้งาน', 'trk.hm': '{h} ชม. {m} น.', 'trk.dist': 'ระยะทาง', 'trk.avgVisit': 'เยี่ยมร้านเฉลี่ย', 'trk.avgKeyL': 'คีย์ออเดอร์เฉลี่ย', 'trk.visitTitle': 'การเยี่ยมร้าน', 'trk.orderTitle': 'เวลาคีย์ออเดอร์', 'trk.idleTitle': 'ช่วงหยุดใช้งาน', 'trk.updated': 'อัปเดต {t} น.', 'trk.auto60': 'รีเฟรชอัตโนมัติทุก 1 นาที', 'sc.asOf': 'ตรวจนับ ณ วันที่', 'sc.asOfHint': 'วันนี้ = ยอดปัจจุบัน · เลือกวันก่อนหน้า = เทียบกับยอด ณ สิ้นวันนั้น', 'sc.makeSheet': 'สร้างฟอร์มตรวจนับ', 'sc.printSheet': 'พิมพ์ฟอร์มนับ', 'sc.empty': 'ยังไม่มีรายการ — กด "สร้างฟอร์มตรวจนับ" เพื่อดึงสินค้าที่มีสต็อกในคลังนี้ หรือเพิ่มสินค้าเอง', 'sc.system': 'ยอดในระบบ', 'sc.counted': 'นับได้', 'sc.total': 'รวมนับได้', 'sc.diff': 'ผลต่าง', 'sc.notCounted': 'ยังไม่นับ', 'sc.match': 'ตรง', 'sc.sumItems': 'ทั้งหมด {n} รายการ', 'sc.sumUnder': 'ขาด {n}', 'sc.sumOver': 'เกิน {n}', 'sc.sumPending': 'ยังไม่นับ {n}', 'sc.noStock': 'คลังนี้ไม่มีสินค้าคงเหลือ ณ วันที่เลือก', 'sc.made': 'ดึงสินค้าที่มีสต็อก {n} รายการแล้ว', 'sc.replace': 'ล้างรายการเดิมแล้วสร้างฟอร์มใหม่หรือไม่', 'sc.formTitle': 'ฟอร์มตรวจนับสต็อก', 'sc.counter': 'ผู้นับ', 'sc.checker': 'ผู้ตรวจ', 'sc.approver': 'ผู้อนุมัติ', 'sc.noneCounted': 'ยังไม่ได้กรอกยอดนับเลย', 'sc.skipConfirm': 'มี {n} รายการที่ยังไม่ได้กรอกยอดนับ ระบบจะไม่ปรับยอดรายการเหล่านั้น ต้องการบันทึกต่อหรือไม่', 'ERR_SC_DUP': 'สินค้า {code} ซ้ำในใบตรวจนับ', 'ed.change': 'เปลี่ยน', 'ed.noCustomer': 'ยังไม่ได้เลือกลูกค้า', 'ed.noSupplier': 'ยังไม่ได้เลือกซัพพลายเออร์', 'ed.discHint': 'พิมพ์ตัวเลข = บาท · ใส่ % ต่อท้าย = เปอร์เซ็นต์ (เช่น 50 หรือ 5%)', 'cust.autoCode': 'ระบบรันรหัสให้อัตโนมัติ', 'cust.autoCodeHint': 'รหัสลูกค้าระบบรันให้เองเมื่อบันทึก', 'cust.codeLocked': 'รหัสลูกค้ายืนยันแล้ว แก้ไขไม่ได้ (แก้ได้เฉพาะรายละเอียด)', 'cust.gpsManual': 'พิมพ์พิกัดเอง (ละติจูด, ลองจิจูด) หรือวางลิงก์ Google Maps', 'cust.gpsManualPh': 'เช่น 9.1382, 99.3215', 'cust.gpsBad': 'รูปแบบพิกัดไม่ถูกต้อง ตัวอย่าง 9.1382, 99.3215', 'lk.CN_REASON': 'เหตุผลใบลดหนี้ (สินค้า)', 'lk.RT_REASON': 'เหตุผลการรับคืนสินค้า', 'lk.SC_REASON': 'เหตุผลการตรวจนับสต็อก', 'lk.CN_PROMO_REASON': 'เหตุผลใบลดหนี้ (ส่งเสริมการขาย)', 'setd.CN_PROMO_CODE': 'รหัสรายการส่วนลดส่งเสริมการขาย (ใช้ในใบลดหนี้ส่งเสริมการขาย ตั้งให้ตรงกับ Express ได้)', 'setd.CN_PROMO_NAME': 'ชื่อรายการส่วนลดส่งเสริมการขาย', 'cn.type': 'ประเภทใบลดหนี้', 'cn.GOODSshort': 'ลดหนี้สินค้า', 'cn.GOODS': 'ลดหนี้สินค้า (อ้างอิงใบกำกับภาษี)', 'cn.PROMO': 'ส่วนลดส่งเสริมการขาย', 'cn.promoItem': 'ส่วนลดส่งเสริมการขาย', 'cn.needInv': 'กรุณาเพิ่มใบกำกับภาษีอ้างอิงก่อน', 'cn.invNo': 'ใบกำกับภาษี', 'cn.invQty': 'จำนวนในใบกำกับ', 'cn.remain': 'ลดหนี้ได้อีก', 'cn.creditQty': 'จำนวนลดหนี้', 'cn.added': 'เพิ่มในใบนี้แล้ว', 'cn.pickTitle': 'เลือกสินค้าที่จะลดหนี้', 'cn.pickHint': 'ติ๊กสินค้าที่ต้องการลดหนี้ และแก้จำนวนได้ (ไม่เกินจำนวนที่ลดหนี้ได้อีก) ราคาต่อหน่วยเป็นราคาสุทธิหลังหักส่วนลดในใบกำกับ', 'cn.selectAll': 'เลือกทั้งหมด', 'cn.pickNone': 'ยังไม่ได้เลือกสินค้า', 'cn.pickBtn': 'เลือกสินค้าจากใบกำกับภาษี', 'cn.goodsHint': 'เพิ่มใบกำกับภาษีอ้างอิงด้านบน แล้วระบบจะให้เลือกสินค้าจากใบนั้น', 'cn.promoDesc': 'รายละเอียด', 'cn.promoDescPh': 'เช่น ส่วนลดตามเป้า เดือน ต.ค.', 'cn.amount': 'จำนวนเงิน', 'cn.promoHint': 'ใบลดหนี้ส่งเสริมการขายกรอกเป็นยอดเงิน ไม่ต้องเลือกสินค้า อ้างอิงใบกำกับภาษีหรือไม่ก็ได้', 'cn.typeChange': 'เปลี่ยนประเภทใบลดหนี้ รายการที่เพิ่มไว้จะถูกล้างออก ต้องการเปลี่ยนหรือไม่', 'cn.amountReq': 'กรุณากรอกจำนวนเงิน', 'cn.fromInv': 'จาก {no} · ลดหนี้ได้อีก {n}', 'ERR_CN_OVER_QTY': 'สินค้า {code} ลดหนี้ได้ไม่เกิน {max} {unit}', 'ERR_CN_NEED_INV': 'ใบลดหนี้สินค้าต้องอ้างอิงใบกำกับภาษีอย่างน้อย 1 ใบ', 'ERR_CN_LINE_REF': 'บรรทัดที่ {line} ({code}) ต้องเลือกจากใบกำกับภาษีที่อ้างอิง', 'ERR_CN_REF_PARTY': 'ใบกำกับ {no} ไม่ใช่ของลูกค้ารายนี้', 'rpt.arAsOf': 'ลูกหนี้ค้างชำระ ณ {d}',
     // ---------- ทั่วไป ----------
     'ok': 'ตกลง', 'cancel': 'ยกเลิก', 'save': 'บันทึก', 'saved': 'บันทึกแล้ว', 'edit': 'แก้ไข', 'delete': 'ลบ', 'add': 'เพิ่ม',
     'confirm': 'ยืนยัน', 'search': 'ค้นหา', 'all': 'ทั้งหมด', 'auto': 'อัตโนมัติ', 'yes': 'ใช่', 'no': 'ไม่', 'open': 'เปิด',
@@ -901,7 +979,7 @@ window.I18N = {
     'list.pickMenuPrint': 'Print', 'list.pickExcel': 'Export to Excel', 'list.pickSelect': 'Select the sales orders first (tick the boxes)', 'list.pickResetDone': 'Picked status reset for {n} orders', 'ERR_PICK_EMPTY': 'The selected orders are fully delivered — nothing left to pick', 'pk.code': 'Product code', 'pk.name': 'Product name', 'pk.cases': 'Outstanding cases', 'pk.caseUnit': 'Case unit', 'pk.pcs': 'Outstanding loose units', 'pk.qtyBase': 'Outstanding base units', 'pk.baseUnit': 'Base unit', 'pk.docs': 'Sales orders', 'pk.printedAt': 'Printed at', 'pk.orders': 'Sales orders',
     'ntf.PENDING_APPROVAL': 'Awaiting approval', 'ntf.APPROVED': 'Approved', 'ntf.CANCELLED': 'Cancelled', 'ntf.REVIEW_ISSUE': 'Accounting found an issue', 'ntf.VAN_REVIEW': 'Van bill awaiting review', 'ntf.DOC_EDITED_BY_APPROVER': 'Edited by the approver', 'ntf.RETURNED': 'Returned for changes', 'ntf.REJECTED': 'Rejected', 'ntf.CUSTOMER_PENDING': 'New customer awaiting approval', 'ntf.CUSTOMER_APPROVED': 'New customer approved', 'ntf.CUSTOMER_REJECTED': 'New customer rejected', 'ntf.step': 'step {n}', 'ntf.by': 'approved by',
     'rt.sales': 'Sales report', 'rt.best': 'Best sellers', 'rt.promo': 'Promotion discounts for claims', 'rc.UserCode': 'User Code', 'rc.Username': 'Username', 'rc.Number': 'Number', 'rc.DocStatus': 'Document Status', 'rc.Date': 'Date', 'rc.DocType': 'Document Type', 'rc.DistCode': 'Distributor Code', 'rc.DistName': 'Distributor Name', 'rc.CustomerCode': 'Customer Code', 'rc.CustomerName': 'Customer Name', 'rc.Ch1': 'Channel1 Description', 'rc.Ch2': 'Channel2 Description', 'rc.Ch3': 'Channel3 Description', 'rc.ProductCode': 'Product Code', 'rc.ProductName': 'Product Name', 'rc.Cat1': 'Product Category1 Description', 'rc.Cat2': 'Product Category2 Description', 'rc.Cat3': 'Product Category3 Description', 'rc.UOM': 'UOM', 'rc.Qty': 'Qty', 'rc.FreeQty': 'FOC Qty', 'rc.UnitPrice': 'Unit Price', 'rc.Gross': 'Gross Amount', 'rc.Discount': 'Discount', 'rc.PromoDiscount': 'Promotion Discount', 'rc.NetAmount': 'Net Amount', 'rc.Vat': 'VAT', 'rc.Total': 'Total Amount', 'rv2.Approved': 'Approved', 'rv2.Pending': 'Pending', 'rv2.Draft': 'Draft', 'rv2.Returned': 'Returned', 'rv2.Rejected': 'Rejected', 'rv2.Cancelled': 'Cancelled', 'rd2.Invoice': 'Invoice', 'rd2.Credit Note': 'Credit Note', 'rd2.Sales Order': 'Sales Order', 'rd2.Goods Return': 'Goods Return',
-    'setd.APP_NAME': 'System name shown on screen', 'setd.APP_TAGLINE': 'System tagline (splash and sign-in screens, web and app). Use | for a line break', 'setd.SALES_APP_NAME': 'Sales app name shown on phones', 'setd.BRAND_COLOR': 'Brand colour (#RRGGBB) for the web and the sales app', 'setd.COMPANY_NAME': 'Company name (printed on documents)', 'setd.COMPANY_NAME_EN': 'Company name in English', 'setd.COMPANY_ADDRESS': 'Company address (printed on documents)', 'setd.COMPANY_TAX_ID': '13-digit tax ID', 'setd.COMPANY_BRANCH': 'Head office or branch no. 00001', 'setd.COMPANY_PHONE': 'Company phone', 'setd.CENTER_CODE': 'Distribution centre code (shown on documents)', 'setd.DOCNO_YEAR': 'Year in document numbers', 'setd.DOCNO_RESET': 'When document numbers restart', 'setd.DOCNO_DIGITS': 'Running-number digits (3–6), e.g. 5 → SO6900001', 'setd.DOCNO_VAN_SEPARATE': 'Each van has its own numbering (van code in the number) — No = shared with the office, as in Express', 'setd.DOCNO_VAN_DIGITS': 'Van running-number digits (3–6), used when vans number separately', 'setd.DOCNO_VAN_INV_PREFIX': 'Prefix for van sales bills (Express: HS = cash bill); blank = same as tax invoice', 'setd.STOCK_ENFORCE': 'Block selling/transferring beyond stock (turn on after opening stock is entered) — No = warn only', 'setd.COLLECT_GUARD_FROM': 'Vans must collect payment before selling to the next shop (bills from this date)', 'setd.VAT_RATE': 'VAT rate (%)', 'setd.DEFAULT_VAT_TYPE': 'Default price type', 'setd.DEFAULT_CREDIT_DAYS': 'Default credit term (days)', 'setd.CREDIT_LIMIT_MODE': 'When the credit limit is exceeded', 'setd.GR_DEFAULT_DISCOUNT_PCT': 'Default supplier bill discount (%) on goods receipts', 'setd.SALES_PROMO_CHANNEL': 'Which tier-discount table credit sales reps use', 'setd.MAX_FILE_MB': 'Maximum attachment size (MB)', 'setd.ALLOWED_FILE_EXT': 'Allowed file types', 'setd.ALLOW_NEGATIVE_STOCK': 'Allow negative stock in the main warehouse', 'setd.VAN_SALE_REVIEW': 'Van sales bills need an accounting review', 'setd.BLOCK_SALE_IF_NOT_CLOSED': 'Block van sales until the previous day is closed', 'setd.RECEIPT_WIDTH_MM': 'Mobile printer paper width', 'setd.REPRINT_MAX': 'Mobile receipts: copies allowed after the original', 'setd.DEAD_STOCK_DAYS': 'Days without movement to count as dead stock (reports)', 'setd.LEDGER_ARCHIVE_ROWS': 'Archive old stock movements after this many rows', 'setd.DEFAULT_LANG': 'Default language', 'setd.SESSION_HOURS': 'Sign-in session length (hours)', 'setd.MAX_LOGIN_FAIL': 'Wrong PIN attempts before locking', 'setd.LOCK_MINUTES': 'Lock duration (minutes)', 'setd.BACKUP_KEEP': 'Number of backups to keep', 'setd.EMAIL_NOTIFY': 'Send email notifications', 'setd.EMAIL_DIGEST_HOUR': 'Daily summary email hour (0–23)', 'setd.LINE_ENABLED': 'Enable LINE notifications', 'setd.LINE_CHANNEL_TOKEN': 'LINE OA channel access token', 'setd.LINE_TARGET_ID': 'LINE user or group ID to notify', 'rm.sec.Maintenance': 'Maintenance', 'rm.sec.Inventory': 'Inventory', 'rm.sec.Sales': 'Sales', 'rm.ProductsList': 'Products List', 'rm.CustomersList': 'Customers List', 'rm.PromotionsSetup': 'Promotions Setup', 'rm.UserCustomer': 'User/Customer Mapping', 'rm.UsersList': 'Users List', 'rm.StockIn': 'Stock In', 'rm.StockOut': 'Stock Out', 'rm.StockAdjustment': 'Stock Adjustment', 'rm.StockSummary': 'Stock Summary', 'rm.StockTransfer': 'Stock Transfer', 'rm.InventoryMovement': 'Inventory Movement', 'rm.InventorySummary': 'Inventory Summary', 'rm.SalesOrderDetails': 'Sales Order Details', 'rm.SalesOrderSummary': 'Sales Order Summary', 'rm.SalesDocumentsSummary': 'Sales Documents Summary', 'rm.SalesDocumentsDetails': 'Sales Documents Details', 'rm.CollectionSummaryBySalesman': 'Collection Summary by Salesman', 'rm.CollectionSummaryByCustomer': 'Collection Summary by Customer', 'rm.CollectionDetails': 'Collection Details', 'list.invNos': 'Invoice Number', 'list.pickStatus': 'Picked List Status', 'ed.uom': 'UOM', 'cl.qr': 'QR payment', 'sys.system': 'System', 'ver.created': 'Document created', 'ver.edited': 'Edited', 'so.close.short': 'Insufficient stock', 'so.close.market': 'Out of stock in the market', 'ph.baseUnit': 'piece / bottle / bag', 'lk.DELIVERY_TYPE': 'Delivery type', 'lk.TRANSFER_REASON': 'Transfer reason', 'lk.BANK': 'Bank', 'lk.CN_REASON': 'Credit note reason (goods)', 'lk.CN_PROMO_REASON': 'Credit note reason (sales promotion)', 'setd.CN_PROMO_CODE': 'Item code for sales promotion discounts (used on promotion credit notes; can match Express)', 'setd.CN_PROMO_NAME': 'Item name for sales promotion discounts', 'cn.type': 'Credit note type', 'cn.GOODSshort': 'Goods credit', 'cn.GOODS': 'Goods credit (refers to a tax invoice)', 'cn.PROMO': 'Sales promotion discount', 'cn.promoItem': 'Sales promotion discount', 'cn.needInv': 'Add a reference tax invoice first', 'cn.invNo': 'Tax invoice', 'cn.invQty': 'Invoiced qty', 'cn.remain': 'Creditable', 'cn.creditQty': 'Credit qty', 'cn.added': 'Already on this note', 'cn.pickTitle': 'Choose items to credit', 'cn.pickHint': 'Tick the items to credit and adjust the quantity (up to the creditable amount). Unit price is the net price after invoice discounts.', 'cn.selectAll': 'Select all', 'cn.pickNone': 'No items selected', 'cn.pickBtn': 'Choose items from tax invoice', 'cn.goodsHint': 'Add a reference tax invoice above, then choose items from it', 'cn.promoDesc': 'Description', 'cn.promoDescPh': 'e.g. October target rebate', 'cn.amount': 'Amount', 'cn.promoHint': 'Promotion credit notes are entered as an amount with no products. A reference invoice is optional.', 'cn.typeChange': 'Changing the credit note type clears the items you added. Continue?', 'cn.amountReq': 'Enter an amount', 'cn.fromInv': 'From {no} · creditable {n}', 'ERR_CN_OVER_QTY': 'Item {code} can be credited up to {max} {unit}', 'ERR_CN_NEED_INV': 'A goods credit note needs at least one reference tax invoice', 'ERR_CN_LINE_REF': 'Line {line} ({code}) must come from a referenced tax invoice', 'ERR_CN_REF_PARTY': 'Invoice {no} belongs to another customer', 'rpt.arAsOf': 'Outstanding receivables as of {d}',
+    'setd.APP_NAME': 'System name shown on screen', 'setd.APP_TAGLINE': 'System tagline (splash and sign-in screens, web and app). Use | for a line break', 'setd.SALES_APP_NAME': 'Sales app name shown on phones', 'setd.BRAND_COLOR': 'Brand colour (#RRGGBB) for the web and the sales app', 'setd.COMPANY_NAME': 'Company name (printed on documents)', 'setd.COMPANY_NAME_EN': 'Company name in English', 'setd.COMPANY_ADDRESS': 'Company address (printed on documents)', 'setd.COMPANY_TAX_ID': '13-digit tax ID', 'setd.COMPANY_BRANCH': 'Head office or branch no. 00001', 'setd.COMPANY_PHONE': 'Company phone', 'setd.CENTER_CODE': 'Distribution centre code (shown on documents)', 'setd.DOCNO_YEAR': 'Year in document numbers', 'setd.DOCNO_RESET': 'When document numbers restart', 'setd.DOCNO_DIGITS': 'Running-number digits (3–6), e.g. 5 → SO6900001', 'setd.DOCNO_VAN_SEPARATE': 'Each van has its own numbering (van code in the number) — No = shared with the office, as in Express', 'setd.DOCNO_VAN_DIGITS': 'Van running-number digits (3–6), used when vans number separately', 'setd.DOCNO_VAN_INV_PREFIX': 'Prefix for van sales bills (Express: HS = cash bill); blank = same as tax invoice', 'setd.STOCK_ENFORCE': 'Block selling/transferring beyond stock (turn on after opening stock is entered) — No = warn only', 'setd.COLLECT_GUARD_FROM': 'Vans must collect payment before selling to the next shop (bills from this date)', 'setd.VAT_RATE': 'VAT rate (%)', 'setd.DEFAULT_VAT_TYPE': 'Default price type', 'setd.DEFAULT_CREDIT_DAYS': 'Default credit term (days)', 'setd.CREDIT_LIMIT_MODE': 'When the credit limit is exceeded', 'setd.GR_DEFAULT_DISCOUNT_PCT': 'Default supplier bill discount (%) on goods receipts', 'setd.SALES_PROMO_CHANNEL': 'Which tier-discount table credit sales reps use', 'setd.MAX_FILE_MB': 'Maximum attachment size (MB)', 'setd.ALLOWED_FILE_EXT': 'Allowed file types', 'setd.ALLOW_NEGATIVE_STOCK': 'Allow negative stock in the main warehouse', 'setd.VAN_SALE_REVIEW': 'Van sales bills need an accounting review', 'setd.BLOCK_SALE_IF_NOT_CLOSED': 'Block van sales until the previous day is closed', 'setd.RECEIPT_WIDTH_MM': 'Mobile printer paper width', 'setd.REPRINT_MAX': 'Mobile receipts: copies allowed after the original', 'setd.DEAD_STOCK_DAYS': 'Days without movement to count as dead stock (reports)', 'setd.LEDGER_ARCHIVE_ROWS': 'Archive old stock movements after this many rows', 'setd.DEFAULT_LANG': 'Default language', 'setd.SESSION_HOURS': 'Sign-in session length (hours)', 'setd.MAX_LOGIN_FAIL': 'Wrong PIN attempts before locking', 'setd.LOCK_MINUTES': 'Lock duration (minutes)', 'setd.BACKUP_KEEP': 'Number of backups to keep', 'setd.EMAIL_NOTIFY': 'Send email notifications', 'setd.EMAIL_DIGEST_HOUR': 'Daily summary email hour (0–23)', 'setd.LINE_ENABLED': 'Enable LINE notifications', 'setd.LINE_CHANNEL_TOKEN': 'LINE OA channel access token', 'setd.LINE_TARGET_ID': 'LINE user or group ID to notify', 'rm.sec.Maintenance': 'Maintenance', 'rm.sec.Inventory': 'Inventory', 'rm.sec.Sales': 'Sales', 'rm.ProductsList': 'Products List', 'rm.CustomersList': 'Customers List', 'rm.PromotionsSetup': 'Promotions Setup', 'rm.UserCustomer': 'User/Customer Mapping', 'rm.UsersList': 'Users List', 'rm.StockIn': 'Stock In', 'rm.StockOut': 'Stock Out', 'rm.StockAdjustment': 'Stock Adjustment', 'rm.StockSummary': 'Stock Summary', 'rm.StockTransfer': 'Stock Transfer', 'rm.InventoryMovement': 'Inventory Movement', 'rm.InventorySummary': 'Inventory Summary', 'rm.SalesOrderDetails': 'Sales Order Details', 'rm.SalesOrderSummary': 'Sales Order Summary', 'rm.SalesDocumentsSummary': 'Sales Documents Summary', 'rm.SalesDocumentsDetails': 'Sales Documents Details', 'rm.CollectionSummaryBySalesman': 'Collection Summary by Salesman', 'rm.CollectionSummaryByCustomer': 'Collection Summary by Customer', 'rm.CollectionDetails': 'Collection Details', 'list.invNos': 'Invoice Number', 'list.pickStatus': 'Picked List Status', 'ed.uom': 'UOM', 'cl.qr': 'QR payment', 'sys.system': 'System', 'ver.created': 'Document created', 'ver.edited': 'Edited', 'so.close.short': 'Insufficient stock', 'so.close.market': 'Out of stock in the market', 'ph.baseUnit': 'piece / bottle / bag', 'lk.DELIVERY_TYPE': 'Delivery type', 'lk.TRANSFER_REASON': 'Transfer reason', 'lk.BANK': 'Bank', 'cust.secMap': 'Map and photos', 'cust.lat': 'Latitude', 'cust.lng': 'Longitude', 'cust.latPh': 'e.g. 9.148627', 'cust.lngPh': 'e.g. 99.394275', 'cust.gpsTypeHint': 'Type a value and leave the field to save · or paste a Google Maps link into either field', 'cust.map': 'Map', 'cust.photo': 'Customer photo', 'cust.gpsSaved': 'Location saved', 'cust.keyBtn': 'Generate customer code', 'cust.keyConfirm': 'Generate the real customer code (next in sequence)? It cannot be changed afterwards.', 'cust.keyDone': 'Customer code {code} created', 'cust.draftHint': 'Draft code — click the key to generate the real code (approving also generates it)', 'cust.draftWait': 'Draft code — the real code is given when an admin approves', 'cust.draftNewHint': 'You get a draft code first; the real code is given when an admin approves', 'ERR_CUST_CODE_FINAL': 'This customer already has a real code', 'menu.tracking': 'Rep tracking', 'set.track': 'Rep tracking', 'refresh': 'Refresh', 'role.VAN': 'Van sales', 'role.PRE': 'Pre-sales', 'role.SALES': 'Credit sales', 'setd.TRACK_ENABLED': 'Sales app sends GPS location and app status', 'setd.TRACK_INTERVAL_MIN': 'How often the sales app sends its location (minutes, while open)', 'setd.TRACK_IDLE_MIN': 'Minutes without activity counted as a break', 'setd.TRACK_OFFLINE_MIN': 'Minutes without a signal before showing offline', 'trk.note': 'Locations come from the sales app every 2 minutes while it is open. If the app is minimised or the screen is off it shows as "In background", then "Offline" after 20 minutes without a signal.', 'trk.st.ONLINE': 'Online', 'trk.st.IDLE': 'Not moving', 'trk.st.BACKGROUND': 'In background', 'trk.st.OFFLINE': 'Offline', 'trk.st.DONE': 'Worked', 'trk.st.NOT_STARTED': 'Not started', 'trk.justNow': 'just now', 'trk.minAgo': '{n} min ago', 'trk.hrAgo': '{h} h {m} min ago', 'trk.lastAt': 'last {t}', 'trk.notStartedN': '{n} not started', 'trk.reps': 'Reps working', 'trk.visits': 'Shop visits', 'trk.orders': 'Orders', 'trk.avgKey': 'avg {n} min to key', 'trk.sales': 'Sales today', 'trk.visitsN': '{n} shops', 'trk.ordersN': '{n} orders', 'trk.minEach': '{n} min each', 'trk.km': 'km', 'trk.m': 'm', 'trk.noReps': 'No sales rep users yet', 'trk.noGps': 'No GPS positions yet today', 'trk.plotNote': 'Shown as a position plot (map could not load)', 'trk.shop': 'Shop', 'trk.in': 'In', 'trk.out': 'Out', 'trk.minutes': 'Min', 'trk.fromShop': 'From shop pin', 'trk.atShop': 'At shop', 'trk.auto': 'auto', 'trk.start': 'Started', 'trk.end': 'Saved', 'trk.keyMin': 'Time (min)', 'trk.cancelled': 'Cancelled', 'trk.minN': '{n} min', 'trk.idle.HIDDEN': 'App minimised / screen off', 'trk.idle.NO_SIGNAL': 'No activity', 'trk.noIdle': 'No breaks', 'trk.today': 'Today', 'trk.first': 'Started', 'trk.last': 'Last seen', 'trk.active': 'Active time', 'trk.hm': '{h} h {m} m', 'trk.dist': 'Distance', 'trk.avgVisit': 'Avg visit', 'trk.avgKeyL': 'Avg order keying', 'trk.visitTitle': 'Shop visits', 'trk.orderTitle': 'Order keying time', 'trk.idleTitle': 'Breaks', 'trk.updated': 'Updated {t}', 'trk.auto60': 'auto-refresh every minute', 'sc.asOf': 'Count as of', 'sc.asOfHint': 'Today = current stock · an earlier date compares with the balance at the end of that day', 'sc.makeSheet': 'Create count sheet', 'sc.printSheet': 'Print count form', 'sc.empty': 'No items yet — click "Create count sheet" to load items in stock, or add items yourself', 'sc.system': 'System qty', 'sc.counted': 'Counted', 'sc.total': 'Total counted', 'sc.diff': 'Difference', 'sc.notCounted': 'Not counted', 'sc.match': 'Match', 'sc.sumItems': '{n} items', 'sc.sumUnder': 'Short {n}', 'sc.sumOver': 'Over {n}', 'sc.sumPending': 'Not counted {n}', 'sc.noStock': 'This warehouse has no stock on the selected date', 'sc.made': 'Loaded {n} items in stock', 'sc.replace': 'Clear the current items and create a new sheet?', 'sc.formTitle': 'Stock count form', 'sc.counter': 'Counted by', 'sc.checker': 'Checked by', 'sc.approver': 'Approved by', 'sc.noneCounted': 'No counts entered yet', 'sc.skipConfirm': '{n} items have no count. Their stock will not be adjusted. Save anyway?', 'ERR_SC_DUP': 'Item {code} appears twice on the count', 'ed.change': 'Change', 'ed.noCustomer': 'No customer selected', 'ed.noSupplier': 'No supplier selected', 'ed.discHint': 'A number = baht · add % = percent (e.g. 50 or 5%)', 'cust.autoCode': 'Code is generated automatically', 'cust.autoCodeHint': 'The customer code is assigned when you save', 'cust.codeLocked': 'Confirmed customer codes cannot be changed (details only)', 'cust.gpsManual': 'Type coordinates (latitude, longitude) or paste a Google Maps link', 'cust.gpsManualPh': 'e.g. 9.1382, 99.3215', 'cust.gpsBad': 'Invalid coordinates. Example: 9.1382, 99.3215', 'lk.CN_REASON': 'Credit note reason (goods)', 'lk.RT_REASON': 'Goods return reason', 'lk.SC_REASON': 'Stock count reason', 'lk.CN_PROMO_REASON': 'Credit note reason (sales promotion)', 'setd.CN_PROMO_CODE': 'Item code for sales promotion discounts (used on promotion credit notes; can match Express)', 'setd.CN_PROMO_NAME': 'Item name for sales promotion discounts', 'cn.type': 'Credit note type', 'cn.GOODSshort': 'Goods credit', 'cn.GOODS': 'Goods credit (refers to a tax invoice)', 'cn.PROMO': 'Sales promotion discount', 'cn.promoItem': 'Sales promotion discount', 'cn.needInv': 'Add a reference tax invoice first', 'cn.invNo': 'Tax invoice', 'cn.invQty': 'Invoiced qty', 'cn.remain': 'Creditable', 'cn.creditQty': 'Credit qty', 'cn.added': 'Already on this note', 'cn.pickTitle': 'Choose items to credit', 'cn.pickHint': 'Tick the items to credit and adjust the quantity (up to the creditable amount). Unit price is the net price after invoice discounts.', 'cn.selectAll': 'Select all', 'cn.pickNone': 'No items selected', 'cn.pickBtn': 'Choose items from tax invoice', 'cn.goodsHint': 'Add a reference tax invoice above, then choose items from it', 'cn.promoDesc': 'Description', 'cn.promoDescPh': 'e.g. October target rebate', 'cn.amount': 'Amount', 'cn.promoHint': 'Promotion credit notes are entered as an amount with no products. A reference invoice is optional.', 'cn.typeChange': 'Changing the credit note type clears the items you added. Continue?', 'cn.amountReq': 'Enter an amount', 'cn.fromInv': 'From {no} · creditable {n}', 'ERR_CN_OVER_QTY': 'Item {code} can be credited up to {max} {unit}', 'ERR_CN_NEED_INV': 'A goods credit note needs at least one reference tax invoice', 'ERR_CN_LINE_REF': 'Line {line} ({code}) must come from a referenced tax invoice', 'ERR_CN_REF_PARTY': 'Invoice {no} belongs to another customer', 'rpt.arAsOf': 'Outstanding receivables as of {d}',
     'ok': 'OK', 'cancel': 'Cancel', 'save': 'Save', 'saved': 'Saved', 'edit': 'Edit', 'delete': 'Delete', 'add': 'Add',
     'confirm': 'Confirm', 'search': 'Search', 'all': 'All', 'auto': 'Auto', 'yes': 'Yes', 'no': 'No', 'open': 'Open',
     'loading': 'Loading...', 'noData': 'No data', 'total': 'Total', 'print': 'Print', 'baht': 'THB', 'case': 'case',
@@ -1350,6 +1428,8 @@ window.I18N = {
     file: '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/>',
     copy: '<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
     more: '<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>',
+    key: '<circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3L20 3M16 7l3 3M14 9l2 2"/>',
+    pin: '<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',
     store: '<path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13v8h14v-8"/>'
   };
   function icon(name) { return '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">' + (ICONS[name] || '') + '</svg>'; }
@@ -1757,6 +1837,7 @@ window.I18N = {
     // งานอนุมัติอยู่ในหน้าของแต่ละเอกสาร/หน้าลูกค้า · ไม่มีถังขยะ (ไม่ลบเอกสาร ใช้ "ยกเลิก")
     { group: 'home', items: [
       { id: 'dashboard', icon: 'home', label: 'menu.dashboard', show: function () { return can('dashboard.view'); } },
+      { id: 'tracking', icon: 'pin', label: 'menu.tracking', show: function () { return can('track.view'); } },
       { id: 'quickSale', icon: 'store', label: 'menu.quickSale', show: function () { return role() === 'VAN' && can('doc.INV.create'); } },
       { id: 'quickSO', icon: 'plus', label: 'menu.quickSO', show: function () { return (role() === 'PRE' || role() === 'SALES') && can('doc.SO.create'); } }
     ] },
@@ -2629,6 +2710,15 @@ window.I18N = {
   // ===============================================================
   //  รายการเอกสาร (รูปแบบเดียวกับ DMS เดิม: เลือกหลายรายการ + ปุ่มทำงานพร้อมกัน)
   // ===============================================================
+  /** ช่องส่วนลด: พิมพ์ "50" = 50 บาท, "5%" = 5 เปอร์เซ็นต์ */
+  function parseDisc(txt) {
+    var s0 = String(txt == null ? '' : txt).replace(/,/g, '').trim();
+    var pct = /%\s*$/.test(s0);
+    var v = Math.max(num(s0.replace(/[%฿\s]|บาท/g, '')), 0);
+    if (pct) v = Math.min(v, 100);
+    return { type: pct ? 'PCT' : 'BAHT', value: v };
+  }
+  function discText(type, val) { var v = num(val); return v ? (type === 'PCT' ? rn(v, 4) + '%' : String(rn(v, 2))) : ''; }
   function lkList(type) { return (S.lookups.lists && S.lookups.lists[type]) || []; }
   function lkName(type, code) {
     var x = lkList(type).filter(function (o) { return o.code === code; })[0];
@@ -3208,7 +3298,7 @@ window.I18N = {
                  ToWarehouseId: d.ToWarehouseId, RefDocIds: d.RefDocIds, VatType: d.VatType, PaymentType: d.PaymentType,
                  HeaderDiscountType: d.HeaderDiscountType || 'PCT', HeaderDiscountValue: num(d.HeaderDiscountValue), Tags: d.Tags, Note: d.Note, Reason: d.Reason,
                  RefNo: d.RefNo || '', RefDate: d.RefDate || '', DeliveryType: d.DeliveryType || '', DeliveryDate: d.DeliveryDate || '', Sellable: d.Sellable !== 'FALSE',
-                 CnType: d.DocType === 'CN' ? (d.CnType === 'PROMO' ? 'PROMO' : 'GOODS') : '' };
+                 CnType: d.DocType === 'CN' ? (d.CnType === 'PROMO' ? 'PROMO' : 'GOODS') : '', CountAsOf: d.CountAsOf || '' };
         ed.party = d.PartyId ? { id: d.PartyId, name: d.PartyName, taxId: d.PartyTaxId, branch: d.PartyBranch } : null;
         ed.refs = r.refs.map(function (x) { return { id: x.DocId, no: x.DocNo, type: x.DocType }; });
         ed.lines = r.items.map(function (i) {
@@ -3223,6 +3313,7 @@ window.I18N = {
                  HeaderDiscountType: 'PCT', HeaderDiscountValue: 0, WarehouseId: '', ToWarehouseId: '', Channel: '', Sellable: true };
         if (ed.type === 'GR' || ed.type === 'PO') ed.h.HeaderDiscountValue = num(S.boot.settings.GR_DEFAULT_DISCOUNT_PCT);
         if (ed.type === 'CN') ed.h.CnType = 'GOODS';
+        if (ed.type === 'SC') ed.h.CountAsOf = U.today();
         if (!isVan) {
           if (ed.type === 'VU') ed.h.ToWarehouseId = mainWh();
           if (['ADJ', 'SC', 'TF', 'RT', 'INV', 'SO', 'PO', 'GR'].indexOf(ed.type) >= 0) ed.h.WarehouseId = mainWh();
@@ -3232,7 +3323,7 @@ window.I18N = {
       var info = dtInfo(ed.type);
       if (!r && !info.canCreate) throw { code: 'ERR_NO_PERMISSION', params: {} };
       return Promise.all([U.loadCatalog(ed.h.DocDate), info.partyType === 'C' || info.partyType === 'S' ? U.loadParties(info.partyType) : Promise.resolve([]),
-                          loadStock(srcWh(ed), true), cnLoadInvLines(ed)]);
+                          loadStock(srcWh(ed), true), cnLoadInvLines(ed), scLoadSys(ed)]);
     }).then(function (res) {
       if (ed.cl) return drawCollection(el, ed.cl, {});
       var full = ed.party ? (res[1] || []).filter(function (x) { return x.id === ed.party.id; })[0] : null;
@@ -3257,6 +3348,40 @@ window.I18N = {
 
   // ---------- ใบลดหนี้ (CN) ----------
   // GOODS = ลดหนี้สินค้า (เลือกจากใบกำกับภาษีที่อ้างอิง) / PROMO = ส่วนลดส่งเสริมการขาย (กรอกเป็นยอดเงิน)
+  // ---------- ใบตรวจนับ (SC) ----------
+  /** ยอดในระบบของคลัง (ปัจจุบัน หรือ ณ วันที่) → ed.scSys = {code: base} */
+  function scLoadSys(ed) {
+    if (ed.type !== 'SC' || !ed.h.WarehouseId) return Promise.resolve(null);
+    return call('apiCountSheet', ed.h.WarehouseId, ed.h.CountAsOf || '').then(function (r) {
+      ed.scSys = {};
+      r.items.forEach(function (x) { ed.scSys[x.code] = x.system; });
+      return r;
+    }).catch(function () { ed.scSys = ed.scSys || {}; return null; });
+  }
+  function scUnits(p) { return (p.units || []).slice().sort(function (a, b) { return num(b.Factor) - num(a.Factor); }); }
+  /** แยกจำนวนหน่วยฐานเป็นหน่วยใหญ่ → เล็ก เช่น 52 ขวด = 2 หีบ 4 ขวด */
+  function scSplit(p, base) {
+    var out = {}, left = Math.abs(num(base));
+    scUnits(p).forEach(function (u, i, arr) {
+      var f = num(u.Factor) || 1;
+      var q = i === arr.length - 1 ? rn(left / f, 4) : Math.floor(rn(left / f, 6));
+      if (q) { out[u.Unit] = q; left = rn(left - q * f, 6); }
+    });
+    return out;
+  }
+  function scText(p, base) {
+    var parts = scSplit(p, base), sign = num(base) < 0 ? '-' : '';
+    var txt = scUnits(p).filter(function (u) { return parts[u.Unit]; }).map(function (u) { return U.qtyFmt(parts[u.Unit]) + ' ' + u.Unit; }).join(' ');
+    return txt ? sign + txt : '0';
+  }
+  /** ยอดนับ (หน่วยฐาน) ของบรรทัด หรือ null = ยังไม่ได้นับ */
+  function scCounted(p, l) {
+    if (!l._cnt) return null;
+    var any = false, tot = 0;
+    scUnits(p).forEach(function (u) { var v = l._cnt[u.Unit]; if (v !== '' && v !== undefined && v !== null) { any = true; tot += num(v) * (num(u.Factor) || 1); } });
+    return any ? rn(tot, 6) : null;
+  }
+
   function cnPromoCode() { return S.boot.settings.CN_PROMO_CODE || 'PROMO'; }
   function cnPromoProduct() {
     return { ProductCode: cnPromoCode(), NameTh: S.boot.settings.CN_PROMO_NAME || t('cn.promoItem'), NameEn: t('cn.promoItem'),
@@ -3392,6 +3517,14 @@ window.I18N = {
     };
     var ro = function (v) { return '<input class="input" readonly value="' + esc(v === undefined || v === null || v === '' ? '' : v) + '">'; };
     var fval = function (v) { return '<div class="fval">' + (v ? esc(v) : '-') + '</div>'; };
+    // เหตุผลแบบเลือก (ตัวเลือกแก้ได้ที่ ข้อมูลหลัก → ตัวเลือก)
+    var reasonSel = function (ltype) {
+      var rs = lkList(ltype), cur = ed.h.Reason || '';
+      var known = rs.some(function (o) { return o.nameTh === cur; });
+      return '<select class="input" name="Reason"><option value="">' + t('pleaseSelect') + '</option>' + rs.map(function (o) {
+        return '<option value="' + esc(o.nameTh) + '"' + (o.nameTh === cur ? ' selected' : '') + '>' + esc(L(o.nameTh, o.nameEn)) + '</option>';
+      }).join('') + (cur && !known ? '<option selected>' + esc(cur) + '</option>' : '') + '</select>';
+    };
     var listSel = function (name, ltype, val, extra) {
       return U.selectH(name, [{ v: '', l: t('pleaseSelect') }].concat(lkList(ltype).map(function (o) { return { v: o.code, l: L(o.nameTh, o.nameEn) }; })), val, extra);
     };
@@ -3415,7 +3548,8 @@ window.I18N = {
 
     // ---------- หัวเอกสาร ----------
     var nowTxt = ed.docId ? dateTime(ed.h.DocDate, ed.docTime) : dateTime(U.today(), new Date().toTimeString().substring(0, 5));
-    var left = frow(t('f.DocNo'), ro(docNoText(ed.docNo)), true) + frow(t('ed.dateTime'), ro(nowTxt), true);
+    var meta = edMeta(docNoText(ed.docNo), nowTxt, ed.status || '', isXfer ? '' : centerText());
+    var left = '';
     if (money2) {
       left += frow(t('f.VatType'), U.selectH('VatType', ['EX', 'IN', 'NONE'].map(function (v) { return { v: v, l: t('vat.' + v) }; }), ed.h.VatType,
         noVat || (cust && isSale && !cust.isTaxable) || (isCnGoods(ed) && ed.refs.length) ? 'disabled' : ''), true);
@@ -3428,7 +3562,6 @@ window.I18N = {
       var pays = ((isVanSale(ed) && type === 'INV') || (cust && cust.paymentType === 'CASH' && isSale)) ? ['CASH', 'TRANSFER'] : ['CREDIT', 'CASH', 'TRANSFER'];
       left += frow(t('f.PaymentType'), U.selectH('PaymentType', pays.map(function (v) { return { v: v, l: t('pay.' + v) }; }), ed.h.PaymentType));
     }
-    if (!isXfer) left += frow(t('ed.center'), ro(centerText()), true);
     // คลังสินค้า (ฝั่งซ้าย) สำหรับเอกสารขาย/ซื้อ/ปรับปรุง
     if (!isVan) {
       if (type === 'SO' || type === 'PO' || type === 'GR') left += frow(t('f.WarehouseId'), U.selectH('WarehouseId', whOpts(['MAIN']), ed.h.WarehouseId || mainWh()), true);
@@ -3438,19 +3571,13 @@ window.I18N = {
     if (isSale && !isVan && role !== 'PRE' && role !== 'SALES') {
       left += frow(t('f.TierTable'), U.selectH('Channel', [{ v: 'PRE', l: t('ch.PRE') }, { v: 'VAN', l: t('ch.VAN') }], ed.h.Channel || 'PRE'));
     }
-    left += frow(t('f.Status'), ro(ed.status ? t('st.' + ed.status) : t('st.OPEN')));
-    if (type === 'RT') left += frow(t('f.Reason'), '<input class="input" name="Reason" value="' + esc(ed.h.Reason || '') + '">', true);
+    if (type === 'RT') left += frow(t('f.Reason'), reasonSel('RT_REASON'), true);
     if (type === 'CN') {
       left += frow(t('cn.type'), U.selectH('CnType', [{ v: 'GOODS', l: t('cn.GOODS') }, { v: 'PROMO', l: t('cn.PROMO') }], ed.h.CnType || 'GOODS', 'id="cnType"'), true);
-      var crs = lkList(isCnPromo(ed) ? 'CN_PROMO_REASON' : 'CN_REASON');
-      var cr = ed.h.Reason || '';
-      var crKnown = crs.some(function (o) { return o.nameTh === cr; });
-      left += frow(t('f.Reason'), '<select class="input" name="Reason"><option value="">' + t('pleaseSelect') + '</option>' + crs.map(function (o) {
-        return '<option value="' + esc(o.nameTh) + '"' + (o.nameTh === cr ? ' selected' : '') + '>' + esc(L(o.nameTh, o.nameEn)) + '</option>';
-      }).join('') + (cr && !crKnown ? '<option selected>' + esc(cr) + '</option>' : '') + '</select>', true);
+      left += frow(t('f.Reason'), reasonSel(isCnPromo(ed) ? 'CN_PROMO_REASON' : 'CN_REASON'), true);
     }
-    left += frow(t('f.Note'), '<textarea class="input" name="Note" rows="2">' + esc(ed.h.Note || '') + '</textarea>');
-    if (isXfer) left += frow('', '<label class="check"><input type="checkbox" name="Sellable"' + (ed.h.Sellable === false || ed.h.Sellable === 'FALSE' ? '' : ' checked') + '>' + t('f.Sellable') + '</label>');
+    left += frow(t('f.Note'), '<textarea class="input" name="Note" rows="2">' + esc(ed.h.Note || '') + '</textarea>', false, 'span2');
+    if (isXfer) left += frow('', '<label class="check"><input type="checkbox" name="Sellable"' + (ed.h.Sellable === false || ed.h.Sellable === 'FALSE' ? '' : ' checked') + '>' + t('f.Sellable') + '</label>', false, 'span2');
     left += frow(t('f.Tags'), '<input class="input" name="Tags" placeholder="' + esc(t('doc.tagsHint')) + '" value="' + esc(ed.h.Tags || '') + '">', false, 'frow-sm');
     if (ed.docId) left += frow(t('f.ChangeNote'), '<input class="input" name="ChangeNote">', false, 'frow-sm');
 
@@ -3459,21 +3586,7 @@ window.I18N = {
       var isC = info.partyType === 'C';
       var p = ed.party || {};
       rightTitle = isC ? t('ed.custDetail') : t('ed.suppDetail');
-      right += frow(isC ? t('f.Customer') : t('f.Supplier'), '<div class="input-group"><input class="input" id="partyShow" readonly placeholder="' + esc(t('pleaseSelect')) +
-        '" value="' + esc(ed.party ? p.id + ' - ' + p.name : '') + '"><button class="btn" id="btnParty" type="button">' + icon('search') + '</button></div>', true);
-      if (isC) {
-        var addr = String(p.address || '').split(/\n|\r/).filter(Boolean);
-        right += frow(t('ed.address'), U.selectH('_addr', [{ v: 'MAIN', l: ed.party ? t('ed.addrMain') : t('pleaseSelect') }], 'MAIN', ed.party ? '' : 'disabled'), true) +
-          frow(t('ed.addrType'), fval(ed.party ? t('ed.addrBill') : '')) + frow(t('f.CustomerId'), fval(p.id)) + frow(t('list.customerName'), fval(p.name)) +
-          frow(t('ed.addr1'), fval(addr[0])) + frow(t('ed.addr2'), fval(addr[1])) + frow(t('ed.addr3'), fval(addr.slice(2).join(' '))) +
-          frow(t('f.Subdistrict'), fval(p.subdistrict)) + frow(t('f.District'), fval(p.district)) + frow(t('ed.city'), fval(p.province)) +
-          frow(t('f.Postcode'), fval(p.postcode)) + frow(t('f.Area'), fval(p.area ? lkName('AREA', p.area) : ''));
-        if (ed.party) {
-          right += frow(t('f.PriceGroup'), fval([p.priceGroup, p.creditLimit ? t('cust.unpaidOf', { u: money(p.unpaid), l: money(p.creditLimit) }) : ''].filter(Boolean).join(' · ')));
-        }
-      } else {
-        right += frow(t('list.supplierId'), fval(p.id)) + frow(t('f.Name'), fval(p.name)) + frow(t('ed.addr1'), fval(p.address)) + frow(t('f.TaxId'), fval(p.taxId));
-      }
+      right += partyCard(ed.party, isC, 'btnParty', true);
       if (isSale || type === 'CN' || type === 'RT') {
         var fixedRep = isVan || role === 'PRE' || role === 'SALES';
         right += frow(t('f.SalesRepId'), U.selectH('SalesRepId', repOpts, fixedRep ? S.boot.user.SalesRepId : (ed.h.SalesRepId || (ed.party && ed.party.salesRepId) || ''),
@@ -3488,7 +3601,6 @@ window.I18N = {
       }
     } else {
       rightTitle = isXfer ? t('ed.xferDetail') : t('ed.whDetail');
-      right += frow(t('ed.center'), ro(centerText()), true);
       if (isXfer) {
         var vanW = function (id) { return whs.filter(function (w) { return w.id === id; })[0]; };
         var vanId = type === 'VL' ? ed.h.ToWarehouseId : (type === 'VU' ? ed.h.WarehouseId : '');
@@ -3519,13 +3631,19 @@ window.I18N = {
         }).join('') + (curR && !known ? '<option selected>' + esc(curR) + '</option>' : '') + '</select>');
       } else {
         right += frow(t('f.WarehouseId'), U.selectH('WarehouseId', whOpts(['MAIN', 'VAN', 'DAMAGED', 'OTHER']), ed.h.WarehouseId || mainWh()), true) +
-          frow(t('f.Reason'), '<input class="input" name="Reason" value="' + esc(ed.h.Reason || '') + '">', true);
+          frow(t('f.Reason'), type === 'SC' ? reasonSel('SC_REASON') : '<input class="input" name="Reason" value="' + esc(ed.h.Reason || '') + '">', true);
+        if (type === 'SC') {
+          right += frow(t('sc.asOf'), '<input class="input" type="date" name="CountAsOf" max="' + esc(U.today()) + '" value="' + esc(ed.h.CountAsOf || U.today()) + '">' +
+            '<div class="muted small" style="margin-top:3px">' + t('sc.asOfHint') + '</div>', true) +
+            '<div class="sc-acts"><button class="btn btn-primary" id="btnScSheet" type="button">' + icon('layers') + t('sc.makeSheet') + '</button>' +
+            '<button class="btn" id="btnScPrint" type="button">' + icon('print') + t('sc.printSheet') + '</button></div>';
+        }
       }
       right += frow(t('f.RefNo'), '<input class="input" name="RefNo" value="' + esc(ed.h.RefNo || '') + '">') +
         frow(t('f.RefDate'), '<input class="input" type="date" name="RefDate" value="' + esc(ed.h.RefDate || '') + '">');
     }
-    h += '<div class="card"><div class="tabs"><div class="tab active">' + t('ed.detail') + '</div></div><div class="ed-panels" id="edHead">' +
-      '<div class="ed-panel"><h4>' + t('ed.detail') + '</h4>' + left + '</div>' +
+    h += '<div class="card ed-head">' + meta + '<div class="ed-panels" id="edHead">' +
+      '<div class="ed-panel"><h4>' + t('ed.detail') + '</h4><div class="ed-fields">' + left + '</div></div>' +
       '<div class="ed-panel ed-panel-r"><h4>' + esc(rightTitle) + '</h4>' + right + '</div></div></div>';
 
     // ---------- โปรโมชั่น ----------
@@ -3558,7 +3676,7 @@ window.I18N = {
       '<label class="ef"><span>' + t('f.Unit') + ':</span><select class="input" id="enUnit"><option value="">' + t('pleaseSelect') + '</option></select></label>' +
       (money2 ? '<label class="ef"><span>' + t('f.UnitPrice') + ':</span><input class="input num" id="enPrice" type="number" step="any" value="0.00"' + (editPrice ? '' : ' readonly') + '></label>' +
         '<label class="ef"><span>' + t('ed.gross') + ':</span><input class="input num" id="enGross" readonly value="0.00"></label>' +
-        ((isSale && canDisc) || lineDisc ? '<label class="ef"><span>' + t('f.Discount') + ':</span><input class="input num" id="enDisc" type="number" step="any" min="0" value="0"></label>' : '') +
+        ((isSale && canDisc) || lineDisc ? '<label class="ef"><span>' + t('f.Discount') + ':</span><input class="input num" id="enDisc" inputmode="decimal" placeholder="0 / 5%" title="' + esc(t('ed.discHint')) + '"></label>' : '') +
         '<label class="ef"><span>' + t('ed.net') + ':</span><input class="input num" id="enNet" readonly value="0.00"></label>' : '') +
       '<div class="ef ef-btn"><span>&nbsp;</span><button class="btn" id="btnAdd" type="button">' + t('add') + '</button></div></div></div>' +
       '<div id="lines"></div></div>';
@@ -3568,9 +3686,9 @@ window.I18N = {
       var tl = frow(t('ed.vatRate'), ro(rn(noVat || ed.h.VatType === 'NONE' ? 0 : num(S.boot.settings.VAT_RATE || 7), 2).toFixed(2)));
       if (isSale && !canHeadDisc) tl += frow(t('ed.custDiscPct'), ro(rn(ed.h.HeaderDiscountValue, 2).toFixed(2)));
       if ((isSale && canHeadDisc) || (!isSale && !isXfer)) {
-        tl += frow(isSale ? t('ed.custDiscPct') + ' / ' + t('f.HeaderDiscount') : t('f.HeaderDiscount'), '<div class="input-group">' +
-          U.selectH('HeaderDiscountType', [{ v: 'PCT', l: '%' }, { v: 'BAHT', l: t('baht') }], ed.h.HeaderDiscountType, 'style="max-width:90px"') +
-          '<input class="input num" type="number" min="0" step="any" name="HeaderDiscountValue" value="' + esc(ed.h.HeaderDiscountValue) + '"></div>');
+        tl += frow(isSale ? t('ed.custDiscPct') + ' / ' + t('f.HeaderDiscount') : t('f.HeaderDiscount'),
+          '<input class="input num" id="hdDisc" inputmode="decimal" placeholder="0 / 5%" value="' + esc(discText(ed.h.HeaderDiscountType, ed.h.HeaderDiscountValue)) + '">' +
+          '<div class="muted small" style="margin-top:3px">' + t('ed.discHint') + '</div>');
       }
       tl += frow(t('ed.rounding'), ro('0.00'));
       h += '<div class="card"><div class="ed-totals"><div class="ed-tleft" id="edFoot">' + tl + '</div><div class="ed-sum" id="totalsBox"></div></div></div>';
@@ -3599,9 +3717,10 @@ window.I18N = {
             var vw2 = whs.filter(function (w) { return w.id === (type === 'VL' ? ed.h.ToWarehouseId : ed.h.WarehouseId); })[0];
             ed.h.SalesRepId = vw2 && vw2.salesRepId ? vw2.salesRepId : '';
           }
-          loadStock(srcWh(ed)).then(function () { drawEditor(el, ed); });
+          Promise.all([loadStock(srcWh(ed)), scLoadSys(ed)]).then(function () { drawEditor(el, ed); });
           return;
         }
+        if (n === 'CountAsOf') { scLoadSys(ed).then(function () { drawLines(); }); return; }
         recalc();
       });
     });
@@ -3630,6 +3749,47 @@ window.I18N = {
       $('#cnPromoAmt').value = ''; $('#cnPromoNote').value = '';
       drawLines();
     };
+    if ($('#btnScSheet')) $('#btnScSheet').onclick = function () {
+      readHead();
+      if (!ed.h.WarehouseId) { toast(t('ERR_REQUIRED', { field: t('f.WarehouseId') }), 'err'); return; }
+      var make = function () {
+        scLoadSys(ed).then(function (r) {
+          if (!r) return;
+          var list = r.items.filter(function (x) { return x.system > 0 && S.catalog.map[x.code]; })
+            .sort(function (a, b) { return a.code < b.code ? -1 : 1; });
+          if (!list.length) { toast(t('sc.noStock'), 'warn'); return; }
+          ed.lines = list.map(function (x) {
+            var p = S.catalog.map[x.code];
+            return { _k: U.uid(), ProductCode: x.code, Unit: p.BaseUnit, Qty: '', _cnt: {}, IsFree: false, DiscountType: 'PCT', DiscountValue: 0, DiscountEditedBy: '', UnitPrice: '', ItemCondition: 'GOOD', RefLineId: '', Note: '' };
+          });
+          drawLines();
+          toast(t('sc.made', { n: list.length }), 'ok');
+        });
+      };
+      if (ed.lines.length) U.confirmBox(t('sc.replace')).then(function (ok) { if (ok) make(); }); else make();
+    };
+    if ($('#btnScPrint')) $('#btnScPrint').onclick = function () {
+      readHead();
+      if (!ed.lines.length) { toast(t('sc.empty'), 'warn'); return; }
+      var whn = (whs.filter(function (w) { return w.id === ed.h.WarehouseId; })[0] || {}).name || ed.h.WarehouseId;
+      var rowsP = ed.lines.map(function (l, i) {
+        var p = S.catalog.map[l.ProductCode] || { NameTh: l.ProductCode, units: [] };
+        return '<tr><td class="c">' + (i + 1) + '</td><td>' + esc(l.ProductCode) + '</td><td>' + esc(p.NameTh) + '</td>' +
+          scUnits(p).map(function (u) { return '<td class="cnt">&nbsp;</td><td class="u">' + esc(u.Unit) + '</td>'; }).join('') + '</tr>';
+      }).join('');
+      var maxU = Math.max.apply(null, ed.lines.map(function (l) { return scUnits(S.catalog.map[l.ProductCode] || { units: [] }).length; }).concat([1]));
+      U.printHtml('<html><head><meta charset="utf-8"><title>' + esc(t('sc.formTitle')) + '</title><style>body{font-family:Sarabun,Tahoma,sans-serif;font-size:12px;margin:14mm}' +
+        'h2{margin:0 0 4px}table{width:100%;border-collapse:collapse;margin-top:10px}th,td{border:1px solid #333;padding:6px 5px}th{background:#1E293B;color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+        'td.c{text-align:center;width:28px}td.cnt{width:60px}td.u{width:46px;color:#555;font-size:11px}.sig{display:flex;justify-content:space-between;margin-top:40px}.sig div{width:30%;text-align:center}</style></head><body>' +
+        '<h2>' + esc(t('sc.formTitle')) + '</h2><div>' + esc(t('f.WarehouseId')) + ': <b>' + esc(whn) + '</b> · ' + esc(t('sc.asOf')) + ': <b>' + esc(U.dateFmt(ed.h.CountAsOf || U.today())) + '</b> · ' +
+        esc(t('sc.sumItems', { n: ed.lines.length })) + '</div>' +
+        '<table><thead><tr><th>#</th><th>' + esc(t('ed.code')) + '</th><th>' + esc(t('ed.name')) + '</th><th colspan="' + (maxU * 2) + '">' + esc(t('sc.counted')) + '</th></tr></thead><tbody>' + rowsP + '</tbody></table>' +
+        '<div class="sig"><div>.............................<br>' + esc(t('sc.counter')) + '</div><div>.............................<br>' + esc(t('sc.checker')) + '</div><div>.............................<br>' + esc(t('sc.approver')) + '</div></div></body></html>');
+    };
+    if ($('#hdDisc')) {
+      $('#hdDisc').oninput = function () { var pd = parseDisc($('#hdDisc').value); ed.h.HeaderDiscountType = pd.type; ed.h.HeaderDiscountValue = pd.value; recalc(); };
+      $('#hdDisc').onblur = function () { $('#hdDisc').value = discText(ed.h.HeaderDiscountType, ed.h.HeaderDiscountValue); };
+    }
     if ($('#btnPromo')) $('#btnPromo').onclick = function () { recalc(); $('#tierBox').scrollIntoView({ behavior: 'smooth', block: 'center' }); };
 
     // ---------- แถวเพิ่มสินค้า ----------
@@ -3659,7 +3819,8 @@ window.I18N = {
       if (!$('#enPrice')) return;
       if (!priceTouched || !editPrice) $('#enPrice').value = rn(basePrice(p, u), 4).toFixed(2);
       var gross = r2(num($('#enPrice').value) * q);
-      var disc = $('#enDisc') ? Math.min(num($('#enDisc').value), gross) : 0;
+      var pd = $('#enDisc') ? parseDisc($('#enDisc').value) : { type: 'BAHT', value: 0 };
+      var disc = Math.min(pd.type === 'PCT' ? r2(gross * pd.value / 100) : pd.value, gross);
       $('#enGross').value = money(gross);
       $('#enNet').value = money(r2(gross - disc));
     };
@@ -3675,26 +3836,36 @@ window.I18N = {
       $('#enUnit').innerHTML = p.units.map(function (x) {
         return '<option value="' + esc(x.Unit) + '"' + (x.Unit === du ? ' selected' : '') + '>' + esc(x.Unit + (x.Factor > 1 ? ' (' + x.Factor + ')' : '')) + '</option>';
       }).join('');
-      if ($('#enDisc')) $('#enDisc').value = 0;
+      if ($('#enDisc')) $('#enDisc').value = '';
       drawEntry();
       $('#enQty').focus();
       $('#enQty').select();
     };
-    var addProduct = function (code, unit, qty, price, discBaht) {
+    var addProduct = function (code, unit, qty, price, discIn) {
+      var dsc = typeof discIn === 'object' && discIn ? discIn : { type: 'BAHT', value: num(discIn) };
       var p = S.catalog.map[code];
       if (!p) { toast(t('ERR_PRODUCT_NOT_FOUND', { code: code }), 'err'); return; }
       if (!productAllowed(p, ed)) { toast(t('ERR_NOT_FOR_VAN', { code: code }), 'err'); return; }
       var u = unit || defaultUnit(p, ed);
       qty = qty === undefined ? 1 : num(qty);
       if (!qty && type !== 'ADJ') { toast(t('ERR_QTY', { line: '' }), 'err'); return; }
+      if (type === 'SC') {
+        var ex = ed.lines.filter(function (l) { return l.ProductCode === code; })[0];
+        if (ex) { ex._cnt = ex._cnt || {}; ex._cnt[u] = num(ex._cnt[u]) + qty; }
+        else { var nl = { _k: U.uid(), ProductCode: code, Unit: u, Qty: '', _cnt: {}, IsFree: false, DiscountType: 'PCT', DiscountValue: 0, DiscountEditedBy: '', UnitPrice: '', ItemCondition: 'GOOD', RefLineId: '', Note: '' };
+          nl._cnt[u] = qty; ed.lines.push(nl); }
+        pend = null; sInp.value = ''; $('#enQty').value = 1; $('#enUnit').innerHTML = '<option value="">' + t('pleaseSelect') + '</option>';
+        sug.classList.add('hidden'); drawLines(); toast(t('doc.added', { name: p.NameTh }), 'ok', 1200);
+        return;
+      }
       var same = ed.lines.filter(function (l) { return l.ProductCode === code && l.Unit === u && !l.IsFree && !l.RefLineId; })[0];
-      if (same && !discBaht && (price === undefined || price === '' || num(price) === num(same.UnitPrice) || same.UnitPrice === '')) {
+      if (same && !dsc.value && (price === undefined || price === '' || num(price) === num(same.UnitPrice) || same.UnitPrice === '')) {
         same.Qty = rn(num(same.Qty) + qty, 4);
       } else {
         var l = { _k: U.uid(), ProductCode: code, Unit: u, Qty: qty, IsFree: false, DiscountType: 'PCT', DiscountValue: 0, DiscountEditedBy: '',
                   UnitPrice: editPrice && price !== undefined && price !== '' ? num(price) : '', ItemCondition: 'GOOD', RefLineId: '', Note: '' };
-        if (discBaht > 0) {
-          l.DiscountType = 'BAHT'; l.DiscountValue = num(discBaht);
+        if (dsc.value > 0) {
+          l.DiscountType = dsc.type; l.DiscountValue = dsc.value;
           if (isSale) l.DiscountEditedBy = S.boot.user.UserId;
         }
         ed.lines.push(l);
@@ -3703,7 +3874,7 @@ window.I18N = {
       sInp.value = '';
       $('#enQty').value = 1;
       $('#enUnit').innerHTML = '<option value="">' + t('pleaseSelect') + '</option>';
-      if ($('#enDisc')) $('#enDisc').value = 0;
+      if ($('#enDisc')) $('#enDisc').value = '';
       drawEntry();
       sug.classList.add('hidden');
       drawLines();
@@ -3769,13 +3940,79 @@ window.I18N = {
         if (S.catalog.map[code]) selectProduct(code);
         else { toast(t('ed.pickProduct'), 'warn'); sInp.focus(); return; }
       }
-      addProduct(pend, $('#enUnit').value, num($('#enQty').value), $('#enPrice') ? $('#enPrice').value : undefined, $('#enDisc') ? num($('#enDisc').value) : 0);
+      addProduct(pend, $('#enUnit').value, num($('#enQty').value), $('#enPrice') ? $('#enPrice').value : undefined, $('#enDisc') ? parseDisc($('#enDisc').value) : null);
     };
     $('#btnMulti').onclick = function () { multiAddDialog(ed, function (rows) { rows.forEach(function (r) { addProduct(r.code, r.unit, r.qty); }); }); };
 
     // ---------- ตารางสินค้า ----------
+    // ---------- ตารางตรวจนับ (SC): นับเป็นหีบ/กล่อง/ชิ้น ระบบรวมเป็นหน่วยฐานและแสดงผลต่าง ----------
+    var drawCount = function () {
+      var box = $('#lines');
+      ed.scSys = ed.scSys || {};
+      ed.lines.forEach(function (l) {
+        if (l._cnt) return;
+        var p0 = S.catalog.map[l.ProductCode];
+        l._cnt = {};
+        if (p0 && l.Qty !== '' && l.Qty !== undefined) {           // เอกสารที่บันทึกไว้: แยกยอดกลับเป็นหีบ/ชิ้น
+          var u0 = p0.units.filter(function (u) { return u.Unit === l.Unit; })[0];
+          var sp = scSplit(p0, num(l.Qty) * (u0 ? num(u0.Factor) : 1));
+          scUnits(p0).forEach(function (u) { l._cnt[u.Unit] = sp[u.Unit] || 0; });
+        }
+      });
+      $('#lineCount').textContent = ed.lines.length ? '(' + ed.lines.length + ')' : '';
+      if (!ed.lines.length) { box.innerHTML = '<div class="empty">' + t('sc.empty') + '</div>'; return; }
+      var rows = ed.lines.map(function (l, idx) {
+        var p = S.catalog.map[l.ProductCode] || { ProductCode: l.ProductCode, NameTh: l.ProductCode, units: [{ Unit: l.Unit, Factor: 1 }] };
+        var ins = scUnits(p).map(function (u) {
+          var v = l._cnt[u.Unit];
+          return '<label class="sc-u"><input class="input num sm" type="number" min="0" step="any" data-u="' + esc(u.Unit) + '" value="' + esc(v === undefined || v === null ? '' : v) + '"><span>' + esc(u.Unit) + '</span></label>';
+        }).join('');
+        return '<tr class="line-row" data-k="' + l._k + '"><td class="c">' + (idx + 1) + '</td><td class="nowrap">' + esc(l.ProductCode) + '</td><td class="ed-name">' + esc(p.NameTh) + '</td>' +
+          '<td class="num" data-label="' + esc(t('sc.system')) + '"><span data-sys></span></td><td data-label="' + esc(t('sc.counted')) + '"><div class="sc-ins">' + ins + '</div></td>' +
+          '<td class="num" data-label="' + esc(t('sc.total')) + '"><span data-tot></span></td><td class="num" data-label="' + esc(t('sc.diff')) + '"><b data-diff></b></td>' +
+          '<td class="c"><button class="icon-btn" type="button" data-del title="remove">' + icon('x') + '</button></td></tr>';
+      }).join('');
+      box.innerHTML = '<div class="table-wrap"><table class="tbl cards ed-lines sc-tbl"><thead><tr><th>#</th><th>' + t('ed.code') + '</th><th>' + t('ed.name') + '</th><th class="num">' + t('sc.system') +
+        '</th><th>' + t('sc.counted') + '</th><th class="num">' + t('sc.total') + '</th><th class="num">' + t('sc.diff') + '</th><th></th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+        '<div class="sc-sum" id="scSum"></div>';
+      var upd = function () {
+        var n = 0, over = 0, under = 0, pend = 0;
+        $$('#lines tr.line-row').forEach(function (row) {
+          var l = ed.lines.filter(function (x) { return x._k === row.getAttribute('data-k'); })[0];
+          var p = S.catalog.map[l.ProductCode] || { units: [{ Unit: l.Unit, Factor: 1 }] };
+          var sys = num(ed.scSys[l.ProductCode]);
+          var c = scCounted(p, l);
+          $('[data-sys]', row).textContent = scText(p, sys);
+          $('[data-tot]', row).textContent = c === null ? '-' : scText(p, c);
+          var d = c === null ? null : rn(c - sys, 6);
+          var de = $('[data-diff]', row);
+          de.textContent = d === null ? t('sc.notCounted') : (d === 0 ? '✓ ' + t('sc.match') : (d > 0 ? '+' : '') + scText(p, d));
+          de.className = d === null ? 'muted' : (d === 0 ? 'stock-ok' : (d > 0 ? 'sc-over' : 'stock-low'));
+          row.classList.toggle('sc-pending', d === null);
+          n++; if (d === null) pend++; else if (d > 0) over++; else if (d < 0) under++;
+        });
+        $('#scSum').innerHTML = '<span>' + t('sc.sumItems', { n: n }) + '</span><span class="stock-low">' + t('sc.sumUnder', { n: under }) + '</span><span class="sc-over">' +
+          t('sc.sumOver', { n: over }) + '</span><span class="muted">' + t('sc.sumPending', { n: pend }) + '</span>';
+      };
+      $$('#lines tr.line-row').forEach(function (row) {
+        var k = row.getAttribute('data-k');
+        var l = ed.lines.filter(function (x) { return x._k === k; })[0];
+        $('[data-del]', row).onclick = function () { ed.lines = ed.lines.filter(function (x) { return x._k !== k; }); drawCount(); };
+        $$('[data-u]', row).forEach(function (inp) {
+          inp.oninput = function () { l._cnt[inp.getAttribute('data-u')] = inp.value === '' ? '' : num(inp.value); upd(); };
+          inp.onkeydown = function (e) {
+            if (e.key !== 'Enter') return;
+            e.preventDefault();
+            var all = $$('#lines [data-u]'), i = all.indexOf(inp);
+            if (all[i + 1]) { all[i + 1].focus(); all[i + 1].select(); }
+          };
+        });
+      });
+      upd();
+    };
     var showSoRemain = type === 'SO' && ed.lines.some(function (l) { return num(l.Delivered) > 0; });
     var drawLines = function () {
+      if (type === 'SC') { drawCount(); return; }
       var box = $('#lines');
       $('#lineCount').textContent = ed.lines.length ? '(' + ed.lines.length + ')' : '';
       var cols = ['#', t('ed.code'), t('ed.name'), t('ed.onHand'), t('f.Qty')];
@@ -3816,11 +4053,9 @@ window.I18N = {
         if (money2 && !isXfer && type !== 'CN' && type !== 'RT') {
           var d = '-';
           if (lineDisc) {
-            d = '<div class="input-group">' + U.selectH('dt', [{ v: 'PCT', l: '%' }, { v: 'BAHT', l: '฿' }], l.DiscountType, 'data-f="DiscountType" class="input sm" style="width:60px"') +
-              '<input class="input num sm" type="number" min="0" step="any" data-f="DiscountValue" value="' + esc(l.DiscountValue) + '" style="width:80px"></div>';
+            d = '<input class="input num sm" data-disc inputmode="decimal" placeholder="0 / 5%" value="' + esc(discText(l.DiscountType, l.DiscountValue)) + '" style="width:96px">';
           } else if (isSale && l.DiscountEditedBy && !fromSo) {
-            d = '<div class="input-group">' + U.selectH('dt', [{ v: 'PCT', l: '%' }, { v: 'BAHT', l: '฿' }], l.DiscountType, 'data-f="DiscountType" class="input sm" style="width:60px"') +
-              '<input class="input num sm" type="number" min="0" step="any" data-f="DiscountValue" value="' + esc(l.DiscountValue) + '" style="width:80px">' +
+            d = '<div class="input-group"><input class="input num sm" data-disc inputmode="decimal" placeholder="0 / 5%" value="' + esc(discText(l.DiscountType, l.DiscountValue)) + '" style="width:96px">' +
               '<button class="btn btn-sm" type="button" data-auto title="' + esc(t('ed.autoDisc')) + '">↺</button></div>';
           } else if (isSale && canDisc && !l.IsFree && !p.IsPremium && !fromSo) {
             d = '<span data-mdisc></span> <button class="icon-btn sm" type="button" data-manual title="' + esc(t('doc.editDisc')) + '">' + icon('edit') + '</button>';
@@ -3863,6 +4098,11 @@ window.I18N = {
             if (f === 'IsFree' || f === 'Unit') drawLines(); else recalc();
           });
         });
+        if ($('[data-disc]', row)) {
+          var di = $('[data-disc]', row);
+          di.oninput = function () { var pd = parseDisc(di.value); l.DiscountType = pd.type; l.DiscountValue = pd.value; recalc(); };
+          di.onblur = function () { di.value = discText(l.DiscountType, l.DiscountValue); };
+        }
         if ($('[data-manual]', row)) $('[data-manual]', row).onclick = function () {
           var c = ed.calc && ed.calc.byKey[k];
           l.DiscountEditedBy = S.boot.user.UserId;
@@ -3945,12 +4185,29 @@ window.I18N = {
       if (isVan || role === 'PRE' || role === 'SALES') delete payload.SalesRepId;
       if ((info.partyType === 'C' || info.partyType === 'S') && !payload.PartyId) { toast(t('ERR_REQUIRED', { field: t('f.Party') }), 'err'); return; }
       if (!ed.lines.length) { toast(t('ERR_NO_LINES'), 'err'); return; }
-      payload.lines = ed.lines.map(function (l) {
+      var srcLines = ed.lines;
+      if (type === 'SC') {
+        var counted = [], skipped = 0;
+        ed.lines.forEach(function (l) {
+          var p = S.catalog.map[l.ProductCode] || { units: [{ Unit: l.Unit, Factor: 1 }], BaseUnit: l.Unit };
+          var c = scCounted(p, l);
+          if (c === null) { skipped++; return; }
+          var parts = scUnits(p).filter(function (u) { return num(l._cnt[u.Unit]); }).map(function (u) { return U.qtyFmt(l._cnt[u.Unit]) + ' ' + u.Unit; }).join(' ');
+          counted.push(Object.assign({}, l, { Unit: p.BaseUnit || l.Unit, Qty: c, Note: parts }));
+        });
+        if (!counted.length) { toast(t('sc.noneCounted'), 'err'); return; }
+        if (skipped && !save._okSkip) {
+          U.confirmBox(t('sc.skipConfirm', { n: skipped })).then(function (ok) { if (ok) { save._okSkip = true; save(opts); save._okSkip = false; } });
+          return;
+        }
+        srcLines = counted;
+      }
+      payload.lines = srcLines.map(function (l) {
         return { ProductCode: l.ProductCode, Unit: l.Unit, Qty: num(l.Qty), UnitPrice: l.UnitPrice === '' ? '' : num(l.UnitPrice), IsFree: !!l.IsFree,
                  DiscountType: l.DiscountType, DiscountValue: num(l.DiscountValue), DiscountEditedBy: l.DiscountEditedBy || '',
                  ItemCondition: l.ItemCondition, RefLineId: l.RefLineId, Note: l.Note };
       });
-      var bad = payload.lines.filter(function (l) { return type === 'ADJ' ? l.Qty === 0 : l.Qty <= 0; });
+      var bad = payload.lines.filter(function (l) { return type === 'ADJ' ? l.Qty === 0 : (type === 'SC' ? l.Qty < 0 : l.Qty <= 0); });
       if (bad.length) { toast(t('ERR_QTY', { line: '' }), 'err'); return; }
       $$('.ed-btns .btn', el).forEach(function (b) { b.disabled = true; });
       call('apiDocSave', payload, opts).then(function (res) {
@@ -4200,6 +4457,39 @@ window.I18N = {
     }).catch(function () {});
   }
 
+  /** แถบข้อมูลเอกสาร: เลขที่ · วันที่ · ศูนย์ · สถานะ */
+  function edMeta(no, when, status, center) {
+    var it = function (k, v) { return '<div class="em-i"><span>' + esc(k) + '</span><b>' + esc(v || '-') + '</b></div>'; };
+    return '<div class="ed-meta">' + it(t('f.DocNo'), no) + it(t('ed.dateTime'), when) + (center ? it(t('ed.center'), center) : '') +
+      '<div class="em-i"><span>' + esc(t('f.Status')) + '</span><b><span class="badge ' + esc(status || 'DRAFT') + '">' + esc(status ? t('st.' + status) : t('st.OPEN')) + '</span></b></div></div>';
+  }
+  /** การ์ดลูกค้า/ซัพพลายเออร์ (แทนรายการที่อยู่ทีละบรรทัด) */
+  function partyCard(p, isC, btnId, canChange) {
+    var pickBtn = btnId ? '<button class="btn btn-sm" id="' + btnId + '" type="button">' + icon('search') + (p ? t('ed.change') : t('pleaseSelect')) + '</button>' : '';
+    if (!p) {
+      return '<div class="pcard pcard-empty"><div class="muted">' + t(isC ? 'ed.noCustomer' : 'ed.noSupplier') + '</div>' + pickBtn + '</div>';
+    }
+    var lines = String(p.address || '').split(/\n|\r/).filter(Boolean);
+    var place = isC ? [p.subdistrict, p.district, p.province, p.postcode].filter(Boolean).join(' ') : '';
+    var addr = lines.concat(place ? [place] : []).join(' ');
+    var chips = [];
+    if (isC && p.area) chips.push('<span class="chip">' + icon('home') + esc(lkName('AREA', p.area)) + '</span>');
+    if (isC && p.priceGroup) chips.push('<span class="chip">' + esc(p.priceGroup) + '</span>');
+    if (isC && p.paymentType) chips.push('<span class="chip">' + esc(t('pay.' + p.paymentType)) + '</span>');
+    if (p.taxId) chips.push('<span class="chip">' + t('f.TaxId') + ' ' + esc(p.taxId) + '</span>');
+    var credit = '';
+    if (isC && p.creditLimit) {
+      var pct = Math.min(100, Math.round(num(p.unpaid) / num(p.creditLimit) * 100));
+      credit = '<div class="pcard-credit"><div class="pc-bar"><i style="width:' + pct + '%"' + (pct >= 90 ? ' class="hot"' : '') + '></i></div>' +
+        '<div class="small muted">' + t('cust.unpaidOf', { u: money(p.unpaid), l: money(p.creditLimit) }) + '</div></div>';
+    }
+    return '<div class="pcard"><div class="pcard-top"><div class="pcard-av">' + esc(String(p.name || '?').replace(/^(ร้าน|บริษัท|บจก\.?|หจก\.?)\s*/, '').charAt(0) || '?') + '</div>' +
+      '<div class="pcard-main"><div class="pcard-name">' + esc(p.name) + '</div><div class="pcard-sub">' + esc(p.id) + (isC ? ' · ' + t('ed.addrMain') : '') + '</div></div>' +
+      (canChange ? pickBtn : '') + '</div>' +
+      (addr ? '<div class="pcard-addr">' + esc(addr) + '</div>' : '') +
+      (chips.length ? '<div class="pcard-chips">' + chips.join('') + '</div>' : '') + credit + '</div>';
+  }
+
   function drawRefs(ed, onChange) {
     var box = $('#refChips');
     if (!box) return;
@@ -4412,20 +4702,12 @@ window.I18N = {
         var h = '<div class="ed-bar"><div class="ed-title">' + icon('layers') + ' ' + t('cl.title') + ' <span class="muted small">CL</span></div><div class="ed-btns">' + btns + '</div></div>';
         if (d && r.currentApprover) h += '<div class="alert info">' + t('doc.waitingFor', { who: r.currentApprover }) + '</div>';
         if (d && d.Reason && ['REJECTED', 'RETURNED', 'CANCELLED'].indexOf(d.Status) >= 0) h += '<div class="alert err">' + t('f.Reason') + ': ' + esc(d.Reason) + '</div>';
-        h += '<div class="card"><div class="tabs"><div class="tab active">' + t('ed.detail') + '</div></div><div class="ed-panels">' +
+        h += '<div class="card ed-head">' + edMeta(docNoText(d ? d.DocNo : ''), d ? dateTime(d.DocDate, d.DocTime) : dateTime(U.today(), new Date().toTimeString().substring(0, 5)),
+            d ? d.Status : '', centerText()) + '<div class="ed-panels">' +
           '<div class="ed-panel"><h4>' + t('ed.detail') + '</h4>' +
-          frow(t('f.DocNo'), ro(docNoText(d ? d.DocNo : '')), true) +
-          frow(t('ed.dateTime'), ro(d ? dateTime(d.DocDate, d.DocTime) : dateTime(U.today(), new Date().toTimeString().substring(0, 5))), true) +
-          frow(t('ed.center'), ro(centerText()), true) + frow(t('f.Status'), ro(d ? t('st.' + d.Status) : t('st.OPEN'))) +
-          frow(t('f.Note'), '<textarea class="input" id="clNote" rows="2"' + (editable ? '' : ' readonly') + '>' + esc(st.note || '') + '</textarea>') + '</div>' +
+          frow(t('f.Note'), '<textarea class="input" id="clNote" rows="3"' + (editable ? '' : ' readonly') + '>' + esc(st.note || '') + '</textarea>') + '</div>' +
           '<div class="ed-panel ed-panel-r"><h4>' + t('ed.custDetail') + '</h4>' +
-          frow(t('f.Customer'), '<div class="input-group"><input class="input" readonly id="clParty" placeholder="' + esc(t('pleaseSelect')) + '" value="' +
-            esc(st.party ? c.id + ' - ' + c.name : '') + '">' + (editable ? '<button class="btn" id="clPick" type="button">' + icon('search') + '</button>' : '') + '</div>', true) +
-          frow(t('ed.address'), U.selectH('_addr', [{ v: 'MAIN', l: st.party ? t('ed.addrMain') : t('pleaseSelect') }], 'MAIN', st.party ? '' : 'disabled'), true) +
-          frow(t('ed.addrType'), fval(st.party ? t('ed.addrBill') : '')) + frow(t('f.CustomerId'), fval(c.id)) + frow(t('list.customerName'), fval(c.name)) +
-          frow(t('ed.addr1'), fval(addr[0])) + frow(t('ed.addr2'), fval(addr[1])) + frow(t('ed.addr3'), fval(addr.slice(2).join(' '))) +
-          frow(t('f.Subdistrict'), fval(c.subdistrict)) + frow(t('f.District'), fval(c.district)) + frow(t('ed.city'), fval(c.province)) +
-          frow(t('f.Postcode'), fval(c.postcode)) + frow(t('f.Area'), fval(c.area ? lkName('AREA', c.area) : '')) +
+          (st.party || editable ? partyCard(st.party, true, editable ? 'clPick' : '', editable) : '') +
           frow(t('f.SalesRepId'), U.selectH('clRep', [{ v: '', l: t('pleaseSelect') }].concat(reps.map(function (x) { return { v: x.id, l: x.id + ' ' + x.name }; })),
             fixedRep ? S.boot.user.SalesRepId : st.salesRepId, 'id="clRep"' + (fixedRep || !editable ? ' disabled' : '')), true) + '</div></div></div>';
         CL_SECTIONS.forEach(function (sec) {
@@ -5218,8 +5500,12 @@ window.I18N = {
           '<div>' +
           U.field(t('f.ParentId'), '<div class="input-group"><input class="input" id="ceParentShow" readonly value="' + esc(c.ParentId ? c.ParentId + ' ' + (c.ParentName || '') : '') + '" placeholder="' + esc(t('cust.pleaseSelect')) + '">' +
             '<input type="hidden" name="ParentId" value="' + esc(c.ParentId || '') + '">' + (canEdit ? '<button class="btn" id="ceParent" type="button">' + icon('search') + '</button><button class="btn" id="ceParentX" type="button">' + icon('x') + '</button>' : '') + '</div>') +
-          U.field(t('f.CustomerId'), '<div class="input-group"><input class="input" name="CustomerId" value="' + esc(isNew ? '' : c.CustomerId) + '" placeholder="' + esc(t('cust.tempCode')) + '"' +
-            (isNew && manage ? '' : ' readonly') + '></div>' + (isNew && manage ? '<label class="check small" style="margin-top:6px"><input type="checkbox" name="AutoCode" checked>' + t('f.AutoCode') + '</label>' : ''), true) +
+          U.field(t('f.CustomerId'), (function () {
+            var draft = !isNew && /^DRF\d+$/.test(c.CustomerId);
+            var keyBtn = draft && manage ? '<button class="btn" id="ceKey" type="button" title="' + esc(t('cust.keyBtn')) + '">' + icon('key') + '</button>' : '';
+            return '<div class="input-group"><input class="input" value="' + esc(isNew ? '' : c.CustomerId) + '" placeholder="' + esc(t('cust.autoCode')) + '" readonly>' + keyBtn + '</div>' +
+              '<div class="muted small" style="margin-top:4px">' + t(isNew ? (manage ? 'cust.autoCodeHint' : 'cust.draftNewHint') : (draft ? (manage ? 'cust.draftHint' : 'cust.draftWait') : 'cust.codeLocked')) + '</div>';
+          })(), true) +
           U.field(t('f.Name'), U.inputH('Name', c.Name, dis(false)), true) +
           U.field(t('f.AltName'), U.inputH('AltName', c.AltName, dis(false))) +
           lkSel('CLASSIFICATION', 'Classification', false) + lkSel('AREA', 'Area', false) +
@@ -5258,26 +5544,29 @@ window.I18N = {
           chk('BlockOverLimit', t('f.BlockOverLimit'), true) +
           '</div></div>' +
           // ---------- OTHER ----------
-          '<div class="gap"></div><div class="card-title"><h3>' + t('cust.secOther') + '</h3></div><div class="grid grid-2 stack">' +
-          lkSel('OWNERSHIP_TYPE', 'OwnershipType', false) + lkSel('BRAND_PRIORITY', 'BrandPriority', false) +
-          lkSel('SHOP_TYPE', 'ShopType', false) + lkSel('CUSTOMER_CHAIN', 'CustomerChain', false) +
-          lkSel('VISIT_FREQUENCY', 'VisitFrequency', false) + lkSel('CONTRACT_TYPE', 'ContractType', false) +
-          chk('SpecialGroup', t('f.SpecialGroup'), true) + '</div></div>';
+          '<div class="gap"></div><div class="card-title"><h3>' + t('cust.secOther') + '</h3></div>' +
+          '<div class="cust-other">' + lkSel('SHOP_TYPE', 'ShopType', false) + lkSel('OWNERSHIP_TYPE', 'OwnershipType', false) +
+          lkSel('VISIT_FREQUENCY', 'VisitFrequency', false) + '</div></div>';
 
-        // ---------- PICTURES + GPS ----------
-        html += '<div class="card"><div class="card-title"><h3>' + t('cust.secPictures') + '</h3>' + (!isNew && (canEdit || c.canGps) ? '<div class="btn-row">' +
-          '<button class="btn btn-sm" id="cePhotoCam" type="button">' + icon('camera') + t('doc.camera') + '</button>' +
-          '<button class="btn btn-sm" id="cePhotoUp" type="button">' + icon('upload') + t('cust.upload') + '</button></div>' : '') + '</div>' +
+        // ---------- แผนที่และรูปภาพ: ละติจูด/ลองจิจูด → แผนที่ + Street View → รูปร้าน ----------
+        var gpsEdit = manage && canEdit;
+        html += '<div class="card"><div class="card-title"><h3>' + t('cust.secMap') + '</h3>' +
+          (!isNew && c.canGps ? '<button class="btn btn-sm" id="ceGpsNow" type="button">' + icon('pin') + t('cust.gpsNow') + '</button>' : '') + '</div>' +
           (isNew ? '<div class="muted small">' + t('cust.saveFirst') + '</div>' :
-            '<div class="kv" style="margin-bottom:12px"><div><div class="k">GPS</div><div class="v" id="ceGps">' + gpsText(c) + '</div></div>' +
-            '<div>' + (c.canGps ? '<button class="btn btn-sm" id="ceGpsNow" type="button">' + icon('home') + t('cust.gpsNow') + '</button>' : '') + '</div></div>' +
-            '<div id="cePhotos" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px">' +
+            '<div class="grid grid-2 stack">' +
+            U.field(t('cust.lat'), '<input class="input" id="ceLat" inputmode="decimal" value="' + esc(c.Lat || '') + '"' + (gpsEdit ? ' placeholder="' + esc(t('cust.latPh')) + '"' : ' readonly') + '>') +
+            U.field(t('cust.lng'), '<input class="input" id="ceLng" inputmode="decimal" value="' + esc(c.Lng || '') + '"' + (gpsEdit ? ' placeholder="' + esc(t('cust.lngPh')) + '"' : ' readonly') + '>') + '</div>' +
+            (gpsEdit ? '<div class="muted small" style="margin:-6px 0 12px">' + t('cust.gpsTypeHint') + '</div>' : '') +
+            '<div class="map-grid"><fieldset class="map-box"><legend>' + t('cust.map') + '</legend><div class="map-pair" id="ceMaps"></div></fieldset>' +
+            '<fieldset class="map-box"><legend>' + t('cust.photo') + '</legend>' +
+            ((canEdit || c.canGps) ? '<div class="btn-row" style="margin-bottom:8px"><button class="btn btn-sm" id="cePhotoCam" type="button">' + icon('camera') + t('doc.camera') + '</button>' +
+              '<button class="btn btn-sm" id="cePhotoUp" type="button">' + icon('upload') + t('cust.upload') + '</button></div>' : '') +
+            '<div id="cePhotos" class="photo-grid">' +
             (c.photos.length ? c.photos.map(function (ph) {
-              return '<div class="card" style="padding:6px;margin:0"><div data-ph="' + esc(ph.PhotoId) + '" style="height:120px;background:var(--bg);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden">' +
-                icon('camera') + '</div><div class="small muted" style="margin-top:4px">' + esc(U.dateFmt(ph.TakenAt)) + '<br>' + esc(ph.TakenByName) +
+              return '<div class="photo-it"><div data-ph="' + esc(ph.PhotoId) + '" class="photo-img">' + icon('camera') + '</div><div class="small muted" style="margin-top:4px">' + esc(U.dateFmt(ph.TakenAt)) + ' · ' + esc(ph.TakenByName) +
                 (ph.Lat ? ' · <a href="https://maps.google.com/?q=' + esc(ph.Lat) + ',' + esc(ph.Lng) + '" target="_blank" rel="noopener">GPS</a>' : '') +
                 (canEdit ? ' · <a data-phdel="' + esc(ph.PhotoId) + '">' + t('delete') + '</a>' : '') + '</div></div>';
-            }).join('') : '<div class="muted small">' + t('noData') + '</div>') + '</div>') + '</div>';
+            }).join('') : '<div class="muted small">' + t('noData') + '</div>') + '</div></fieldset></div>') + '</div>';
         if (!isNew) html += '<p class="muted small">' + t('cust.meta', { by: c.CreatedByName || '-', at: U.dateFmt(c.CreatedAt), docs: c.DocCount || 0 }) + '</p>';
         el.innerHTML = html;
 
@@ -5365,8 +5654,40 @@ window.I18N = {
           getPos().then(function (pos) {
             if (!pos) { toast(t('cust.gpsFail'), 'err', 6000); return; }
             U.confirmBox(t('cust.gpsConfirm', { lat: pos.lat.toFixed(6), lng: pos.lng.toFixed(6) })).then(function (ok) {
-              if (ok) call('apiCustomerSetGps', c.CustomerId, pos.lat, pos.lng).then(function (g) { c.Lat = g.Lat; c.Lng = g.Lng; $('#ceGps').innerHTML = gpsText(c); toast(t('saved'), 'ok'); }).catch(noop);
+              if (ok) call('apiCustomerSetGps', c.CustomerId, pos.lat, pos.lng).then(function (g) { c.Lat = g.Lat; c.Lng = g.Lng; if ($('#ceLat')) { $('#ceLat').value = g.Lat; $('#ceLng').value = g.Lng; } drawMaps(); toast(t('saved'), 'ok'); }).catch(noop);
             });
+          });
+        };
+        // แผนที่ + Street View ตามพิกัด
+        var drawMaps = function () {
+          var box = $('#ceMaps');
+          if (!box) return;
+          if (!c.Lat || !c.Lng) { box.innerHTML = '<div class="map-empty">' + icon('pin') + '<div>' + t('cust.noGps') + '</div></div>'; return; }
+          var ll = encodeURIComponent(c.Lat + ',' + c.Lng);
+          box.innerHTML = '<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=' + ll + '&z=16&output=embed"></iframe>' +
+            '<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?layer=c&cbll=' + ll + '&cbp=11,0,0,0,0&output=svembed"></iframe>';
+        };
+        drawMaps();
+        // พิมพ์ละติจูด/ลองจิจูดเอง (หรือวางลิงก์ Google Maps / "lat, lng" ในช่องใดก็ได้) → บันทึกอัตโนมัติ
+        var saveLL = function () {
+          var la = $('#ceLat').value.trim(), ln = $('#ceLng').value.trim();
+          var g = parseLatLng(la) || parseLatLng(ln);
+          if (g) { $('#ceLat').value = g.lat; $('#ceLng').value = g.lng; }
+          else g = la && ln ? parseLatLng(la + ',' + ln) : null;
+          if (!g) { if (la && ln) toast(t('cust.gpsBad'), 'err', 5000); return; }
+          if (String(g.lat) === String(c.Lat) && String(g.lng) === String(c.Lng)) return;
+          call('apiCustomerSetGps', c.CustomerId, g.lat, g.lng).then(function (r) { c.Lat = r.Lat; c.Lng = r.Lng; drawMaps(); toast(t('cust.gpsSaved'), 'ok'); }).catch(noop);
+        };
+        if ($('#ceLat') && !$('#ceLat').readOnly) { $('#ceLat').onchange = saveLL; $('#ceLng').onchange = saveLL; }
+        // ปุ่มกุญแจ: สร้างรหัสร้านค้าจริงจากรหัสร่าง
+        if ($('#ceKey')) $('#ceKey').onclick = function () {
+          U.confirmBox(t('cust.keyConfirm')).then(function (ok) {
+            if (!ok) return;
+            call('apiCustomerAssignCode', c.CustomerId).then(function (r) {
+              toast(t('cust.keyDone', { code: r.CustomerId }), 'ok', 4000);
+              S.parties = {};
+              go('customerEdit', { id: r.CustomerId }, true);
+            }).catch(noop);
           });
         };
         $$('[data-ph]', el).forEach(function (box) {
@@ -5385,6 +5706,14 @@ window.I18N = {
       });
     }
   };
+  /** อ่านพิกัดจากข้อความ: "lat, lng" หรือลิงก์ Google Maps (…@lat,lng… / ?q=lat,lng) */
+  function parseLatLng(txt) {
+    var m = String(txt || '').match(/(-?\d{1,2}\.\d+)\s*[, ]\s*(-?\d{1,3}\.\d+)/);
+    if (!m) return null;
+    var lat = Number(m[1]), lng = Number(m[2]);
+    if (!(lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180)) return null;
+    return { lat: lat, lng: lng };
+  }
   function gpsText(c) {
     return c.Lat ? esc(c.Lat) + ', ' + esc(c.Lng) + ' · <a href="https://maps.google.com/?q=' + esc(c.Lat) + ',' + esc(c.Lng) + '" target="_blank" rel="noopener">' + t('cust.openMap') + '</a>'
       : '<span class="muted">' + t('cust.noGps') + '</span>';
@@ -5996,6 +6325,7 @@ window.I18N = {
           ['set.docno', ['CENTER_CODE', 'DOCNO_YEAR', 'DOCNO_RESET', 'DOCNO_DIGITS', 'DOCNO_VAN_SEPARATE', 'DOCNO_VAN_DIGITS', 'DOCNO_VAN_INV_PREFIX', 'CN_PROMO_CODE', 'CN_PROMO_NAME', 'STOCK_ENFORCE', 'COLLECT_GUARD_FROM']],
           ['set.doc', ['VAT_RATE', 'DEFAULT_VAT_TYPE', 'DEFAULT_CREDIT_DAYS', 'CREDIT_LIMIT_MODE', 'GR_DEFAULT_DISCOUNT_PCT', 'SALES_PROMO_CHANNEL', 'MAX_FILE_MB', 'ALLOWED_FILE_EXT']],
           ['set.van', ['ALLOW_NEGATIVE_STOCK', 'VAN_SALE_REVIEW', 'BLOCK_SALE_IF_NOT_CLOSED', 'RECEIPT_WIDTH_MM', 'REPRINT_MAX', 'DEAD_STOCK_DAYS', 'LEDGER_ARCHIVE_ROWS']],
+          ['set.track', ['TRACK_ENABLED', 'TRACK_INTERVAL_MIN', 'TRACK_IDLE_MIN', 'TRACK_OFFLINE_MIN']],
           ['set.security', ['DEFAULT_LANG', 'SESSION_HOURS', 'MAX_LOGIN_FAIL', 'LOCK_MINUTES', 'BACKUP_KEEP']],
           ['set.notify', ['EMAIL_NOTIFY', 'EMAIL_DIGEST_HOUR', 'LINE_ENABLED', 'LINE_CHANNEL_TOKEN', 'LINE_TARGET_ID']]
         ];
@@ -6307,6 +6637,187 @@ window.I18N = {
       return out;
     };
   });
+})(window.__U);
+
+/* ============================================================
+   ส่วนที่ 4: ติดตามเซลล์แบบเรียลไทม์ (GPS / สถานะแอป / เยี่ยมร้าน / เวลาคีย์ออเดอร์)
+   ============================================================ */
+(function (U) {
+  'use strict';
+  var S = U.S, t = U.t, esc = U.esc, $ = U.$, $$ = U.$$, num = U.num, money = U.money,
+      icon = U.icon, call = U.call, go = U.go, R = U.ROUTES;
+
+  var ST_COLOR = { ONLINE: '#16A34A', IDLE: '#D97706', BACKGROUND: '#7C3AED', OFFLINE: '#64748B', DONE: '#0EA5E9', NOT_STARTED: '#CBD5E1' };
+  var timer = null;
+
+  /** โหลด Leaflet (แผนที่) ครั้งเดียว — ถ้าโหลดไม่ได้ใช้แผนผังจุดแทน */
+  var leafletP = null;
+  function loadLeaflet() {
+    if (window.L && window.L.map) return Promise.resolve(window.L);
+    if (leafletP) return leafletP;
+    leafletP = new Promise(function (ok) {
+      var css = document.createElement('link');
+      css.rel = 'stylesheet'; css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+      document.head.appendChild(css);
+      var s = document.createElement('script');
+      s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      s.onload = function () { ok(window.L && window.L.map ? window.L : null); };
+      s.onerror = function () { ok(null); };
+      document.head.appendChild(s);
+      setTimeout(function () { ok(window.L && window.L.map ? window.L : null); }, 6000);
+    });
+    return leafletP;
+  }
+
+  function ago(min) {
+    if (min === undefined || min === null) return '';
+    if (min < 1) return t('trk.justNow');
+    if (min < 60) return t('trk.minAgo', { n: min });
+    return t('trk.hrAgo', { h: Math.floor(min / 60), m: min % 60 });
+  }
+  function pill(st) { return '<span class="trk-pill" style="--c:' + ST_COLOR[st] + '"><i></i>' + esc(t('trk.st.' + st)) + '</span>'; }
+  function initials(n) { return String(n || '?').trim().charAt(0); }
+
+  R.tracking = {
+    title: 'menu.tracking',
+    render: function (el, p) {
+      if (timer) { clearInterval(timer); timer = null; }
+      var date = (p && p.date) || U.today();
+      var sel = (p && p.user) || '';
+      var map = null, layers = [];
+      el.innerHTML = '<div class="card trk-bar"><div class="row" style="gap:10px;align-items:center;flex-wrap:wrap">' +
+        '<label class="small muted">' + t('trk.date') + ' <input class="input" type="date" id="tkDate" max="' + U.today() + '" value="' + esc(date) + '" style="width:auto;min-height:36px"></label>' +
+        '<button class="btn" id="tkRef" type="button">' + icon('refresh') + t('refresh') + '</button>' +
+        '<span class="muted small" id="tkUpd"></span></div>' +
+        '<div class="muted small">' + t('trk.note') + '</div></div>' +
+        '<div class="trk-kpis" id="tkKpi"></div>' +
+        '<div class="trk-main"><div class="card trk-mapcard"><div id="tkMap" class="trk-map"></div></div><div class="trk-list" id="tkList"></div></div>' +
+        '<div id="tkDetail"></div>';
+      var data = null;
+
+      var drawMap = function () {
+        var box = $('#tkMap');
+        if (!box || !data) return;
+        var pts = data.reps.filter(function (r) { return r.lat !== ''; });
+        var focus = sel ? data.reps.filter(function (r) { return r.userId === sel; })[0] : null;
+        loadLeaflet().then(function (L) {
+          if (!$('#tkMap')) return;
+          if (!L) { drawPlot(box, pts, focus); return; }
+          if (!map || !document.body.contains(map.getContainer())) {
+            box.innerHTML = '';
+            map = L.map(box, { zoomControl: true }).setView([13.7, 100.5], 6);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' }).addTo(map);
+          }
+          layers.forEach(function (l) { map.removeLayer(l); });
+          layers = [];
+          var bounds = [];
+          if (focus && focus.points.length > 1) {
+            var line = L.polyline(focus.points.map(function (q) { return [q[0], q[1]]; }), { color: ST_COLOR[focus.status] || '#2563EB', weight: 4, opacity: .7 }).addTo(map);
+            layers.push(line);
+            focus.points.forEach(function (q) { bounds.push([q[0], q[1]]); });
+          }
+          pts.forEach(function (r) {
+            var m = L.circleMarker([r.lat, r.lng], { radius: r.userId === sel ? 11 : 8, color: '#fff', weight: 2, fillColor: ST_COLOR[r.status], fillOpacity: 1 })
+              .bindTooltip(esc(r.name) + ' · ' + esc(t('trk.st.' + r.status)) + (r.sinceMin !== undefined ? ' · ' + ago(r.sinceMin) : ''), { direction: 'top' })
+              .on('click', function () { sel = r.userId; drawList(); drawDetail(); drawMap(); })
+              .addTo(map);
+            layers.push(m);
+            bounds.push([r.lat, r.lng]);
+          });
+          if (bounds.length) map.fitBounds(bounds, { padding: [30, 30], maxZoom: 15 });
+          setTimeout(function () { map.invalidateSize(); }, 50);
+        });
+      };
+      // แผนผังจุด (กรณีโหลดแผนที่ไม่ได้)
+      var drawPlot = function (box, pts, focus) {
+        var all = pts.map(function (r) { return [r.lat, r.lng]; }).concat(focus ? focus.points.map(function (q) { return [q[0], q[1]]; }) : []);
+        if (!all.length) { box.innerHTML = '<div class="empty">' + t('trk.noGps') + '</div>'; return; }
+        var la = all.map(function (q) { return q[0]; }), ln = all.map(function (q) { return q[1]; });
+        var minA = Math.min.apply(null, la), maxA = Math.max.apply(null, la), minN = Math.min.apply(null, ln), maxN = Math.max.apply(null, ln);
+        var pad = 0.002, W = 600, H = 360;
+        var sx = function (v) { return 30 + (v - minN + pad) / ((maxN - minN) + 2 * pad) * (W - 60); };
+        var sy = function (v) { return H - 30 - (v - minA + pad) / ((maxA - minA) + 2 * pad) * (H - 60); };
+        var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="trk-svg"><defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#E2E8F0"/></pattern></defs>' +
+          '<rect width="' + W + '" height="' + H + '" fill="url(#g)"/>';
+        if (focus && focus.points.length > 1) {
+          svg += '<polyline fill="none" stroke="' + ST_COLOR[focus.status] + '" stroke-width="3" stroke-opacity=".6" points="' +
+            focus.points.map(function (q) { return sx(q[1]).toFixed(1) + ',' + sy(q[0]).toFixed(1); }).join(' ') + '"/>';
+        }
+        pts.forEach(function (r) {
+          svg += '<g data-u="' + esc(r.userId) + '" style="cursor:pointer"><circle cx="' + sx(r.lng).toFixed(1) + '" cy="' + sy(r.lat).toFixed(1) + '" r="' + (r.userId === sel ? 10 : 7) +
+            '" fill="' + ST_COLOR[r.status] + '" stroke="#fff" stroke-width="2"/><text x="' + (sx(r.lng) + 12).toFixed(1) + '" y="' + (sy(r.lat) + 4).toFixed(1) + '" font-size="12" fill="#0F172A">' + esc(r.name) + '</text></g>';
+        });
+        box.innerHTML = svg + '</svg><div class="trk-plotnote muted small">' + t('trk.plotNote') + '</div>';
+        $$('[data-u]', box).forEach(function (g) { g.onclick = function () { sel = g.getAttribute('data-u'); drawList(); drawDetail(); drawMap(); }; });
+      };
+
+      var drawKpi = function () {
+        var c = { ONLINE: 0, IDLE: 0, BACKGROUND: 0, OFFLINE: 0, NOT_STARTED: 0, DONE: 0 }, v = 0, o = 0, om = 0, sales = 0;
+        data.reps.forEach(function (r) { c[r.status]++; v += r.stats.visits; o += r.stats.orders; om += r.stats.avgOrderMin * r.stats.orders; sales += r.stats.salesTotal; });
+        var k = function (label, val, color, sub) {
+          return '<div class="trk-kpi"' + (color ? ' style="--c:' + color + '"' : '') + '><div class="k">' + esc(label) + '</div><div class="v">' + val + '</div>' + (sub ? '<div class="s">' + sub + '</div>' : '') + '</div>';
+        };
+        $('#tkKpi').innerHTML = (data.isToday ?
+          k(t('trk.st.ONLINE'), c.ONLINE, ST_COLOR.ONLINE) + k(t('trk.st.IDLE'), c.IDLE, ST_COLOR.IDLE) + k(t('trk.st.BACKGROUND'), c.BACKGROUND, ST_COLOR.BACKGROUND) +
+          k(t('trk.st.OFFLINE'), c.OFFLINE + c.NOT_STARTED, ST_COLOR.OFFLINE, c.NOT_STARTED ? t('trk.notStartedN', { n: c.NOT_STARTED }) : '') :
+          k(t('trk.reps'), data.reps.length - c.NOT_STARTED, ST_COLOR.DONE)) +
+          k(t('trk.visits'), v) + k(t('trk.orders'), o, '', o ? t('trk.avgKey', { n: Math.round(om / o * 10) / 10 }) : '') + k(t('trk.sales'), money(sales));
+      };
+      var drawList = function () {
+        $('#tkList').innerHTML = data.reps.length ? data.reps.map(function (r) {
+          var batt = r.battery !== '' ? '<span class="trk-batt' + (r.battery <= 20 ? ' low' : '') + '">' + r.battery + '%</span>' : '';
+          return '<div class="trk-rep' + (r.userId === sel ? ' on' : '') + '" data-u="' + esc(r.userId) + '"><div class="trk-av" style="--c:' + ST_COLOR[r.status] + '">' + esc(initials(r.name)) + '</div>' +
+            '<div class="trk-rm"><div class="trk-rn">' + esc(r.name) + ' <span class="muted small">' + esc(r.repId || r.username) + ' · ' + esc(t('role.' + r.role) === 'role.' + r.role ? r.role : t('role.' + r.role)) + '</span></div>' +
+            '<div class="trk-rs">' + pill(r.status) + (r.lastSeen ? '<span class="muted small">' + (data.isToday ? ago(r.sinceMin) : t('trk.lastAt', { t: String(r.lastSeen).substring(11, 16) })) + '</span>' : '') + batt + '</div>' +
+            '<div class="trk-chips"><span>' + icon('store') + t('trk.visitsN', { n: r.stats.visits }) + '</span><span>' + icon('doc') + t('trk.ordersN', { n: r.stats.orders }) +
+            (r.stats.orders ? ' · ' + t('trk.minEach', { n: r.stats.avgOrderMin }) : '') + '</span><span>' + icon('truck') + r.distanceKm + ' ' + t('trk.km') + '</span>' +
+            '<span>' + money(r.stats.salesTotal) + '</span></div></div></div>';
+        }).join('') : '<div class="card empty">' + t('trk.noReps') + '</div>';
+        $$('#tkList [data-u]').forEach(function (c) {
+          c.onclick = function () { sel = sel === c.getAttribute('data-u') ? '' : c.getAttribute('data-u'); drawList(); drawDetail(); drawMap(); };
+        });
+      };
+      var drawDetail = function () {
+        var r = data.reps.filter(function (x) { return x.userId === sel; })[0];
+        var box = $('#tkDetail');
+        if (!r) { box.innerHTML = ''; return; }
+        var visits = r.visits.length ? '<table class="tbl"><thead><tr><th>' + t('trk.shop') + '</th><th>' + t('trk.in') + '</th><th>' + t('trk.out') + '</th><th class="num">' + t('trk.minutes') +
+          '</th><th class="num">' + t('trk.fromShop') + '</th></tr></thead><tbody>' + r.visits.map(function (v) {
+            var far = v.distM !== '' && v.distM > 200;
+            return '<tr><td>' + esc(v.name) + '<div class="muted small">' + esc(v.customerId) + '</div></td><td>' + esc(v.in) + '</td><td>' + (v.open ? '<span class="trk-pill" style="--c:#16A34A"><i></i>' + t('trk.atShop') + '</span>' : esc(v.out) + (v.auto ? ' <span class="muted small">(' + t('trk.auto') + ')</span>' : '')) +
+              '</td><td class="num">' + v.min + '</td><td class="num' + (far ? ' stock-low' : '') + '">' + (v.distM === '' ? '-' : (v.distM >= 1000 ? (v.distM / 1000).toFixed(1) + ' ' + t('trk.km') : v.distM + ' ' + t('trk.m'))) + (far ? ' ⚠' : '') + '</td></tr>';
+          }).join('') + '</tbody></table>' : '<div class="empty">' + t('noData') + '</div>';
+        var orders = r.orders.length ? '<table class="tbl"><thead><tr><th>' + t('trk.shop') + '</th><th>' + t('trk.start') + '</th><th>' + t('trk.end') + '</th><th class="num">' + t('trk.keyMin') +
+          '</th><th>' + t('f.DocNo') + '</th></tr></thead><tbody>' + r.orders.map(function (o) {
+            return '<tr><td>' + esc(o.name) + '</td><td>' + esc(o.start) + '</td><td>' + esc(o.end) + '</td><td class="num">' + o.min + '</td><td>' + (o.saved ? esc(o.docNo || '✓') : '<span class="muted">' + t('trk.cancelled') + '</span>') + '</td></tr>';
+          }).join('') + '</tbody></table>' : '<div class="empty">' + t('noData') + '</div>';
+        var idle = r.idle.length ? '<ul class="trk-idle">' + r.idle.map(function (g) {
+          return '<li><b>' + esc(g.from) + ' – ' + esc(g.to) + '</b> · ' + t('trk.minN', { n: g.min }) + ' · ' + t('trk.idle.' + g.reason) + '</li>';
+        }).join('') + '</ul>' : '<div class="muted small">' + t('trk.noIdle') + '</div>';
+        box.innerHTML = '<div class="card"><div class="card-title"><h3>' + esc(r.name) + ' · ' + esc(data.date === U.today() ? t('trk.today') : U.dateFmt(data.date)) + '</h3>' + pill(r.status) + '</div>' +
+          '<div class="trk-sum"><div><span>' + t('trk.first') + '</span><b>' + esc(String(r.firstSeen).substring(11, 16) || '-') + '</b></div><div><span>' + t('trk.last') + '</span><b>' + esc(String(r.lastSeen).substring(11, 16) || '-') +
+          '</b></div><div><span>' + t('trk.active') + '</span><b>' + t('trk.hm', { h: Math.floor(r.activeMin / 60), m: r.activeMin % 60 }) + '</b></div><div><span>' + t('trk.dist') + '</span><b>' + r.distanceKm + ' ' + t('trk.km') +
+          '</b></div><div><span>' + t('trk.avgVisit') + '</span><b>' + t('trk.minN', { n: r.stats.avgVisitMin }) + '</b></div><div><span>' + t('trk.avgKeyL') + '</span><b>' + t('trk.minN', { n: r.stats.avgOrderMin }) + '</b></div></div>' +
+          '<div class="grid grid-2 stack" style="margin-top:14px"><div><h4 class="trk-h">' + icon('store') + t('trk.visitTitle') + '</h4>' + visits + '</div>' +
+          '<div><h4 class="trk-h">' + icon('doc') + t('trk.orderTitle') + '</h4>' + orders + '<h4 class="trk-h" style="margin-top:16px">' + icon('clock') + t('trk.idleTitle') + '</h4>' + idle + '</div></div></div>';
+      };
+      var load = function () {
+        return call('apiTrackLive', date).then(function (d) {
+          if (!$('#tkList')) { if (timer) { clearInterval(timer); timer = null; } return; }
+          data = d;
+          $('#tkUpd').textContent = t('trk.updated', { t: String(d.now).substring(11, 16) }) + (d.isToday ? ' · ' + t('trk.auto60') : '');
+          drawKpi(); drawList(); drawDetail(); drawMap();
+        });
+      };
+      $('#tkRef').onclick = function () { load(); };
+      $('#tkDate').onchange = function () { date = $('#tkDate').value || U.today(); S.route.params = { date: date, user: sel }; load(); };
+      timer = setInterval(function () {
+        if (!$('#tkList')) { clearInterval(timer); timer = null; return; }
+        if (date === U.today() && document.visibilityState === 'visible') load();
+      }, 60000);
+      return load();
+    }
+  };
 })(window.__U);
 </script>
 
