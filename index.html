@@ -2703,8 +2703,8 @@ window.I18N = {
               '<td data-label="' + esc(t('list.manage')) + '"><select class="input act-sel" data-act-id="' + esc(r.DocId) + '" data-type="' + esc(r.DocType) + '" data-st="' + esc(r.Status) + '">' +
               '<option value="">' + t('list.manage') + '</option><option value="view">' + t('list.view') + '</option>' +
               (['DRAFT', 'RETURNED'].indexOf(r.Status) >= 0 && dtInfo(r.DocType).canCreate ? '<option value="edit">' + t('edit') + '</option>' : '') +
-              (String(r.DocNo).indexOf('TMP') !== 0 ? '<option value="print">' + t('doc.printA4') + '</option>' : '') +
-              ((r.DocType === 'INV' || r.DocType === 'CL') && String(r.DocNo).indexOf('TMP') !== 0 ? '<option value="receipt">' + t('doc.printReceipt') + '</option>' : '') +
+              '<option value="print">' + t('doc.printA4') + '</option>' +
+              (r.DocType === 'INV' || r.DocType === 'CL' ? '<option value="receipt">' + t('doc.printReceipt') + '</option>' : '') +
               '</select></td></tr>';
           }).join('');
           $('#docRes').innerHTML = '<div class="card">' + (res.items.length ? '<div class="table-wrap"><table class="tbl cards dms-tbl"><thead><tr>' + head + '</tr></thead><tbody>' + body +
