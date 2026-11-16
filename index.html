@@ -5405,8 +5405,8 @@ window.I18N = {
     };
     $('#rPrint').onclick = function () {
       var meta = S.boot.settings;
-      var html = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>' + esc(r.title) + '</title><style>@page{size:A4 landscape;margin:10mm}body{font-family:Tahoma,"Noto Sans Thai",sans-serif;font-size:11px;color:#3B2F2A}' +
-        'table{width:100%;border-collapse:collapse}th{background:#8B5E3C;color:#fff;padding:4px;text-align:left}td{border-bottom:1px solid #E8DFD3;padding:3px 4px}.n{text-align:right}tfoot td{font-weight:bold}</style></head><body>' +
+      var html = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>' + esc(r.title) + '</title><style>@page{size:A4 landscape;margin:10mm}body{font-family:Tahoma,"Noto Sans Thai",sans-serif;font-size:11px;color:#1E293B;-webkit-print-color-adjust:exact;print-color-adjust:exact;}' +
+        'table{width:100%;border-collapse:collapse}th{background:#1E293B;color:#fff;font-weight:bold;padding:5px 4px;text-align:left}td{border-bottom:1px solid #CBD5E1;padding:3px 4px}.n{text-align:right}tfoot td{font-weight:bold}</style></head><body>' +
         '<h2 style="margin:0">' + esc(meta.COMPANY_NAME) + '</h2><h3 style="margin:4px 0">' + esc(r.title) + '</h3><div>' + esc(filterText(r.filters)) + '</div><br><table><thead><tr>' +
         cols.map(function (c) { return '<th class="' + (['money', 'qty', 'num', 'pct'].indexOf(c.type) >= 0 ? 'n' : '') + '">' + esc(c.label) + '</th>'; }).join('') + '</tr></thead><tbody>' +
         r.rows.map(function (row) { return '<tr>' + cols.map(function (c) { return '<td class="' + (['money', 'qty', 'num', 'pct'].indexOf(c.type) >= 0 ? 'n' : '') + '">' + U.fmtCell(row[c.key], c.type) + '</td>'; }).join('') + '</tr>'; }).join('') +
@@ -5628,10 +5628,10 @@ window.I18N = {
     };
     $('#rpPrint').onclick = function () {
       var html = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>' + esc(r.title) + '</title><style>@page{size:A4 landscape;margin:8mm}' +
-        'body{font-family:Tahoma,"Noto Sans Thai",sans-serif;font-size:9px;color:#222}h2{margin:0;font-size:14px}h3{margin:2px 0 6px;font-size:12px}' +
+        'body{font-family:Tahoma,"Noto Sans Thai",sans-serif;font-size:9px;color:#222;-webkit-print-color-adjust:exact;print-color-adjust:exact;}h2{margin:0;font-size:14px}h3{margin:2px 0 6px;font-size:12px}' +
         '.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:1px 16px;margin-bottom:8px}.meta span{color:#666}' +
-        'table{width:100%;border-collapse:collapse}th{border-bottom:1.5px solid #333;text-align:left;padding:3px;vertical-align:bottom}td{border-bottom:1px solid #ddd;padding:2px 3px;vertical-align:top}' +
-        '.n{text-align:right;white-space:nowrap}tr.group td{background:#f3eae0;font-weight:bold}tr.sub td,tr.total td{font-weight:bold;border-top:1px solid #999}tr.total td{border-top:2px solid #333}</style></head><body>' +
+        'table{width:100%;border-collapse:collapse}th{background:#1E293B;color:#fff;font-weight:bold;text-align:left;padding:4px 3px;vertical-align:bottom}td{border-bottom:1px solid #ddd;padding:2px 3px;vertical-align:top}' +
+        '.n{text-align:right;white-space:nowrap}tr.group td{background:#E2E8F0;font-weight:bold}tr.sub td,tr.total td{font-weight:bold;border-top:1px solid #999}tr.total td{border-top:2px solid #333}</style></head><body>' +
         '<h2>' + esc(r.company || '') + '</h2><h3>' + esc(r.title) + '</h3><div class="meta">' + headLines.map(function (h) { return '<div><span>' + esc(h[0]) + ':</span> ' + esc(h[1]) + '</div>'; }).join('') +
         '</div><table><thead><tr>' + cols.map(function (c) { return '<th class="' + (isNum(c) ? 'n' : '') + '">' + esc(c.label) + '</th>'; }).join('') + '</tr></thead><tbody>' +
         flat.map(function (x) {
