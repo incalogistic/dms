@@ -10,6 +10,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#0B2A6B">
   <meta name="apple-mobile-web-app-title" content="INCA Go">
+  <script src="brands.js"></script>
   <meta charset="utf-8">
   <!-- ============================================================
        Index.html — โครงหน้าเว็บ (ไฟล์ชนิด HTML)
@@ -99,6 +100,16 @@ svg.ic { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-wid
 .sidebar .brand { padding: 16px 18px; border-bottom: 1px solid var(--border); }
 .sidebar .brand .name { font-weight: 700; color: var(--text); font-size: 1.15rem; display: flex; align-items: center; gap: 10px; }
 .sidebar .brand .name .mark { width: 30px; height: 30px; flex-shrink: 0; }
+.co-switch { display: flex; align-items: center; gap: 8px; width: 100%; margin-top: 10px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--primary-soft); color: var(--text); font: inherit; cursor: pointer; text-align: left; }
+.co-switch svg { width: 16px; height: 16px; color: var(--primary); flex-shrink: 0; }
+.co-switch span:nth-child(2) { font-weight: 600; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.co-switch .small { color: var(--primary); }
+.co-pick { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
+.co-card { display: flex; align-items: center; gap: 12px; padding: 14px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); font: inherit; color: var(--text); cursor: pointer; text-align: left; transition: border-color .15s, box-shadow .15s; }
+.co-card:hover { border-color: var(--co); box-shadow: 0 4px 14px rgba(15, 23, 42, .08); }
+.co-card.cur { border-color: var(--co); }
+.co-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--co); flex-shrink: 0; }
+.co-txt { display: flex; flex-direction: column; flex: 1; gap: 2px; }
 .sidebar .brand .user { font-size: .85rem; color: var(--muted); margin-top: 2px; }
 .nav-group { padding: 8px 0; }
 .nav-group-title { padding: 8px 18px 4px; font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
@@ -117,7 +128,7 @@ svg.ic { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-wid
 .soon-tag { white-space: nowrap; margin-left: auto; font-size: .66rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 0 6px; }
 .nav-item .count { margin-left: auto; background: var(--danger); color: #fff; border-radius: 10px; font-size: .72rem; padding: 0 7px; line-height: 18px; }
 .main { flex: 1; margin-left: var(--sidebar-w); min-width: 0; display: flex; flex-direction: column; }
-.topbar { position: sticky; top: 0; z-index: 30; height: var(--topbar-h); background: rgba(250, 247, 242, .95); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; padding: 0 16px; }
+.topbar { position: sticky; top: 0; z-index: 30; height: var(--topbar-h); background: rgba(245, 247, 251, .95); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; padding: 0 16px; }
 .page-title { font-size: 1.1rem; font-weight: 600; color: var(--primary-dark); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .topbar-actions { display: flex; align-items: center; gap: 6px; }
 .icon-btn { border: 0; background: transparent; color: var(--primary-dark); width: 40px; height: 40px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; position: relative; font-family: var(--font); }
@@ -190,7 +201,7 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: .92rem; }
 
 /* ---------- ป้ายสถานะ ---------- */
 .badge { display: inline-block; padding: 1px 9px; border-radius: 20px; font-size: .78rem; font-weight: 600; white-space: nowrap; background: var(--primary-soft); color: var(--primary-dark); }
-.badge.DRAFT { background: #EEE9E3; color: #6B5E55; }
+.badge.DRAFT { background: #EEF2F6; color: #475569; }
 .badge.PENDING { background: var(--warn-soft); color: var(--warn); }
 .badge.APPROVED, .badge.PAID, .badge.OK, .badge.ACTIVE, .badge.FULL { background: var(--ok-soft); color: var(--ok); }
 .badge.REJECTED, .badge.CANCELLED, .badge.ISSUE, .badge.INACTIVE, .badge.DISCONTINUED { background: var(--danger-soft); color: var(--danger); }
@@ -454,7 +465,13 @@ tr.rpt-total td { font-weight: 700; background: var(--bg); border-top: 2px solid
   <div id="toastRoot" class="toast-root" aria-live="polite"></div>
 
   <script>
-    window.DMS_API = "https://script.google.com/macros/s/AKfycbwAwmuzSxdFn0OoS0d3EnDb3pZQ5BAVE-lLuE6cbdbNKTDjnBaPsWxupTyX7vS68EmfUA/exec";
+    // บริษัทที่ใช้งาน: เลือกจาก brands.js (จำบริษัทล่าสุดไว้ในเครื่อง)
+    window.DMS_API = (function (def) {
+      var L = (window.DMS_BRANDS || []).filter(function (b) { return b && b.url; }), s = null;
+      try { s = localStorage.getItem('dms.brand'); } catch (e) { }
+      if (s && L.some(function (b) { return b.url === s; })) return s;
+      return L.length ? L[0].url : def;
+    })("https://script.google.com/macros/s/AKfycbwAwmuzSxdFn0OoS0d3EnDb3pZQ5BAVE-lLuE6cbdbNKTDjnBaPsWxupTyX7vS68EmfUA/exec");
     (function () {
       var m = {}; try { m = JSON.parse(localStorage.getItem('dms.c.meta') || '{}'); } catch (e) { }
       window.APP_META = { appName: m.appName || 'INCA Go', company: m.company || '', version: m.version || '', tagline: m.tagline || '' };
@@ -653,7 +670,7 @@ window.I18N = {
 
     // ---------- ผู้ใช้ / สิทธิ์ ----------
     'user.new': 'เพิ่มผู้ใช้', 'user.reset': 'รีเซ็ต PIN', 'user.unlock': 'ปลดล็อก', 'user.locked': 'ถูกล็อก', 'user.mustChange': 'รอตั้ง PIN',
-    'user.hint': 'พนักงานขาย/พรีออเดอร์/แวนเซลล์ ต้องเลือกพนักงานขาย · แวนเซลล์ต้องเลือกคลังสินค้า (รถแวน) ตำแหน่งอื่นตัดสต็อกจากคลังหลักอัตโนมัติ', 'user.whAuto': 'คลังหลัก (อัตโนมัติ)', 'f.UserPhone': 'เบอร์โทรศัพท์', 'f.RepCode': 'รหัสพนักงานขาย', 'mst.repCodeHint': 'ตั้งให้ตรงกับระบบ Express เช่น C01, V01 (เว้นว่าง = ระบบตั้งให้)', 'mst.repRenameConfirm': 'เปลี่ยนรหัสพนักงานขาย {from} เป็น {to}? ลูกค้า เอกสาร และผู้ใช้ที่อ้างรหัสเดิมจะเปลี่ยนตามทั้งหมด', 'user.tempPwd': 'รหัสผ่านชั่วคราว',
+    'user.hint': 'พนักงานขาย/พรีออเดอร์/แวนเซลล์ ต้องเลือกพนักงานขาย · แวนเซลล์ต้องเลือกคลังสินค้า (รถแวน) ตำแหน่งอื่นตัดสต็อกจากคลังหลักอัตโนมัติ', 'user.whAuto': 'คลังหลัก (อัตโนมัติ)', 'f.UserPhone': 'เบอร์โทรศัพท์', 'co.pick': 'เลือกบริษัทที่จะเข้าทำงาน', 'co.pickHint': 'User นี้มีบัญชีอยู่หลายบริษัท', 'co.current': 'กำลังใช้', 'co.switch': 'สลับบริษัท', 'co.switchHint': 'แต่ละบริษัทเป็นระบบแยกกัน — หลังเลือกให้ใส่ PIN ของบริษัทนั้นเพื่อเข้าระบบ', 'co.onlyOne': 'User นี้มีบัญชีอยู่บริษัทเดียว', 'f.RepCode': 'รหัสพนักงานขาย', 'mst.repCodeHint': 'ตั้งให้ตรงกับระบบ Express เช่น C01, V01 (เว้นว่าง = ระบบตั้งให้)', 'mst.repRenameConfirm': 'เปลี่ยนรหัสพนักงานขาย {from} เป็น {to}? ลูกค้า เอกสาร และผู้ใช้ที่อ้างรหัสเดิมจะเปลี่ยนตามทั้งหมด', 'user.tempPwd': 'รหัสผ่านชั่วคราว',
     'user.tempPwdHint': 'แจ้งรหัสนี้ให้ผู้ใช้ (ระบบส่งอีเมลให้แล้ว) เมื่อเข้าระบบครั้งแรกจะต้องตั้งรหัสใหม่', 'user.confirmReset': 'รีเซ็ต PIN ของ {name}? ระบบจะออกจากระบบทุกเครื่องของผู้ใช้นี้',
     'perm.hint': 'System Support มีสิทธิ์ทุกอย่างเสมอ — "เฉพาะของตัวเอง" = เอกสาร/ลูกค้าที่ตัวเองดูแล หรือรถของตัวเอง', 'perm.none': 'ไม่มีสิทธิ์', 'perm.all': 'ทั้งหมด',
     'perm.own': 'เฉพาะของตัวเอง', 'perm.saved': 'บันทึกสิทธิ์แล้ว ({n} รายการ)', 'perm.g.general': 'ทั่วไป', 'perm.g.doc': 'เอกสาร (พิเศษ)', 'perm.g.product': 'สินค้า / โปรโมชั่น',
@@ -976,7 +993,7 @@ window.I18N = {
     'gb.product': 'Product', 'gb.customer': 'Customer', 'gb.rep': 'Sales rep', 'gb.product_customer': 'Product × customer', 'gb.product_customer_rep': 'Product × customer × rep',
     'gb.day': 'Daily', 'gb.month': 'Monthly', 'gb.doc': 'Per invoice',
     'user.new': 'Add user', 'user.reset': 'Reset PIN', 'user.unlock': 'Unlock', 'user.locked': 'Locked', 'user.mustChange': 'PIN not set',
-    'user.hint': 'Sales / pre-order / van users need a sales rep; van users also pick a warehouse (van). Other roles use the main warehouse automatically.', 'user.whAuto': 'Main warehouse (automatic)', 'f.UserPhone': 'Phone', 'f.RepCode': 'Sales rep code', 'mst.repCodeHint': 'Match your Express codes, e.g. C01, V01 (blank = automatic)', 'mst.repRenameConfirm': 'Change sales rep code {from} to {to}? Customers, documents and users using the old code will all be updated.', 'user.tempPwd': 'Temporary password',
+    'user.hint': 'Sales / pre-order / van users need a sales rep; van users also pick a warehouse (van). Other roles use the main warehouse automatically.', 'user.whAuto': 'Main warehouse (automatic)', 'f.UserPhone': 'Phone', 'co.pick': 'Choose a company', 'co.pickHint': 'This user has accounts in several companies', 'co.current': 'Current', 'co.switch': 'Switch company', 'co.switchHint': 'Each company is a separate system — sign in with that company\'s PIN after choosing', 'co.onlyOne': 'This user has an account in one company only', 'f.RepCode': 'Sales rep code', 'mst.repCodeHint': 'Match your Express codes, e.g. C01, V01 (blank = automatic)', 'mst.repRenameConfirm': 'Change sales rep code {from} to {to}? Customers, documents and users using the old code will all be updated.', 'user.tempPwd': 'Temporary password',
     'user.tempPwdHint': 'Give this password to the user (it was also emailed). They must set a new one at first sign-in.', 'user.confirmReset': 'Reset the PIN of {name}? They will be signed out everywhere.',
     'perm.hint': 'System Support always has every permission — "Own only" = their own documents/customers or their own van', 'perm.none': 'None', 'perm.all': 'All',
     'perm.own': 'Own only', 'perm.saved': 'Permissions saved ({n})', 'perm.g.general': 'General', 'perm.g.doc': 'Documents (special)', 'perm.g.product': 'Products / promotions',
@@ -1268,6 +1285,7 @@ window.I18N = {
     home: '<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',
     doc: '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/>',
     plus: '<path d="M12 5v14M5 12h14"/>',
+    swap: '<path d="M7 4L3 8l4 4"/><path d="M3 8h14"/><path d="M17 20l4-4-4-4"/><path d="M21 16H7"/>',
     check: '<path d="M20 6L9 17l-5-5"/>',
     box: '<path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>',
     users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/>',
@@ -1484,6 +1502,58 @@ window.I18N = {
   // ไอคอนระบบ INCA Go (แสดงบนหน้าเข้าระบบ ถ้าไม่ได้อัปโหลดโลโก้บริษัท)
   var BRAND_MARK = '<svg class="mark" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><linearGradient id="gm2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B2A6B"/><stop offset="1" stop-color="#1D4ED8"/></linearGradient><radialGradient id="gm1h" cx=".25" cy=".15" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="512" height="512" rx="116" fill="url(#gm2)"/><rect width="512" height="512" rx="116" fill="url(#gm2h)"/><path d="M352 160A136 136 0 1 0 392 262" fill="none" stroke="#FFFFFF" stroke-width="58" stroke-linecap="round"/><path d="M250 262H404" stroke="#FFB020" stroke-width="58" stroke-linecap="round"/><path d="M372 206L436 262 372 318" fill="none" stroke="#FFB020" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
+  // ---------------------------------------------------------------
+  //  หลายบริษัท/แบรนด์ (เฉพาะเว็บแยกที่มีรายชื่อ DMS_BRANDS ใน brands.js)
+  //  แต่ละบริษัทเป็นระบบแยก — แอดมินเห็นบริษัทที่ตัวเองมีบัญชีเท่านั้น
+  // ---------------------------------------------------------------
+  function brandList() {
+    return (window.DMS_BRANDS || []).filter(function (b) { return b && /^(https:\/\/|http:\/\/localhost)/.test(b.url || ''); });
+  }
+  function multiBrand() { return !!window.DMS_API && brandList().length > 1; }
+  function curBrand() { var u = window.DMS_API; return brandList().filter(function (b) { return b.url === u; })[0] || null; }
+  // ถามแต่ละบริษัทว่ามี User นี้ไหม (ส่งไปแค่ชื่อ User ไม่ส่ง PIN)
+  function findBrands(uname) {
+    var list = brandList();
+    return Promise.all(list.map(function (b) {
+      return fetch(b.url, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ fn: 'apiAppFind', args: [uname, 'WEB'], client: 'web' }) })
+        .then(function (r) { return r.json(); }).then(function (j) { return j && j.ok ? j.data : null; }).catch(function () { return null; });
+    })).then(function (rs) {
+      return list.map(function (b, i) { return { b: b, r: rs[i] }; }).filter(function (x) { return x.r && x.r.found; });
+    });
+  }
+  function brandCards(hits) {
+    return '<div class="co-pick">' + hits.map(function (x, i) {
+      var cur = x.b.url === window.DMS_API;
+      return '<button type="button" class="co-card' + (cur ? ' cur' : '') + '" data-co="' + i + '" style="--co:' + esc(x.r.color || '#1D4ED8') + '">' +
+        '<span class="co-dot"></span><span class="co-txt"><b>' + esc(x.b.name) + '</b><span class="muted small">' + esc(x.r.company || '') + '</span></span>' +
+        (cur ? '<span class="badge ACTIVE">' + t('co.current') + '</span>' : '') + '</button>';
+    }).join('') + '</div>';
+  }
+  // เปลี่ยนบริษัท: ข้อมูลที่เก็บในเครื่องเป็นของบริษัทเดิม → ล้างแล้วโหลดหน้าใหม่
+  function switchTo(b, keepToken) {
+    store.set('brand', b.url);
+    ['c.meta', 'c.boot', 'c.lookups', 'route'].forEach(function (k) { store.del(k); });
+    if (!keepToken) store.del('token');
+    location.reload();
+  }
+  function switchCompany() {
+    var u = S.boot && S.boot.user;
+    findBrands(u ? u.Username : '').then(function (hits) {
+      if (hits.length < 2) { toast(t('co.onlyOne'), 'warn'); return; }
+      var m = modal({ title: t('co.switch'), body: '<div class="alert info">' + t('co.switchHint') + '</div>' + brandCards(hits) });
+      $$('[data-co]', m.el).forEach(function (el) {
+        el.onclick = function () {
+          var x = hits[+el.getAttribute('data-co')];
+          if (x.b.url === window.DMS_API) { m.close(); return; }
+          var tk = S.token;
+          if (tk) run('apiLogout', [tk]).catch(function () { /* ไม่เป็นไร */ });
+          switchTo(x.b, false);
+        };
+      });
+    });
+  }
+
   function showLogin(msg) {
     $('#splash').classList.add('hidden');
     $('#shell').classList.add('hidden');
@@ -1509,12 +1579,32 @@ window.I18N = {
       var uname = this.username.value.toUpperCase().replace(/[^A-Z0-9]/g, ''), pin = this.pin.value;
       var btn = $('button[type=submit]', this), form = this;
       btn.disabled = true;
-      run('apiLogin', [uname, pin, 'WEB']).then(function (r) {
-        store.set('username', uname);
-        S.token = r.token;
-        store.set('token', r.token);
-        afterLogin(r.boot);
-      }).catch(function () { btn.disabled = false; form.pin.value = ''; });
+      var doLogin = function (b) {
+        var changed = !!(b && b.url !== window.DMS_API);
+        if (b) window.DMS_API = b.url;
+        run('apiLogin', [uname, pin, 'WEB']).then(function (r) {
+          store.set('username', uname);
+          S.token = r.token;
+          store.set('token', r.token);
+          if (changed) { switchTo(b, true); return; }   // ชื่อ/สี/โลโก้ของบริษัทใหม่ → โหลดหน้าใหม่ (ยังเข้าระบบอยู่)
+          if (b) store.set('brand', b.url);
+          afterLogin(r.boot);
+        }).catch(function () { btn.disabled = false; form.pin.value = ''; });
+      };
+      if (!multiBrand()) { doLogin(null); return; }
+      findBrands(uname).then(function (hits) {
+        if (!hits.length) { btn.disabled = false; form.pin.value = ''; toast(t('ERR_LOGIN_FAILED'), 'err'); return; }
+        if (hits.length === 1) { doLogin(hits[0].b); return; }
+        // มีบัญชีหลายบริษัท → ให้เลือกบริษัทที่จะเข้าทำงาน
+        var card = $('#loginForm');
+        var keep = card.innerHTML;
+        card.innerHTML = '<h3 style="margin-top:0">' + t('co.pick') + '</h3><p class="muted small">' + t('co.pickHint') + '</p>' + brandCards(hits) +
+          '<button class="btn btn-ghost btn-block" type="button" id="coBack">' + t('back') + '</button>';
+        $$('[data-co]', card).forEach(function (el) {
+          el.onclick = function () { $$('[data-co]', card).forEach(function (x) { x.disabled = true; }); doLogin(hits[+el.getAttribute('data-co')].b); };
+        });
+        $('#coBack').onclick = function () { showLogin(); };
+      });
     };
     callOpen('apiLogo').then(function (l) {
       if (l && l.url) $('#loginLogo').innerHTML = '<img src="' + esc(l.url) + '" alt="logo">';
@@ -1747,7 +1837,9 @@ window.I18N = {
     var u = S.boot.user;
     var meta = window.APP_META || {};
     var html = '<div class="brand"><div class="name">' + BRAND_MARK.replace(/gm2/g, 'gm3') + '<span>' + esc(meta.appName || 'DMS') + '</span></div><div class="user">' + esc(u.FullName) +
-      ' · ' + esc(L(u.RoleNameTh, u.RoleNameEn)) + (u.VanName ? ' · ' + esc(u.VanName) : '') + '</div></div>';
+      ' · ' + esc(L(u.RoleNameTh, u.RoleNameEn)) + (u.VanName ? ' · ' + esc(u.VanName) : '') + '</div>' +
+      (multiBrand() ? '<button class="co-switch" type="button" id="btnCo">' + icon('swap') + '<span>' + esc((curBrand() || {}).name || meta.company || '') + '</span><span class="small">' + t('co.switch') + '</span></button>' : '') +
+      '</div>';
     visibleMenu().forEach(function (g) {
       html += '<div class="nav-group"><div class="nav-group-title">' + t('menu.g.' + g.group) + '</div>';
       g.items.forEach(function (i) {
@@ -1761,6 +1853,7 @@ window.I18N = {
     html += '<div class="nav-group" style="margin-top:auto"><a class="nav-item" data-logout>' + icon('logout') + '<span>' + t('logout') + '</span></a></div>';
     var sb = $('#sidebar');
     sb.innerHTML = html;
+    if ($('#btnCo', sb)) $('#btnCo', sb).onclick = function () { closeDrawer(); switchCompany(); };
     $$('[data-nav]', sb).forEach(function (a) { a.onclick = function () { closeDrawer(); go(a.getAttribute('data-nav'), {}); }; });
     $$('[data-navdoc]', sb).forEach(function (a) { a.onclick = function () { closeDrawer(); go('docs', { docType: a.getAttribute('data-navdoc') }); }; });
     $$('[data-navrep]', sb).forEach(function (a) {
