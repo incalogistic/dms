@@ -2089,9 +2089,11 @@ window.I18N = {
     var el = $('#content');
     el.innerHTML = '<div class="empty">' + t('loading') + '</div>';
     window.scrollTo(0, 0);
+    var seq = S.navSeq = (S.navSeq || 0) + 1;            // หน้าที่เปิดล่าสุด (กันผลลัพธ์ของหน้าเก่าที่ตอบกลับช้ามาทับหน้าใหม่)
     try {
       var p = r.render(el, params || {});
       if (p && p.catch) p.catch(function (e) {
+        if (seq !== S.navSeq) { if (e && !e.code) console.warn('stale render ' + name, e); return; }
         if (e && !e.code) console.error('render ' + name, e);
         if (!e || !e._handled) toast(errText(e), 'err');
         el.innerHTML = '<div class="empty">' + esc(errText(e)) + '</div>';
@@ -2715,9 +2717,10 @@ window.I18N = {
         ' <select class="input" id="dSize" style="width:auto;min-height:36px">' + [10, 25, 50, 100].map(function (n) {
           return '<option' + (n === Number(f.pageSize) ? ' selected' : '') + '>' + n + '</option>';
         }).join('') + '</select> ' + t('cust.records') + '</label>' +
+        '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end;flex:1">' +
         (type === 'SO' && !adv ? '<label class="check small">' + t('list.fulfill') + ' ' + U.selectH('_ful', fulOpts(), f.fulfill || '', 'id="fFul" style="width:auto;min-height:36px"') + '</label>' : '') +
-        '<div class="input-group" style="max-width:420px;flex:1"><input class="input" id="fQ" placeholder="' + esc(t('doc.searchHint')) + '" value="' + esc(f.q || '') + '">' +
-        '<button class="btn" id="dGo" type="button">' + icon('search') + '</button><button class="btn" id="dRef" type="button" title="refresh">↻</button></div></div></div>' +
+        '<div class="input-group" style="max-width:420px;flex:1;min-width:240px"><input class="input" id="fQ" placeholder="' + esc(t('doc.searchHint')) + '" value="' + esc(f.q || '') + '">' +
+        '<button class="btn" id="dGo" type="button">' + icon('search') + '</button><button class="btn" id="dRef" type="button" title="refresh">↻</button></div></div></div></div>' +
         '<div id="docRes"></div>';
       el.innerHTML = html;
 
@@ -2730,6 +2733,7 @@ window.I18N = {
         return nf;
       };
       var cols = listColumns(type);
+      var seq0 = S.navSeq;
       var reload = function (page) {
         var nf = readF(page);
         S.route.params = nf;
@@ -2753,6 +2757,7 @@ window.I18N = {
               (r.DocType === 'INV' || r.DocType === 'CL' ? '<option value="receipt">' + t('doc.printReceipt') + '</option>' : '') +
               '</select></td></tr>';
           }).join('');
+          if (seq0 !== S.navSeq || !$('#docRes')) return;   // ออกจากหน้านี้ไปแล้ว (ผลลัพธ์ตอบกลับช้า)
           $('#docRes').innerHTML = '<div class="card">' + (res.items.length ? '<div class="table-wrap"><table class="tbl cards dms-tbl"><thead><tr>' + head + '</tr></thead><tbody>' + body +
             '</tbody></table></div>' : '<div class="empty">' + t('noData') + '</div>') +
             '<div class="list-foot"><span class="muted small">' + t('cust.showing', { a: start, b: Math.min(res.page * res.pageSize, res.total), n: res.total }) +
