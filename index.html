@@ -446,7 +446,8 @@ tr.rpt-total td { font-weight: 700; background: var(--bg); border-top: 2px solid
     <svg class="mark" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><linearGradient id="gm1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B2A6B"/><stop offset="1" stop-color="#1D4ED8"/></linearGradient><radialGradient id="gm1h" cx=".25" cy=".15" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="512" height="512" rx="116" fill="url(#gm1)"/><rect width="512" height="512" rx="116" fill="url(#gm1h)"/><path d="M352 160A136 136 0 1 0 392 262" fill="none" stroke="#FFFFFF" stroke-width="58" stroke-linecap="round"/><path d="M250 262H404" stroke="#FFB020" stroke-width="58" stroke-linecap="round"/><path d="M372 206L436 262 372 318" fill="none" stroke="#FFB020" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <div class="splash-logo" id="spName">INCA Go</div>
     <div class="splash-tag" id="spTag"></div>
-    <div class="muted">กำลังโหลด... / Loading...</div>
+    <div class="muted" id="spLoad">กำลังโหลด...</div>
+    <script>try { if (localStorage.getItem('dms.lang') === 'en') document.getElementById('spLoad').textContent = 'Loading...'; } catch (e) { }</script>
   </div>
 
   <!-- หน้าล็อกอิน / เปลี่ยนรหัสผ่านครั้งแรก -->
@@ -527,6 +528,9 @@ tr.rpt-total td { font-weight: 700; background: var(--bg); border-top: 2px solid
    ============================================================ */
 window.I18N = {
   th: {
+    'ntf.PENDING_APPROVAL': 'รออนุมัติ', 'ntf.APPROVED': 'อนุมัติแล้ว', 'ntf.CANCELLED': 'ถูกยกเลิก', 'ntf.REVIEW_ISSUE': 'บัญชีพบปัญหา', 'ntf.VAN_REVIEW': 'บิลรถแวนรอตรวจ', 'ntf.DOC_EDITED_BY_APPROVER': 'ถูกแก้ไขโดยผู้อนุมัติ', 'ntf.RETURNED': 'ส่งกลับแก้ไข', 'ntf.REJECTED': 'ไม่อนุมัติ', 'ntf.CUSTOMER_PENDING': 'ลูกค้าใหม่รออนุมัติ', 'ntf.CUSTOMER_APPROVED': 'อนุมัติลูกค้าใหม่', 'ntf.CUSTOMER_REJECTED': 'ไม่อนุมัติลูกค้าใหม่', 'ntf.step': 'ขั้น {n}', 'ntf.by': 'อนุมัติโดย',
+    'rt.sales': 'รายงานยอดขาย', 'rt.best': 'สินค้าขายดี', 'rt.promo': 'ส่วนลดโปรโมชั่นสำหรับเคลม', 'rc.UserCode': 'รหัสพนักงานขาย', 'rc.Username': 'ชื่อพนักงานขาย', 'rc.Number': 'เลขที่เอกสาร', 'rc.DocStatus': 'สถานะเอกสาร', 'rc.Date': 'วันที่', 'rc.DocType': 'ประเภทเอกสาร', 'rc.DistCode': 'รหัสศูนย์จัดจำหน่าย', 'rc.DistName': 'ชื่อศูนย์จัดจำหน่าย', 'rc.CustomerCode': 'รหัสลูกค้า', 'rc.CustomerName': 'ชื่อลูกค้า', 'rc.Ch1': 'ช่องทาง 1', 'rc.Ch2': 'ช่องทาง 2', 'rc.Ch3': 'ช่องทาง 3', 'rc.ProductCode': 'รหัสสินค้า', 'rc.ProductName': 'ชื่อสินค้า', 'rc.Cat1': 'หมวดสินค้า', 'rc.Cat2': 'แบรนด์', 'rc.Cat3': 'กลุ่มโปรโมชั่น', 'rc.UOM': 'หน่วย', 'rc.Qty': 'จำนวน', 'rc.FreeQty': 'จำนวนของแถม', 'rc.UnitPrice': 'ราคาต่อหน่วย', 'rc.Gross': 'ยอดก่อนส่วนลด', 'rc.Discount': 'ส่วนลด', 'rc.PromoDiscount': 'ส่วนลดโปรโมชั่น', 'rc.NetAmount': 'ยอดสุทธิ (ก่อนภาษี)', 'rc.Vat': 'ภาษีมูลค่าเพิ่ม', 'rc.Total': 'ยอดรวมทั้งสิ้น', 'rv2.Approved': 'อนุมัติแล้ว', 'rv2.Pending': 'รออนุมัติ', 'rv2.Draft': 'ร่าง', 'rv2.Returned': 'ส่งกลับแก้ไข', 'rv2.Rejected': 'ไม่อนุมัติ', 'rv2.Cancelled': 'ยกเลิก', 'rd2.Invoice': 'ใบกำกับภาษี', 'rd2.Credit Note': 'ใบลดหนี้', 'rd2.Sales Order': 'ใบสั่งขาย', 'rd2.Goods Return': 'ใบรับคืนสินค้า',
+    'setd.APP_NAME': 'ชื่อระบบที่แสดงบนหน้าจอ', 'setd.APP_TAGLINE': 'ข้อความแนะนำระบบ (หน้าเปิดและหน้าเข้าระบบ ทั้งเว็บและแอป) ใส่ | เพื่อขึ้นบรรทัดใหม่', 'setd.SALES_APP_NAME': 'ชื่อแอปเซลล์ที่แสดงบนมือถือ', 'setd.BRAND_COLOR': 'สีหลักของแบรนด์ (#RRGGBB) ใช้ทั้งเว็บและแอปเซลล์', 'setd.COMPANY_NAME': 'ชื่อบริษัท (แสดงบนเอกสาร)', 'setd.COMPANY_NAME_EN': 'ชื่อบริษัทภาษาอังกฤษ', 'setd.COMPANY_ADDRESS': 'ที่อยู่บริษัท (แสดงบนเอกสาร)', 'setd.COMPANY_TAX_ID': 'เลขประจำตัวผู้เสียภาษี 13 หลัก', 'setd.COMPANY_BRANCH': 'สำนักงานใหญ่ หรือ สาขาที่ 00001', 'setd.COMPANY_PHONE': 'เบอร์โทรบริษัท', 'setd.CENTER_CODE': 'รหัสศูนย์จัดจำหน่าย (แสดงในหน้าเอกสาร)', 'setd.DOCNO_YEAR': 'ปีในเลขเอกสาร', 'setd.DOCNO_RESET': 'เริ่มนับเลขเอกสารใหม่เมื่อไร', 'setd.DOCNO_DIGITS': 'จำนวนหลักของลำดับท้ายเลขเอกสาร (3–6) เช่น 5 → SO6900001', 'setd.DOCNO_VAN_SEPARATE': 'รถแวนแต่ละคันรันเลขเอกสารแยก (ใส่รหัสรถในเลข) — ไม่ = ใช้ลำดับเดียวกับหลังบ้านแบบ Express', 'setd.DOCNO_VAN_DIGITS': 'จำนวนหลักของลำดับเลขเอกสารรถแวน (3–6) ใช้เมื่อรถรันเลขแยก', 'setd.DOCNO_VAN_INV_PREFIX': 'คำนำหน้าบิลขายของรถแวน (Express: HS = บิลเงินสด) เว้นว่าง = ใช้ของใบกำกับภาษี', 'setd.STOCK_ENFORCE': 'ห้ามขาย/โอนเกินสต็อก (เปิดหลังบันทึกสต็อกตั้งต้นครบ) — ไม่ = แจ้งเตือนอย่างเดียว', 'setd.COLLECT_GUARD_FROM': 'แวนต้องรับชำระบิลก่อนขายร้านถัดไป (นับบิลตั้งแต่วันที่นี้)', 'setd.VAT_RATE': 'อัตราภาษีมูลค่าเพิ่ม (%)', 'setd.DEFAULT_VAT_TYPE': 'ประเภทราคาเริ่มต้น', 'setd.DEFAULT_CREDIT_DAYS': 'เครดิตเทอมเริ่มต้น (วัน)', 'setd.CREDIT_LIMIT_MODE': 'เมื่อเกินวงเงินเครดิต', 'setd.GR_DEFAULT_DISCOUNT_PCT': 'ส่วนลดท้ายบิลจากซัพพลายเออร์ (%) ค่าเริ่มต้นของใบรับสินค้า', 'setd.SALES_PROMO_CHANNEL': 'พนักงานขายเครดิตใช้ตารางส่วนลดขั้นบันไดของช่องทางไหน', 'setd.MAX_FILE_MB': 'ขนาดไฟล์แนบสูงสุด (MB)', 'setd.ALLOWED_FILE_EXT': 'นามสกุลไฟล์ที่อนุญาต', 'setd.ALLOW_NEGATIVE_STOCK': 'คลังหลักยอมให้สต็อกติดลบ', 'setd.VAN_SALE_REVIEW': 'บิลขายรถแวนต้องให้บัญชีตรวจ', 'setd.BLOCK_SALE_IF_NOT_CLOSED': 'ห้ามแวนเซลล์ขายถ้ายังไม่ส่งปิดรถของวันก่อน', 'setd.RECEIPT_WIDTH_MM': 'ความกว้างกระดาษเครื่องพิมพ์พกพา', 'setd.REPRINT_MAX': 'ใบเสร็จเครื่องพกพา: พิมพ์ซ้ำ (สำเนา) ได้กี่ครั้งหลังพิมพ์ต้นฉบับ', 'setd.DEAD_STOCK_DAYS': 'สินค้าไม่เคลื่อนไหวเกินกี่วัน (สำหรับรายงาน)', 'setd.LEDGER_ARCHIVE_ROWS': 'ย้ายประวัติความเคลื่อนไหวสต็อกเก่าไปเก็บถาวรเมื่อเกินกี่แถว', 'setd.DEFAULT_LANG': 'ภาษาเริ่มต้น', 'setd.SESSION_HOURS': 'อายุการเข้าระบบ (ชั่วโมง)', 'setd.MAX_LOGIN_FAIL': 'ใส่ PIN ผิดได้กี่ครั้งก่อนล็อกบัญชี', 'setd.LOCK_MINUTES': 'ล็อกบัญชีกี่นาที', 'setd.BACKUP_KEEP': 'เก็บไฟล์สำรองล่าสุดกี่ชุด', 'setd.EMAIL_NOTIFY': 'ส่งอีเมลแจ้งเตือน', 'setd.EMAIL_DIGEST_HOUR': 'เวลาส่งอีเมลสรุปรายวัน (ชั่วโมง 0–23)', 'setd.LINE_ENABLED': 'เปิดแจ้งเตือนผ่าน LINE', 'setd.LINE_CHANNEL_TOKEN': 'รหัสเชื่อมต่อช่อง LINE OA (Channel access token)', 'setd.LINE_TARGET_ID': 'รหัสผู้รับหรือกลุ่มใน LINE ที่จะส่งข้อความ', 'rm.sec.Maintenance': 'ข้อมูลหลัก', 'rm.sec.Inventory': 'สินค้าคงคลัง', 'rm.sec.Sales': 'การขาย', 'rm.ProductsList': 'รายการสินค้า', 'rm.CustomersList': 'รายชื่อลูกค้า', 'rm.PromotionsSetup': 'ตั้งค่าโปรโมชั่น', 'rm.UserCustomer': 'ผู้ใช้กับลูกค้าที่ดูแล', 'rm.UsersList': 'รายชื่อผู้ใช้', 'rm.StockIn': 'รับสินค้าเข้า', 'rm.StockOut': 'จ่ายสินค้าออก', 'rm.StockAdjustment': 'ปรับปรุงสต็อก', 'rm.StockSummary': 'สรุปสต็อก', 'rm.StockTransfer': 'โอนสินค้า', 'rm.InventoryMovement': 'ความเคลื่อนไหวสินค้า', 'rm.InventorySummary': 'สรุปสินค้าคงคลัง', 'rm.SalesOrderDetails': 'รายละเอียดใบสั่งขาย', 'rm.SalesOrderSummary': 'สรุปใบสั่งขาย', 'rm.SalesDocumentsSummary': 'สรุปเอกสารขาย', 'rm.SalesDocumentsDetails': 'รายละเอียดเอกสารขาย', 'rm.CollectionSummaryBySalesman': 'สรุปรับชำระตามพนักงานขาย', 'rm.CollectionSummaryByCustomer': 'สรุปรับชำระตามลูกค้า', 'rm.CollectionDetails': 'รายละเอียดรับชำระ', 'list.invNos': 'เลขที่ใบกำกับภาษี', 'list.pickStatus': 'จัดเรียงสินค้าแล้ว', 'ed.uom': 'หน่วย', 'cl.qr': 'ชำระผ่าน QR', 'sys.system': 'ระบบ', 'ver.created': 'สร้างเอกสาร', 'ver.edited': 'แก้ไข', 'so.close.short': 'สินค้าไม่เพียงพอ', 'so.close.market': 'สินค้าขาดตลาด', 'ph.baseUnit': 'ชิ้น / ขวด / ถุง', 'lk.DELIVERY_TYPE': 'วิธีจัดส่ง', 'lk.TRANSFER_REASON': 'เหตุผลการโอนสินค้า', 'lk.BANK': 'ธนาคาร', 'rpt.arAsOf': 'ลูกหนี้ค้างชำระ ณ {d}',
     // ---------- ทั่วไป ----------
     'ok': 'ตกลง', 'cancel': 'ยกเลิก', 'save': 'บันทึก', 'saved': 'บันทึกแล้ว', 'edit': 'แก้ไข', 'delete': 'ลบ', 'add': 'เพิ่ม',
     'confirm': 'ยืนยัน', 'search': 'ค้นหา', 'all': 'ทั้งหมด', 'auto': 'อัตโนมัติ', 'yes': 'ใช่', 'no': 'ไม่', 'open': 'เปิด',
@@ -543,9 +547,9 @@ window.I18N = {
     // ---------- เมนู ----------
     'van.confirmSale': 'ยืนยันขาย / ออกบิล', 'van.confirmSaleMsg': 'ยืนยันขายให้ {name} ยอดสุทธิ {total} บาท ชำระโดย {pay}? (ออกบิลแล้วแก้ไขไม่ได้)',
     'van.saleDone': 'ขายสำเร็จ', 'van.saleDoneHint': 'ออกบิลขาย/ใบกำกับภาษีแล้ว ตัดสต็อกรถเรียบร้อย', 'van.viewBill': 'ดูบิล', 'van.nextSale': 'ขายบิลถัดไป',
-    'rep.sec.sales': 'รายงานขาย', 'rep.sec.finance': 'รายงานการเงิน / ลูกหนี้', 'rep.sec.stock': 'รายงานสต็อก', 'rep.m.sales': 'ยอดขาย (เลือกจัดกลุ่มได้)', 'rep.m.best': 'สินค้าขายดี', 'rep.m.promo': 'ส่วนลดโปรโมชั่น (สำหรับเคลม)', 'rep.m.ar': 'ลูกหนี้ค้างชำระ / อายุหนี้', 'rep.m.stockBal': 'สต็อกคงเหลือ', 'rep.m.stockMove': 'ความเคลื่อนไหวสินค้า', 'rep.m.vanStock': 'สต็อกรถแวน', 'rep.soon': 'รอตัวอย่าง', 'rep.soonHint': 'รายงานนี้กำลังทำ — รอรูปตัวอย่างจากระบบเดิม', 'rf.dateFrom': 'วันที่เริ่มต้น', 'rf.dateTo': 'วันที่สิ้นสุด', 'rf.distributor': 'ศูนย์จัดจำหน่าย', 'rf.area': 'พื้นที่ (Area)', 'rf.salesman': 'พนักงานขาย', 'rf.keyAccount': 'Key Account', 'rf.paymentType': 'ประเภทการชำระ', 'rf.country': 'ประเทศ', 'rf.province': 'จังหวัด', 'rf.city': 'อำเภอ / เมือง', 'rf.priceGroup': 'กลุ่มราคา', 'rf.channel1': 'Channel1', 'rf.channel2': 'Channel2', 'rf.channel3': 'Channel3', 'rf.category1': 'Category 1 (หมวดสินค้า)', 'rf.category2': 'Category 2 (แบรนด์)', 'rf.category3': 'Category 3 (กลุ่มโปร)', 'rf.category4': 'Category 4 (สินค้า)', 'rf.customerCode': 'รหัส/ชื่อลูกค้า', 'rf.productCode': 'รหัส/ชื่อสินค้า', 'rf.isTaxable': 'คิดภาษี', 'rf.isBlocked': 'ระงับการขาย', 'rf.docStatus': 'สถานะเอกสาร', 'rf.docType': 'ประเภทเอกสาร', 'rf.all': 'ทั้งหมด (ALL)', 'rf.customer': 'ลูกค้า', 'rf.product': 'สินค้า', 'rf.more': 'ยังมีอีก {n} รายการ — พิมพ์ค้นหาเพื่อกรอง', 'rf.anyText': 'เว้นว่าง = ทั้งหมด', 'rf.selectAll': 'เลือกทั้งหมด', 'rf.clearSel': 'ล้าง', 'rpt.subtotal': 'รวม', 'rpt.grand': 'รวมทั้งหมด', 'rpt.printPdf': 'พิมพ์ / PDF', 'rpt.find': 'ค้นหาในรายงาน', 'rpt.printedAt': 'พิมพ์เมื่อ', 'rpt.tooMany': 'แสดงบนจอ {n} แถวแรก จากทั้งหมด {all} แถว — ดาวน์โหลด Excel เพื่อดูครบ', 'menu.g.salesDocs': 'เอกสารขาย', 'menu.g.purchaseDocs': 'เอกสารจัดซื้อ', 'menu.g.stockDocs': 'เอกสารคลังสินค้า',
-    'menu.g.support': 'System Support', 'menu.usersPin': 'ผู้ใช้ (รีเซ็ต PIN)', 'menu.warehouses': 'คลังสินค้า', 'menu.activity': 'กิจกรรมล่าสุด', 'menu.backup': 'สำรองข้อมูล',
-    'f.Username': 'User', 'f.Pin': 'PIN 6 หลัก', 'f.EmailContact': 'อีเมลติดต่อ (ไม่ใช้เข้าระบบ)', 'login.pinHint': 'ลืม PIN? ติดต่อแอดมินหรือ System Support',
+    'rep.sec.sales': 'รายงานขาย', 'rep.sec.finance': 'รายงานการเงิน / ลูกหนี้', 'rep.sec.stock': 'รายงานสต็อก', 'rep.m.sales': 'ยอดขาย (เลือกจัดกลุ่มได้)', 'rep.m.best': 'สินค้าขายดี', 'rep.m.promo': 'ส่วนลดโปรโมชั่น (สำหรับเคลม)', 'rep.m.ar': 'ลูกหนี้ค้างชำระ / อายุหนี้', 'rep.m.stockBal': 'สต็อกคงเหลือ', 'rep.m.stockMove': 'ความเคลื่อนไหวสินค้า', 'rep.m.vanStock': 'สต็อกรถแวน', 'rep.soonWait': 'รอตัวอย่าง', 'rep.soon': 'รอตัวอย่าง', 'rep.soonHint': 'รายงานนี้กำลังทำ — รอรูปตัวอย่างจากระบบเดิม', 'rf.dateFrom': 'วันที่เริ่มต้น', 'rf.dateTo': 'วันที่สิ้นสุด', 'rf.distributor': 'ศูนย์จัดจำหน่าย', 'rf.area': 'พื้นที่', 'rf.salesman': 'พนักงานขาย', 'rf.keyAccount': 'ลูกค้ารายสำคัญ', 'rf.paymentType': 'ประเภทการชำระ', 'rf.country': 'ประเทศ', 'rf.province': 'จังหวัด', 'rf.city': 'อำเภอ / เมือง', 'rf.priceGroup': 'กลุ่มราคา', 'rf.channel1': 'ช่องทาง 1', 'rf.channel2': 'ช่องทาง 2', 'rf.channel3': 'ช่องทาง 3', 'rf.category1': 'หมวดสินค้า', 'rf.category2': 'แบรนด์', 'rf.category3': 'กลุ่มโปรโมชั่น', 'rf.category4': 'สินค้า', 'rf.customerCode': 'รหัส/ชื่อลูกค้า', 'rf.productCode': 'รหัส/ชื่อสินค้า', 'rf.isTaxable': 'คิดภาษี', 'rf.isBlocked': 'ระงับการขาย', 'rf.docStatus': 'สถานะเอกสาร', 'rf.docType': 'ประเภทเอกสาร', 'rf.all': 'ทั้งหมด', 'rf.customer': 'ลูกค้า', 'rf.product': 'สินค้า', 'rf.more': 'ยังมีอีก {n} รายการ — พิมพ์ค้นหาเพื่อกรอง', 'rf.anyText': 'เว้นว่าง = ทั้งหมด', 'rf.selectAll': 'เลือกทั้งหมด', 'rf.clearSel': 'ล้าง', 'rpt.subtotal': 'รวม', 'rpt.grand': 'รวมทั้งหมด', 'rpt.printPdf': 'พิมพ์ / PDF', 'rpt.find': 'ค้นหาในรายงาน', 'rpt.printedAt': 'พิมพ์เมื่อ', 'rpt.tooMany': 'แสดงบนจอ {n} แถวแรก จากทั้งหมด {all} แถว — ดาวน์โหลด Excel เพื่อดูครบ', 'menu.g.salesDocs': 'เอกสารขาย', 'menu.g.purchaseDocs': 'เอกสารจัดซื้อ', 'menu.g.stockDocs': 'เอกสารคลังสินค้า',
+    'menu.g.support': 'ผู้ดูแลระบบ', 'menu.usersPin': 'ผู้ใช้ (รีเซ็ต PIN)', 'menu.warehouses': 'คลังสินค้า', 'menu.activity': 'กิจกรรมล่าสุด', 'menu.backup': 'สำรองข้อมูล',
+    'f.Username': 'ชื่อผู้ใช้', 'f.Pin': 'PIN 6 หลัก', 'f.EmailContact': 'อีเมลติดต่อ (ไม่ใช้เข้าระบบ)', 'login.pinHint': 'ลืม PIN? ติดต่อแอดมินหรือ System Support',
     'user.tempPin': 'PIN ชั่วคราว', 'user.tempPinHint': 'แจ้ง PIN นี้ให้ {name} โดยตรง — แสดงครั้งเดียว ปิดแล้วดูอีกไม่ได้ · เข้าครั้งแรกระบบบังคับตั้ง PIN ใหม่',
     'user.usernameHint': 'อังกฤษ/ตัวเลข 2–20 ตัว เช่น V01, PS01, ADMIN01', 'user.newPinHint': 'กดบันทึกแล้วระบบสร้าง PIN ชั่วคราวให้ แจ้งพนักงาน เข้าครั้งแรกต้องตั้ง PIN ของตัวเอง',
     'user.pinNote': 'อีเมลเป็นข้อมูลติดต่อเท่านั้น ไม่ใช้เข้าระบบ · PIN เก็บแบบเข้ารหัส ไม่มีใครดูได้', 'user.adminHint': 'แตะรายชื่อเพื่อรีเซ็ต PIN หรือปลดล็อก · การเพิ่มผู้ใช้ เปลี่ยนตำแหน่ง หรือสิทธิ์ ทำได้เฉพาะ System Support',
@@ -595,7 +599,7 @@ window.I18N = {
     'f.Email': 'อีเมล', 'f.Password': 'รหัสผ่าน', 'f.DocType': 'ประเภทเอกสาร', 'f.DocNo': 'เลขที่', 'f.DocDate': 'วันที่เอกสาร', 'f.DueDate': 'ครบกำหนด',
     'f.Party': 'คู่ค้า', 'f.PartyId': 'ลูกค้า/ซัพพลายเออร์', 'f.Customer': 'ลูกค้า', 'f.Supplier': 'ซัพพลายเออร์', 'f.SalesRepId': 'พนักงานขาย',
     'f.WarehouseId': 'คลังสินค้า', 'f.ToWarehouseId': 'คลังปลายทาง', 'f.FromWarehouse': 'คลังต้นทาง', 'f.ToVan': 'โหลดขึ้นรถ', 'f.FromVan': 'รถที่คืนสินค้า',
-    'f.Channel': 'ช่องทาง', 'f.TierTable': 'ตาราง Tier', 'f.PaymentType': 'การชำระเงิน', 'f.VatType': 'VAT', 'f.HeaderDiscount': 'ส่วนลดท้ายบิล',
+    'f.Channel': 'ช่องทาง', 'f.TierTable': 'ตารางส่วนลดขั้นบันได', 'f.PaymentType': 'การชำระเงิน', 'f.VatType': 'ประเภทภาษี', 'f.HeaderDiscount': 'ส่วนลดท้ายบิล',
     'f.RefDocIds': 'เอกสารอ้างอิง', 'f.Reason': 'เหตุผล', 'f.Note': 'หมายเหตุ', 'f.Tags': 'แท็ก', 'f.ChangeNote': 'บันทึกการแก้ไข',
     'f.Status': 'สถานะ', 'f.NetTotal': 'ยอดสุทธิ', 'f.CreatedBy': 'สร้างโดย', 'f.PromoId': 'โปรโมชั่น', 'f.Product': 'สินค้า', 'f.ProductCode': 'รหัสสินค้า',
     'ed.tierFrom': 'ตั้งแต่ {n} หีบ', 'dash.chartOffline': 'แสดงกราฟไม่ได้ — โหลดตัววาดกราฟไม่สำเร็จ ลองรีเฟรชหน้านี้', 'f.Qty': 'จำนวน', 'f.Unit': 'หน่วย', 'f.UnitPrice': 'ราคา/หน่วย', 'f.Discount': 'ส่วนลด', 'f.DiscountValue': 'ส่วนลด', 'f.LineTotal': 'จำนวนเงิน', 'f.Gross': 'ยอดก่อนส่วนลด',
@@ -768,9 +772,9 @@ window.I18N = {
     "f.IsActive": "ใช้งาน",
     "f.IsApproved": "อนุมัติแล้ว",
     "f.ContactName": "ชื่อผู้ติดต่อ",
-    "f.KeyAccount": "Key Account",
-    "f.CustomerChannel": "ช่องทางลูกค้า (Channel)",
-    "f.PriceGroup": "กลุ่มราคา (PriceGroup)",
+    "f.KeyAccount": "ลูกค้ารายสำคัญ",
+    "f.CustomerChannel": "ช่องทางลูกค้า",
+    "f.PriceGroup": "กลุ่มราคา",
     "f.IsTaxable": "ต้องเสีย VAT",
     "f.IsBlocked": "ระงับการขาย",
     "f.AllowManualDiscount": "อนุญาตให้เซลล์แก้ส่วนลดรายการ",
@@ -791,11 +795,11 @@ window.I18N = {
     "f.Extra": "ค่าเพิ่มเติม",
     "f.action": "การกระทำ",
     "imp.moreErrors": "และผิดพลาดอีก {n} แถว",
-    "mst.lookups": "ตัวเลือก (Dropdown)",
+    "mst.lookups": "ตัวเลือก",
     "lk.CLASSIFICATION": "ระดับลูกค้า",
     "lk.AREA": "พื้นที่ขาย",
     "lk.CUSTOMER_CHANNEL": "ช่องทางลูกค้า",
-    "lk.KEY_ACCOUNT": "Key Account",
+    "lk.KEY_ACCOUNT": "ลูกค้ารายสำคัญ",
     "lk.PRICE_GROUP": "กลุ่มราคา",
     "lk.OWNERSHIP_TYPE": "ประเภทเจ้าของ",
     "lk.SHOP_TYPE": "ประเภทร้าน",
@@ -836,12 +840,12 @@ window.I18N = {
     'ERR_PROMO_DUP_ITEM': 'สินค้า {code} อยู่ในกลุ่ม {group} แล้ว', 'ERR_RANGE_TOO_LONG': 'ช่วงวันที่ยาวเกินไป (สูงสุด {max} วัน)',
     'ERR_NOT_INSTALLED': 'ระบบยังไม่ได้ติดตั้ง', 'ERR_SHEET_MISSING': 'ไม่พบชีต {sheet}',
     // ---------- v3: เลขเอกสาร / หน้าเอกสารแบบ DMS / ใบรับชำระ ----------
-    'back': 'ย้อนกลับ', 'pleaseSelect': 'โปรดเลือก', 'st.OPEN': 'Open (ร่าง)', 'doc.tempNo': 'Temporary Number (เลขชั่วคราว)',
+    'back': 'ย้อนกลับ', 'pleaseSelect': 'โปรดเลือก', 'st.OPEN': 'ร่าง', 'doc.tempNo': 'เลขชั่วคราว',
     'pst.UNPAID': 'ค้างชำระ', 'pst.COLLECTING': 'รอยืนยันรับชำระ', 'pst.PARTIAL': 'ชำระบางส่วน', 'pst.PAID': 'ชำระแล้ว',
     'st.COLLECTING': 'รอยืนยันรับชำระ',
     'f.DeliveryType': 'ประเภทการส่ง', 'f.DeliveryDate': 'วันที่ส่ง', 'f.RefNo': 'เลขที่อ้างอิง', 'f.RefDate': 'วันที่อ้างอิง',
     'f.Source': 'แหล่งที่มา', 'f.Destination': 'ปลายทาง', 'f.Sellable': 'ขายได้', 'f.PaymentStatus': 'สถานะการชำระ', 'f.DocCode': 'รหัสรถในเลขเอกสาร',
-    'mst.docCodeHint': 'ตัวเลข เช่น 01 → INV012610001 / CLV012610001 / VLV012610001',
+    'mst.docCodeHint': 'รหัสรถในเลขเอกสาร ใช้เมื่อตั้งให้รถแต่ละคันรันเลขแยก เช่น 01',
     'ed.detail': 'รายละเอียด', 'ed.dateTime': 'วันที่ & เวลา', 'ed.center': 'ศูนย์จัดจำหน่าย', 'ed.custDetail': 'รายละเอียดลูกค้า',
     'ed.suppDetail': 'รายละเอียดผู้ขาย', 'ed.xferDetail': 'รายละเอียดการโอน', 'ed.whDetail': 'คลังสินค้า',
     'ed.address': 'ที่อยู่', 'ed.addrMain': 'ที่อยู่หลัก', 'ed.addrType': 'ประเภทที่อยู่', 'ed.addrBill': 'ที่อยู่ออกบิล / ส่งสินค้า',
@@ -867,14 +871,14 @@ window.I18N = {
     'cl.docTotal': 'ยอดรวม', 'cl.cnAmount': 'จำนวนเงินใบลดหนี้', 'cl.outstanding': 'ยอดคงค้าง', 'cl.receive': 'จำนวนเงินรับชำระ', 'cl.total': 'ยอดรวม',
     'cl.bank': 'ธนาคาร', 'cl.accountNo': 'เลขที่บัญชี', 'cl.payerAccount': 'หมายเลขบัญชีผู้ชำระเงิน', 'cl.payerName': 'ชื่อผู้ชำระเงิน',
     'cl.sumInv': 'รวมใบแจ้งหนี้', 'cl.sumCn': 'รวมใบลดหนี้', 'cl.sumCash': 'รวมเงินสด', 'cl.sumCheque': 'รวมเช็ค', 'cl.sumTransfer': 'รวมเงินฝากทั้งหมด',
-    'cl.sumQr': 'รวม QRPayment', 'cl.sumPay': 'จำนวนเงินรวม', 'cl.notBalanced': 'ยอดรับชำระยังไม่เท่ายอดที่ต้องชำระ', 'cl.noOpenDocs': 'ไม่มีเอกสารค้างชำระ',
+    'cl.sumQr': 'รวมชำระผ่าน QR', 'cl.sumPay': 'จำนวนเงินรวม', 'cl.notBalanced': 'ยอดรับชำระยังไม่เท่ายอดที่ต้องชำระ', 'cl.noOpenDocs': 'ไม่มีเอกสารค้างชำระ',
     'cl.confirmApprove': 'บันทึกและยืนยันการรับชำระ? (ใบแจ้งหนี้จะเปลี่ยนเป็นชำระแล้ว)', 'cl.paidAmount': 'ชำระแล้ว', 'cl.unpaid': 'ค้างชำระ',
     'cl.vanTitle': 'รับชำระบิล {no}', 'cl.mustPay': 'ยอดที่ต้องชำระ', 'cl.remain': 'ยังขาด', 'cl.balanced': 'ยอดครบ', 'cl.later': 'ภายหลัง',
     'cl.saveCollect': 'บันทึกรับชำระ', 'cl.vanHint': 'แบ่งจ่ายได้หลายวิธี · ยอดจะสมบูรณ์เมื่อแอดมิน/บัญชียืนยัน',
     'cl.vanSaved': 'บันทึกรับชำระแล้ว {no} — รอแอดมิน/บัญชียืนยัน', 'cl.notCollected': 'ยังไม่ได้รับชำระ — ต้องรับชำระก่อนขายร้านถัดไป',
     'cl.mustCollectFirst': 'ต้องรับชำระบิลด้านล่างให้เรียบร้อยก่อน จึงจะขายร้านถัดไปได้',
     'chq.RECEIVED': 'รับเช็คแล้ว', 'chq.DEPOSITED': 'นำฝากแล้ว', 'chq.CLEARED': 'เช็คผ่าน', 'chq.BOUNCED': 'เช็คคืน',
-    'set.docno': 'เลขเอกสาร / สต็อก / รับชำระ', 'set.resetMonth': 'รันใหม่ทุกเดือน (INV26100001)', 'set.resetYear': 'รันใหม่ทุกปี (INV260001)',
+    'set.docno': 'เลขเอกสาร / สต็อก / รับชำระ', 'set.resetMonth': 'เริ่มนับใหม่ทุกเดือน (เช่น SO69110001)', 'set.resetYear': 'เริ่มนับใหม่ทุกปี (เช่น SO6900001)',
     'ERR_CL_NO_INV': 'ต้องมีใบแจ้งหนี้อย่างน้อย 1 ใบ', 'ERR_CL_UNBALANCED': 'ยอดไม่ตรง: ใบแจ้งหนี้ {inv} − ใบลดหนี้ {cn} ≠ รับชำระ {pay} (ต่าง {diff})',
     'ERR_CL_OVER': '{no} รับชำระได้ไม่เกิน {max} บาท', 'ERR_CL_AMOUNT': 'จำนวนเงินต้องมากกว่า 0', 'ERR_CL_OTHER_CUSTOMER': '{no} ไม่ใช่เอกสารของลูกค้ารายนี้',
     'ERR_VAN_PAY_KIND': 'แวนเซลล์รับชำระได้เฉพาะ เงินสด / โอน / QR', 'ERR_COLLECT_FIRST': 'ต้องรับชำระบิล {no} ({name}) ก่อน จึงจะขายร้านถัดไปได้',
@@ -883,6 +887,9 @@ window.I18N = {
   },
 
   en: {
+    'ntf.PENDING_APPROVAL': 'Awaiting approval', 'ntf.APPROVED': 'Approved', 'ntf.CANCELLED': 'Cancelled', 'ntf.REVIEW_ISSUE': 'Accounting found an issue', 'ntf.VAN_REVIEW': 'Van bill awaiting review', 'ntf.DOC_EDITED_BY_APPROVER': 'Edited by the approver', 'ntf.RETURNED': 'Returned for changes', 'ntf.REJECTED': 'Rejected', 'ntf.CUSTOMER_PENDING': 'New customer awaiting approval', 'ntf.CUSTOMER_APPROVED': 'New customer approved', 'ntf.CUSTOMER_REJECTED': 'New customer rejected', 'ntf.step': 'step {n}', 'ntf.by': 'approved by',
+    'rt.sales': 'Sales report', 'rt.best': 'Best sellers', 'rt.promo': 'Promotion discounts for claims', 'rc.UserCode': 'User Code', 'rc.Username': 'Username', 'rc.Number': 'Number', 'rc.DocStatus': 'Document Status', 'rc.Date': 'Date', 'rc.DocType': 'Document Type', 'rc.DistCode': 'Distributor Code', 'rc.DistName': 'Distributor Name', 'rc.CustomerCode': 'Customer Code', 'rc.CustomerName': 'Customer Name', 'rc.Ch1': 'Channel1 Description', 'rc.Ch2': 'Channel2 Description', 'rc.Ch3': 'Channel3 Description', 'rc.ProductCode': 'Product Code', 'rc.ProductName': 'Product Name', 'rc.Cat1': 'Product Category1 Description', 'rc.Cat2': 'Product Category2 Description', 'rc.Cat3': 'Product Category3 Description', 'rc.UOM': 'UOM', 'rc.Qty': 'Qty', 'rc.FreeQty': 'FOC Qty', 'rc.UnitPrice': 'Unit Price', 'rc.Gross': 'Gross Amount', 'rc.Discount': 'Discount', 'rc.PromoDiscount': 'Promotion Discount', 'rc.NetAmount': 'Net Amount', 'rc.Vat': 'VAT', 'rc.Total': 'Total Amount', 'rv2.Approved': 'Approved', 'rv2.Pending': 'Pending', 'rv2.Draft': 'Draft', 'rv2.Returned': 'Returned', 'rv2.Rejected': 'Rejected', 'rv2.Cancelled': 'Cancelled', 'rd2.Invoice': 'Invoice', 'rd2.Credit Note': 'Credit Note', 'rd2.Sales Order': 'Sales Order', 'rd2.Goods Return': 'Goods Return',
+    'setd.APP_NAME': 'System name shown on screen', 'setd.APP_TAGLINE': 'System tagline (splash and sign-in screens, web and app). Use | for a line break', 'setd.SALES_APP_NAME': 'Sales app name shown on phones', 'setd.BRAND_COLOR': 'Brand colour (#RRGGBB) for the web and the sales app', 'setd.COMPANY_NAME': 'Company name (printed on documents)', 'setd.COMPANY_NAME_EN': 'Company name in English', 'setd.COMPANY_ADDRESS': 'Company address (printed on documents)', 'setd.COMPANY_TAX_ID': '13-digit tax ID', 'setd.COMPANY_BRANCH': 'Head office or branch no. 00001', 'setd.COMPANY_PHONE': 'Company phone', 'setd.CENTER_CODE': 'Distribution centre code (shown on documents)', 'setd.DOCNO_YEAR': 'Year in document numbers', 'setd.DOCNO_RESET': 'When document numbers restart', 'setd.DOCNO_DIGITS': 'Running-number digits (3–6), e.g. 5 → SO6900001', 'setd.DOCNO_VAN_SEPARATE': 'Each van has its own numbering (van code in the number) — No = shared with the office, as in Express', 'setd.DOCNO_VAN_DIGITS': 'Van running-number digits (3–6), used when vans number separately', 'setd.DOCNO_VAN_INV_PREFIX': 'Prefix for van sales bills (Express: HS = cash bill); blank = same as tax invoice', 'setd.STOCK_ENFORCE': 'Block selling/transferring beyond stock (turn on after opening stock is entered) — No = warn only', 'setd.COLLECT_GUARD_FROM': 'Vans must collect payment before selling to the next shop (bills from this date)', 'setd.VAT_RATE': 'VAT rate (%)', 'setd.DEFAULT_VAT_TYPE': 'Default price type', 'setd.DEFAULT_CREDIT_DAYS': 'Default credit term (days)', 'setd.CREDIT_LIMIT_MODE': 'When the credit limit is exceeded', 'setd.GR_DEFAULT_DISCOUNT_PCT': 'Default supplier bill discount (%) on goods receipts', 'setd.SALES_PROMO_CHANNEL': 'Which tier-discount table credit sales reps use', 'setd.MAX_FILE_MB': 'Maximum attachment size (MB)', 'setd.ALLOWED_FILE_EXT': 'Allowed file types', 'setd.ALLOW_NEGATIVE_STOCK': 'Allow negative stock in the main warehouse', 'setd.VAN_SALE_REVIEW': 'Van sales bills need an accounting review', 'setd.BLOCK_SALE_IF_NOT_CLOSED': 'Block van sales until the previous day is closed', 'setd.RECEIPT_WIDTH_MM': 'Mobile printer paper width', 'setd.REPRINT_MAX': 'Mobile receipts: copies allowed after the original', 'setd.DEAD_STOCK_DAYS': 'Days without movement to count as dead stock (reports)', 'setd.LEDGER_ARCHIVE_ROWS': 'Archive old stock movements after this many rows', 'setd.DEFAULT_LANG': 'Default language', 'setd.SESSION_HOURS': 'Sign-in session length (hours)', 'setd.MAX_LOGIN_FAIL': 'Wrong PIN attempts before locking', 'setd.LOCK_MINUTES': 'Lock duration (minutes)', 'setd.BACKUP_KEEP': 'Number of backups to keep', 'setd.EMAIL_NOTIFY': 'Send email notifications', 'setd.EMAIL_DIGEST_HOUR': 'Daily summary email hour (0–23)', 'setd.LINE_ENABLED': 'Enable LINE notifications', 'setd.LINE_CHANNEL_TOKEN': 'LINE OA channel access token', 'setd.LINE_TARGET_ID': 'LINE user or group ID to notify', 'rm.sec.Maintenance': 'Maintenance', 'rm.sec.Inventory': 'Inventory', 'rm.sec.Sales': 'Sales', 'rm.ProductsList': 'Products List', 'rm.CustomersList': 'Customers List', 'rm.PromotionsSetup': 'Promotions Setup', 'rm.UserCustomer': 'User/Customer Mapping', 'rm.UsersList': 'Users List', 'rm.StockIn': 'Stock In', 'rm.StockOut': 'Stock Out', 'rm.StockAdjustment': 'Stock Adjustment', 'rm.StockSummary': 'Stock Summary', 'rm.StockTransfer': 'Stock Transfer', 'rm.InventoryMovement': 'Inventory Movement', 'rm.InventorySummary': 'Inventory Summary', 'rm.SalesOrderDetails': 'Sales Order Details', 'rm.SalesOrderSummary': 'Sales Order Summary', 'rm.SalesDocumentsSummary': 'Sales Documents Summary', 'rm.SalesDocumentsDetails': 'Sales Documents Details', 'rm.CollectionSummaryBySalesman': 'Collection Summary by Salesman', 'rm.CollectionSummaryByCustomer': 'Collection Summary by Customer', 'rm.CollectionDetails': 'Collection Details', 'list.invNos': 'Invoice Number', 'list.pickStatus': 'Picked List Status', 'ed.uom': 'UOM', 'cl.qr': 'QR payment', 'sys.system': 'System', 'ver.created': 'Document created', 'ver.edited': 'Edited', 'so.close.short': 'Insufficient stock', 'so.close.market': 'Out of stock in the market', 'ph.baseUnit': 'piece / bottle / bag', 'lk.DELIVERY_TYPE': 'Delivery type', 'lk.TRANSFER_REASON': 'Transfer reason', 'lk.BANK': 'Bank', 'rpt.arAsOf': 'Outstanding receivables as of {d}',
     'ok': 'OK', 'cancel': 'Cancel', 'save': 'Save', 'saved': 'Saved', 'edit': 'Edit', 'delete': 'Delete', 'add': 'Add',
     'confirm': 'Confirm', 'search': 'Search', 'all': 'All', 'auto': 'Auto', 'yes': 'Yes', 'no': 'No', 'open': 'Open',
     'loading': 'Loading...', 'noData': 'No data', 'total': 'Total', 'print': 'Print', 'baht': 'THB', 'case': 'case',
@@ -1159,7 +1166,7 @@ window.I18N = {
     'st.COLLECTING': 'Awaiting confirmation',
     'f.DeliveryType': 'Delivery type', 'f.DeliveryDate': 'Delivery date', 'f.RefNo': 'Reference no.', 'f.RefDate': 'Reference date',
     'f.Source': 'Source', 'f.Destination': 'Destination', 'f.Sellable': 'Sellable', 'f.PaymentStatus': 'Payment status', 'f.DocCode': 'Van code in doc no.',
-    'mst.docCodeHint': 'digits e.g. 01 → INV012610001 / CLV012610001 / VLV012610001',
+    'mst.docCodeHint': 'Van code in document numbers, used when each van has its own numbering, e.g. 01',
     'ed.detail': 'Details', 'ed.dateTime': 'Date & time', 'ed.center': 'Distribution center', 'ed.custDetail': 'Customer details',
     'ed.suppDetail': 'Supplier details', 'ed.xferDetail': 'Transfer details', 'ed.whDetail': 'Warehouse',
     'ed.address': 'Address', 'ed.addrMain': 'Main address', 'ed.addrType': 'Address type', 'ed.addrBill': 'Billing / shipping',
@@ -1192,7 +1199,7 @@ window.I18N = {
     'cl.vanSaved': 'Payment saved {no} — awaiting admin/accounting', 'cl.notCollected': 'Not collected yet — collect before the next sale',
     'cl.mustCollectFirst': 'Collect the bills below before selling to the next shop',
     'chq.RECEIVED': 'Received', 'chq.DEPOSITED': 'Deposited', 'chq.CLEARED': 'Cleared', 'chq.BOUNCED': 'Bounced',
-    'set.docno': 'Document numbers / stock / collection', 'set.resetMonth': 'Reset monthly (INV26100001)', 'set.resetYear': 'Reset yearly (INV260001)',
+    'set.docno': 'Document numbers / stock / collection', 'set.resetMonth': 'Restart every month (e.g. SO69110001)', 'set.resetYear': 'Restart every year (e.g. SO6900001)',
     'ERR_CL_NO_INV': 'Add at least one invoice', 'ERR_CL_UNBALANCED': 'Not balanced: invoices {inv} − credit notes {cn} ≠ received {pay} (diff {diff})',
     'ERR_CL_OVER': '{no}: at most {max} can be collected', 'ERR_CL_AMOUNT': 'Amount must be greater than 0', 'ERR_CL_OTHER_CUSTOMER': '{no} belongs to another customer',
     'ERR_VAN_PAY_KIND': 'Van sales can collect cash / transfer / QR only', 'ERR_COLLECT_FIRST': 'Collect bill {no} ({name}) before the next sale',
@@ -1590,7 +1597,7 @@ window.I18N = {
     var lastUser = store.get('username');
     if (lastUser) { $('[name=username]', box).value = lastUser; setTimeout(function () { var f = $('[name=pin]', box); if (f) f.focus(); }, 50); }
     $('[name=pin]', box).oninput = function () { this.value = this.value.replace(/\D/g, '').slice(0, 6); };
-    $('#loginLang').onclick = function () { setLang(S.lang === 'th' ? 'en' : 'th', true); showLogin(); };
+    $('#loginLang').onclick = function () { setLang(S.lang === 'th' ? 'en' : 'th', true); S.langPicked = true; showLogin(); };
     $('#loginForm').onsubmit = function (e) {
       e.preventDefault();
       var uname = this.username.value.toUpperCase().replace(/[^A-Z0-9]/g, ''), pin = this.pin.value;
@@ -1661,7 +1668,10 @@ window.I18N = {
   function afterLogin(boot, fromCache) {
     S.boot = boot;
     if (!fromCache) cacheWrite('boot', boot);
-    if (boot.user.Language && boot.user.Language !== S.lang) setLang(boot.user.Language, true);
+    if (S.langPicked) {   // ผู้ใช้เลือกภาษาบนหน้าเข้าระบบ → ใช้ภาษานั้น และบันทึกเป็นภาษาของผู้ใช้
+      S.langPicked = false;
+      if (boot.user.Language !== S.lang) { boot.user.Language = S.lang; cacheWrite('boot', boot); quiet(run('apiSetLanguage', [S.token, S.lang], true)); }
+    } else if (boot.user.Language && boot.user.Language !== S.lang) setLang(boot.user.Language, true);
     $('#splash').classList.add('hidden');
     if (boot.user.MustChangePwd) {
       $('#auth').classList.remove('hidden');
@@ -1847,9 +1857,9 @@ window.I18N = {
       '<a class="nav-item nav-dd-head" data-ddhead="reports">' + icon('chart') + '<span>' + t('menu.reports') + '</span>' +
       '<svg class="ic chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a><div class="nav-sub">' +
       items.map(function (r) {
-        if (r.sec) return '<div class="nav-sub-title">' + esc(r.sec) + '</div>';
+        if (r.sec) return '<div class="nav-sub-title">' + esc(t('rm.sec.' + r.sec)) + '</div>';
         return '<a class="nav-item nav-subitem' + (r.soon ? ' soon' : '') + '" data-navrep="' + (r.rpt || r.id) + '"' + (r.rpt ? ' data-rpt="1"' : '') + (r.soon ? ' data-soon="1"' : '') + '><span>' +
-          esc(r.label.indexOf('.') > 0 ? t(r.label) : r.label) + '</span>' + (r.soon ? '<span class="soon-tag">' + t('rep.soon') + '</span>' : '') + '</a>';
+          esc(r.label.indexOf('.') > 0 ? t(r.label) : (r.rpt ? t('rm.' + r.rpt) : r.label)) + '</span>' + (r.soon ? '<span class="soon-tag">' + t('rep.soon') + '</span>' : '') + '</a>';
       }).join('') + '</div></div>';
   }
 
@@ -2000,14 +2010,30 @@ window.I18N = {
   // ---------------------------------------------------------------
   //  การแจ้งเตือน (กระดิ่ง)
   // ---------------------------------------------------------------
+  // การแจ้งเตือนสร้างที่เซิร์ฟเวอร์เป็นภาษาไทย → แปลตามชนิดเมื่อใช้ภาษาอังกฤษ
+  function ntfTitle(n) {
+    if (S.lang === 'th') return n.Title;
+    var k = 'ntf.' + n.Type, x = t(k);
+    if (x === k) return n.Title;
+    var title = String(n.Title || '');
+    if (n.RefType === 'CUSTOMER') return x + (title.indexOf(': ') > 0 ? ': ' + title.substring(title.indexOf(': ') + 2) : '');
+    var step = /\(ขั้น (\d+)\)/.exec(title);
+    return title.split(' ')[0] + ' — ' + x + (step ? ' (' + t('ntf.step', { n: step[1] }) + ')' : '');
+  }
+  function ntfMsg(s) {
+    s = String(s || '');
+    if (S.lang === 'th' || !/[\u0E00-\u0E7F]/.test(s)) return s;
+    (S.lookups && S.lookups.docTypes || []).forEach(function (d) { if (d.nameTh && d.nameEn) s = s.split(d.nameTh).join(d.nameEn); });
+    return s.replace(/เหตุผล:/g, t('f.Reason') + ':').replace(/อนุมัติโดย/g, t('ntf.by')).replace(/ บาท/g, ' THB');
+  }
   function openNotifications() {
     call('apiNotifications', false).then(function (list) {
       var m = modal({
         title: t('noti.title'),
         body: list.length ? '<div class="list">' + list.map(function (n) {
           return '<div class="list-item" data-ref="' + esc(n.RefType) + '|' + esc(n.RefId) + '" style="' + (n.IsRead === 'TRUE' ? 'opacity:.6' : '') + '">' +
-            icon(n.RefType === 'CUSTOMER' ? 'users' : 'doc') + '<div class="main-col"><div class="title">' + esc(n.Title) + '</div><div class="meta">' +
-            esc(n.Message) + '</div><div class="meta">' + esc(dateFmt(n.CreatedAt)) + '</div></div></div>';
+            icon(n.RefType === 'CUSTOMER' ? 'users' : 'doc') + '<div class="main-col"><div class="title">' + esc(ntfTitle(n)) + '</div><div class="meta">' +
+            esc(ntfMsg(n.Message)) + '</div><div class="meta">' + esc(dateFmt(n.CreatedAt)) + '</div></div></div>';
         }).join('') + '</div>' : '<div class="empty">' + t('noti.empty') + '</div>',
         foot: '<button class="btn" data-readall type="button">' + t('noti.readAll') + '</button>'
       });
@@ -2820,10 +2846,10 @@ window.I18N = {
     var from = { label: t('f.Source'), fmt: function (r) { return esc(U.whName(r.WarehouseId)); } };
     var to = { label: t('f.Destination'), fmt: function (r) { return esc(U.whName(r.ToWarehouseId)); } };
     var ref = { label: t('f.RefNo'), fmt: function (r) { return esc(r.RefNo || ''); } };
-    var printed = { label: 'Printed', fmt: function (r) { return yn(r.PrintCount > 0); } };
+    var printed = { label: t('list.printed'), fmt: function (r) { return yn(r.PrintCount > 0); } };
     if (type === 'SO') return [cc, date, no, wh, pid, pname, rep, amt, st,
-      { label: 'Invoice Number', fmt: function (r) { return esc(r.InvoiceNos || ''); } },
-      { label: 'Picked List Status', fmt: function (r) { return yn(r.PickStatus === 'TRUE'); } }, printed];
+      { label: t('list.invNos'), fmt: function (r) { return esc(r.InvoiceNos || ''); } },
+      { label: t('list.pickStatus'), fmt: function (r) { return yn(r.PickStatus === 'TRUE'); } }, printed];
     if (type === 'INV') return [cc, date, no, pid, pname, rep, amt, st, { label: t('f.PaymentStatus'), fmt: payBadge }, printed];
     if (type === 'CL' || type === 'CN' || type === 'RT') return [cc, date, no, pid, pname, rep, amt, st];
     if (type === 'PO' || type === 'GR') return [cc, date, no, pid, pname, amt, st, ref];
@@ -2924,11 +2950,11 @@ window.I18N = {
         // ประวัติอนุมัติ + เวอร์ชัน
         html += '<div class="grid grid-2 stack"><div class="card"><div class="card-title"><h3>' + t('doc.history') + '</h3></div>' + (r.approvals.length ? '<ul class="timeline">' +
           r.approvals.map(function (h) {
-            return '<li><b>' + esc(t('act.' + h.Action)) + '</b> · ' + esc(h.ByName) + ' <span class="muted small">' + esc(U.dateFmt(h.ActionAt)) + '</span>' +
+            return '<li><b>' + esc(t('act.' + h.Action)) + '</b> · ' + esc(h.ByName === 'ระบบ' ? t('sys.system') : h.ByName) + ' <span class="muted small">' + esc(U.dateFmt(h.ActionAt)) + '</span>' +
               (h.Reason ? '<div class="muted small">' + esc(h.Reason) + '</div>' : '') + '</li>';
           }).join('') + '</ul>' : '<div class="muted small">' + t('noData') + '</div>') + '</div>' +
           '<div class="card"><div class="card-title"><h3>' + t('doc.versions') + '</h3></div><div class="list">' + r.versions.map(function (v) {
-            return '<div class="list-item" data-ver="' + v.VersionNo + '"><span class="badge">v' + v.VersionNo + '</span><div class="main-col"><div class="title">' + esc(v.ChangeNote) +
+            return '<div class="list-item" data-ver="' + v.VersionNo + '"><span class="badge">v' + v.VersionNo + '</span><div class="main-col"><div class="title">' + esc(v.ChangeNote === 'สร้างเอกสาร' ? t('ver.created') : (v.ChangeNote === 'แก้ไข' ? t('ver.edited') : v.ChangeNote)) +
               '</div><div class="meta">' + esc(v.ChangedBy) + ' · ' + esc(U.dateFmt(v.ChangedAt)) + '</div></div></div>';
           }).join('') + '</div></div></div>';
         if (r.logs.length) {
@@ -3001,7 +3027,7 @@ window.I18N = {
         // เหตุผลการปิดใบสั่งขาย (ยกเลิกส่วนที่ค้างส่ง) เลือกจากรายการ
         var mm = modal({ title: t('doc.closeSo'),
           body: '<div class="alert warn">' + t('doc.confirmCloseSo') + '</div>' +
-            U.field(t('f.Reason'), U.selectH('why', [{ v: '', l: t('pleaseSelect') }].concat(['สินค้าไม่เพียงพอ', 'สินค้าขาดตลาด'].map(function (x) { return { v: x, l: x }; })), '', 'id="closeWhy"'), true),
+            U.field(t('f.Reason'), U.selectH('why', [{ v: '', l: t('pleaseSelect') }, { v: 'สินค้าไม่เพียงพอ', l: t('so.close.short') }, { v: 'สินค้าขาดตลาด', l: t('so.close.market') }], '', 'id="closeWhy"'), true),
           foot: '<button class="btn" data-x2 type="button">' + t('cancel') + '</button><button class="btn btn-warn" data-ok type="button">' + t('doc.closeSo') + '</button>' });
         $('[data-x2]', mm.el).onclick = function () { mm.close(); };
         $('[data-ok]', mm.el).onclick = function () {
@@ -3605,7 +3631,7 @@ window.I18N = {
       $('#lineCount').textContent = ed.lines.length ? '(' + ed.lines.length + ')' : '';
       var cols = ['#', t('ed.code'), t('ed.name'), t('ed.onHand'), t('f.Qty')];
       if (showSoRemain) cols.push(t('ed.soRemain'));
-      cols.push('UOM');
+      cols.push(t('ed.uom'));
       if (money2) cols.push(t('f.UnitPrice'), t('ed.gross'));
       if (money2 && !isXfer && type !== 'CN' && type !== 'RT') cols.push(t('f.Discount'));
       if (isSale) cols.push(t('ed.promoDisc'), t('ed.freeGoods'), t('ed.premium'));
@@ -3628,7 +3654,7 @@ window.I18N = {
           cell(t('f.Qty'), '<div class="qty sm"><button type="button" data-step="-1">−</button><input type="number" step="any" data-f="Qty" value="' + esc(l.Qty) + '"' +
             (type === 'ADJ' ? '' : ' min="0"') + '><button type="button" data-step="1">+</button></div>');
         if (showSoRemain) tr += cell(t('ed.soRemain'), U.qtyFmt(Math.max(rn(num(l.Qty) - num(l.Delivered), 4), 0)), 'num');
-        tr += cell('UOM', U.selectH('u', units, l.Unit, 'data-f="Unit" class="input sm"' + (fromSo ? ' disabled' : '')));
+        tr += cell(t('ed.uom'), U.selectH('u', units, l.Unit, 'data-f="Unit" class="input sm"' + (fromSo ? ' disabled' : '')));
         if (money2) {
           tr += cell(t('f.UnitPrice'), editPrice ? '<input class="input num sm" type="number" min="0" step="any" data-f="UnitPrice" placeholder="' + t('auto') + '" value="' + esc(l.UnitPrice) + '">' : '<span data-price></span>', 'num') +
             cell(t('ed.gross'), '<span data-gross></span>', 'num');
@@ -4162,7 +4188,7 @@ window.I18N = {
     { k: 'CASH', title: 'cl.cash', cols: [['Amount', 'cl.total', 'amount']] },
     { k: 'CHEQUE', title: 'cl.cheque', noVan: true, cols: [['ChequeNo', 'f.DocNo', 'in'], ['PayDate', 'f.DocDate', 'date'], ['Bank', 'cl.bank', 'bank'], ['Amount', 'cl.total', 'amount'], ['ChequeStatus', 'f.Status', 'chq']] },
     { k: 'TRANSFER', title: 'cl.transferSec', cols: [['AccountNo', 'cl.accountNo', 'in'], ['PayDate', 'f.DocDate', 'date'], ['RefNo', 'f.RefNo', 'in'], ['Amount', 'cl.total', 'amount']] },
-    { k: 'QR', title: 'QR PAYMENT', cols: [['AccountNo', 'cl.payerAccount', 'in'], ['PayerName', 'cl.payerName', 'in'], ['PayDate', 'f.DocDate', 'date'], ['RefNo', 'f.RefNo', 'in'], ['Amount', 'cl.total', 'amount']] }
+    { k: 'QR', title: 'cl.qr', cols: [['AccountNo', 'cl.payerAccount', 'in'], ['PayerName', 'cl.payerName', 'in'], ['PayDate', 'f.DocDate', 'date'], ['RefNo', 'f.RefNo', 'in'], ['Amount', 'cl.total', 'amount']] }
   ];
 
   function drawCollection(el, r, p) {
@@ -4215,7 +4241,7 @@ window.I18N = {
         var addr = String(c.address || '').split(/\n|\r/).filter(Boolean);
         var reps = S.lookups.salesReps || [];
         var fixedRep = isVan || U.role() === 'PRE' || U.role() === 'SALES';
-        var h = '<div class="ed-bar"><div class="ed-title">' + icon('layers') + ' ' + t('cl.title') + ' <span class="muted small">COLLECTION</span></div><div class="ed-btns">' + btns + '</div></div>';
+        var h = '<div class="ed-bar"><div class="ed-title">' + icon('layers') + ' ' + t('cl.title') + ' <span class="muted small">CL</span></div><div class="ed-btns">' + btns + '</div></div>';
         if (d && r.currentApprover) h += '<div class="alert info">' + t('doc.waitingFor', { who: r.currentApprover }) + '</div>';
         if (d && d.Reason && ['REJECTED', 'RETURNED', 'CANCELLED'].indexOf(d.Status) >= 0) h += '<div class="alert err">' + t('f.Reason') + ': ' + esc(d.Reason) + '</div>';
         h += '<div class="card"><div class="tabs"><div class="tab active">' + t('ed.detail') + '</div></div><div class="ed-panels">' +
@@ -4227,7 +4253,7 @@ window.I18N = {
           '<div class="ed-panel ed-panel-r"><h4>' + t('ed.custDetail') + '</h4>' +
           frow(t('f.Customer'), '<div class="input-group"><input class="input" readonly id="clParty" placeholder="' + esc(t('pleaseSelect')) + '" value="' +
             esc(st.party ? c.id + ' - ' + c.name : '') + '">' + (editable ? '<button class="btn" id="clPick" type="button">' + icon('search') + '</button>' : '') + '</div>', true) +
-          frow(t('ed.address'), U.selectH('_addr', [{ v: 'MAIN', l: st.party ? t('ed.addrMain') : 'Select' }], 'MAIN', st.party ? '' : 'disabled'), true) +
+          frow(t('ed.address'), U.selectH('_addr', [{ v: 'MAIN', l: st.party ? t('ed.addrMain') : t('pleaseSelect') }], 'MAIN', st.party ? '' : 'disabled'), true) +
           frow(t('ed.addrType'), fval(st.party ? t('ed.addrBill') : '')) + frow(t('f.CustomerId'), fval(c.id)) + frow(t('list.customerName'), fval(c.name)) +
           frow(t('ed.addr1'), fval(addr[0])) + frow(t('ed.addr2'), fval(addr[1])) + frow(t('ed.addr3'), fval(addr.slice(2).join(' '))) +
           frow(t('f.Subdistrict'), fval(c.subdistrict)) + frow(t('f.District'), fval(c.district)) + frow(t('ed.city'), fval(c.province)) +
@@ -4376,7 +4402,7 @@ window.I18N = {
     render: function (el) {
       return call('apiRecentActivity', 150).then(function (list) {
         el.innerHTML = '<div class="card">' + (list.length ? '<ul class="timeline">' + list.map(function (r) {
-          return '<li><span class="muted small">' + esc(U.dateFmt(r.at)) + '</span> · ' + esc(r.who) + ' · ' + esc(t('act.' + r.action) === 'act.' + r.action ? r.action : t('act.' + r.action)) +
+          return '<li><span class="muted small">' + esc(U.dateFmt(r.at)) + '</span> · ' + esc(r.who === 'ระบบ' ? t('sys.system') : r.who) + ' · ' + esc(t('act.' + r.action) === 'act.' + r.action ? r.action : t('act.' + r.action)) +
             (r.docId ? ' · <a data-doc="' + esc(r.docId) + '">' + esc(r.ref) + '</a>' : (r.ref ? ' · ' + esc(r.ref) : '')) + '</li>';
         }).join('') + '</ul>' : '<div class="empty">' + t('noData') + '</div>') + '</div>';
         $$('[data-doc]', el).forEach(function (a) { a.onclick = function () { go('doc', { id: a.getAttribute('data-doc') }); }; });
@@ -4585,7 +4611,7 @@ window.I18N = {
       U.field(t('f.NameTh'), U.inputH('NameTh', p.NameTh), true) + U.field(t('f.NameEn'), U.inputH('NameEn', p.NameEn)) +
       U.field(t('f.CategoryId'), U.selectH('CategoryId', [{ v: '', l: '-' }].concat(cats.map(function (c) { return { v: c.id, l: L(c.nameTh, c.nameEn) }; })), p.CategoryId)) +
       U.field(t('f.Brand'), U.inputH('Brand', p.Brand)) +
-      U.field(t('f.BaseUnit'), U.inputH('BaseUnit', p.BaseUnit, 'placeholder="ชิ้น / ขวด / ถุง"'), true) +
+      U.field(t('f.BaseUnit'), U.inputH('BaseUnit', p.BaseUnit, 'placeholder="' + esc(t('ph.baseUnit')) + '"'), true) +
       U.field(t('f.CaseUnit'), U.inputH('CaseUnit', p.CaseUnit)) +
       U.field(t('f.CaseQty'), U.inputH('CaseQty', p.CaseQty, 'type="number" min="1" step="1" class="input num"'), true) +
       U.field(t('f.ReorderPoint') + ' (' + t('prod.baseUnit') + ')', U.inputH('ReorderPoint', p.ReorderPoint || 0, 'type="number" min="0"')) +
@@ -5335,6 +5361,10 @@ window.I18N = {
     }
   };
   function drawReport(r, id) {
+    // ชื่อรายงานตามภาษาที่เลือก
+    var rtk = 'rt.' + id, rtx = t(rtk);
+    if (id === 'ar' && r.filters && r.filters.asOf) r.title = t('rpt.arAsOf', { d: U.dateFmt(r.filters.asOf) });
+    else if (rtx !== rtk) r.title = rtx;
     var cols = r.columns.map(function (c) { return { key: c.key, label: L(c.th, c.en), type: c.type }; });
     $('#rOut').innerHTML = '<div class="card"><div class="card-title"><h3>' + esc(r.title) + '</h3><div class="btn-row no-print">' +
       '<button class="btn btn-sm" id="rCsv" type="button">' + icon('download') + 'CSV</button><button class="btn btn-sm" id="rPrint" type="button">' + icon('print') + t('print') + '</button></div></div>' +
@@ -5382,7 +5412,7 @@ window.I18N = {
   var r2 = function (n) { return Math.round((num(n) + Number.EPSILON) * 100) / 100; };
 
   R.rpt = {
-    title: function (p) { return t('menu.reports') + ' · ' + String(p.id || '').replace(/([a-z])([A-Z])/g, '$1 $2'); }, nav: 'rpt',
+    title: function (p) { var k = 'rm.' + (p.id || ''), x = t(k); return t('menu.reports') + ' · ' + (x !== k ? x : String(p.id || '').replace(/([a-z])([A-Z])/g, '$1 $2')); }, nav: 'rpt',
     render: function (el, p) {
       var id = p.id;
       var spec = RPT_FILTERS[id];
@@ -5391,7 +5421,7 @@ window.I18N = {
       return opts.then(function (o) {
         var f = Object.assign({ dateFrom: U.today(), dateTo: U.today() }, p.f || {});
         var sel = {};
-        var html = '<div class="list-head"><h2 class="list-title">' + icon('chart') + ' ' + esc(id.replace(/([a-z])([A-Z])/g, '$1 $2')) + '</h2></div>' +
+        var html = '<div class="list-head"><h2 class="list-title">' + icon('chart') + ' ' + esc(t('rm.' + id) !== 'rm.' + id ? t('rm.' + id) : id.replace(/([a-z])([A-Z])/g, '$1 $2')) + '</h2></div>' +
           '<div class="card no-print rpt-filters"><div class="rpt-grid" id="rpF">';
         spec.forEach(function (s) {
           if (Array.isArray(s) && s[0] === 'date') {
@@ -5400,7 +5430,7 @@ window.I18N = {
           } else if (Array.isArray(s) && s[0] === 'text') {
             html += rfield(t('rf.' + s[1]), '<input class="input" name="' + s[1] + '" value="' + esc(f[s[1]] || '') + '" placeholder="' + esc(t('rf.anyText')) + '">');
           } else if (Array.isArray(s) && s[0] === 'yn') {
-            html += rfield(t('rf.' + s[1]), U.selectH(s[1], [{ v: '', l: 'N/A' }, { v: 'Y', l: t('yes') }, { v: 'N', l: t('no') }], f[s[1]] || ''));
+            html += rfield(t('rf.' + s[1]), U.selectH(s[1], [{ v: '', l: t('all') }, { v: 'Y', l: t('yes') }, { v: 'N', l: t('no') }], f[s[1]] || ''));
           } else {
             sel[s] = (f[s] || []).slice();
             html += rfield(t('rf.' + s), '<div class="msel" data-ms="' + s + '"><button class="input msel-box" type="button"><span class="msel-txt"></span><span class="msel-arr">▾</span></button></div>');
@@ -5481,7 +5511,16 @@ window.I18N = {
 
   /** แสดงผลรายงาน: หัวรายงาน + ตารางแบ่งกลุ่ม (กดยุบ/ขยาย) + ยอดรวมกลุ่ม + ยอดรวมทั้งหมด */
   function drawRpt(r, o, f) {
-    var cols = r.columns;
+    // หัวคอลัมน์/ชื่อรายงานตามภาษาที่เลือก (คีย์ rc.<คอลัมน์>, rm.<รายงาน>)
+    var tr = function (k, def) { var x = t(k); return x !== k ? x : def; };
+    r.title = tr('rm.' + r.id, r.title);
+    var cols = r.columns.map(function (c) { return Object.assign({}, c, { label: tr('rc.' + c.key, c.label) }); });
+    var valMap = { DocStatus: 'rv2.', DocType: 'rd2.' };
+    r.rows = r.rows.map(function (row) {
+      var o2 = Object.assign({}, row);
+      Object.keys(valMap).forEach(function (k) { if (o2[k]) o2[k] = tr(valMap[k] + o2[k], o2[k]); });
+      return o2;
+    });
     var isNum = function (c) { return ['money', 'qty', 'num', 'pct'].indexOf(c.type) >= 0; };
     var fmt = function (v, c) {
       if (c.type === 'date') return U.dateFmt(v);
@@ -5494,8 +5533,8 @@ window.I18N = {
       if (Array.isArray(s) && s[0] === 'date') return;
       var k = Array.isArray(s) ? s[1] : s;
       var v = f[k];
-      var txt = Array.isArray(v) ? (v.length ? (o[k] || []).filter(function (x) { return v.indexOf(x.v) >= 0; }).map(function (x) { return x.l; }).join(', ') : 'ALL')
-                                 : (v ? (Array.isArray(s) && s[0] === 'yn' ? (v === 'Y' ? t('yes') : t('no')) : v) : (Array.isArray(s) && s[0] === 'yn' ? 'N/A' : ''));
+      var txt = Array.isArray(v) ? (v.length ? (o[k] || []).filter(function (x) { return v.indexOf(x.v) >= 0; }).map(function (x) { return x.l; }).join(', ') : t('rf.all'))
+                                 : (v ? (Array.isArray(s) && s[0] === 'yn' ? (v === 'Y' ? t('yes') : t('no')) : v) : (Array.isArray(s) && s[0] === 'yn' ? t('all') : ''));
       headLines.push([t('rf.' + k), txt]);
     });
     // จัดกลุ่ม
@@ -5787,7 +5826,7 @@ window.I18N = {
         var groups = [
           ['set.company', ['APP_NAME', 'APP_TAGLINE', 'SALES_APP_NAME', 'BRAND_COLOR', 'COMPANY_NAME', 'COMPANY_NAME_EN', 'COMPANY_ADDRESS', 'COMPANY_TAX_ID', 'COMPANY_BRANCH', 'COMPANY_PHONE']],
           ['set.docno', ['CENTER_CODE', 'DOCNO_YEAR', 'DOCNO_RESET', 'DOCNO_DIGITS', 'DOCNO_VAN_SEPARATE', 'DOCNO_VAN_DIGITS', 'DOCNO_VAN_INV_PREFIX', 'STOCK_ENFORCE', 'COLLECT_GUARD_FROM']],
-          ['set.doc', ['VAT_RATE', 'DEFAULT_VAT_TYPE', 'DEFAULT_CREDIT_DAYS', 'CREDIT_LIMIT_MODE', 'GR_DEFAULT_DISCOUNT_PCT', 'SALES_PROMO_CHANNEL', 'MAX_FILE_MB', 'ALLOWED_FILE_EXT', 'TRASH_DAYS']],
+          ['set.doc', ['VAT_RATE', 'DEFAULT_VAT_TYPE', 'DEFAULT_CREDIT_DAYS', 'CREDIT_LIMIT_MODE', 'GR_DEFAULT_DISCOUNT_PCT', 'SALES_PROMO_CHANNEL', 'MAX_FILE_MB', 'ALLOWED_FILE_EXT']],
           ['set.van', ['ALLOW_NEGATIVE_STOCK', 'VAN_SALE_REVIEW', 'BLOCK_SALE_IF_NOT_CLOSED', 'RECEIPT_WIDTH_MM', 'REPRINT_MAX', 'DEAD_STOCK_DAYS', 'LEDGER_ARCHIVE_ROWS']],
           ['set.security', ['DEFAULT_LANG', 'SESSION_HOURS', 'MAX_LOGIN_FAIL', 'LOCK_MINUTES', 'BACKUP_KEEP']],
           ['set.notify', ['EMAIL_NOTIFY', 'EMAIL_DIGEST_HOUR', 'LINE_ENABLED', 'LINE_CHANNEL_TOKEN', 'LINE_TARGET_ID']]
@@ -5805,7 +5844,8 @@ window.I18N = {
           (info.triggersOk ? '' : '<div class="alert warn" style="margin-top:10px">' + t('set.triggersHint') + '</div>') + '</div>';
         html += '<div id="setForm">' + groups.map(function (g) {
           return '<div class="card"><div class="card-title"><h3>' + t(g[0]) + '</h3></div><div class="grid grid-2">' + g[1].filter(function (k) { return byKey[k]; }).map(function (k) {
-            return U.field(byKey[k].Description || k, inputFor(byKey[k]));
+            var dk = 'setd.' + k, dl = t(dk);
+            return U.field(dl !== dk ? dl : (byKey[k].Description || k), inputFor(byKey[k]));
           }).join('') + '</div></div>';
         }).join('') + '</div><div class="form-actions"><button class="btn btn-primary" id="setSave" type="button">' + t('save') + '</button></div>';
         el.innerHTML = html;
